@@ -205,12 +205,35 @@
 
         // اللغة والعملة
         function toggleLang() {
-            isAr = !isAr;
-            document.getElementById('html-tag').dir = isAr ? 'rtl' : 'ltr';
-            document.getElementById('btn-lang').innerText = isAr ? 'English' : 'العربية';
-            document.getElementById('l-welcome').innerText = isAr ? "مرحباً بك في كوتا بونجا" : "Welcome to Kota Bunga";
-            // ... (باقي الترجمات تعمل تلقائياً مع النقر)
+    isAr = !isAr;
+    const h = document.getElementById('html-tag');
+    h.dir = isAr ? 'rtl' : 'ltr';
+    document.getElementById('btn-lang').innerText = isAr ? 'English' : 'العربية';
+    
+    // ترجمة النصوص الرئيسية في الواجهة
+    document.getElementById('l-welcome').innerText = isAr ? "مرحباً بك في كوتا بونجا" : "Welcome to Kota Bunga";
+    document.getElementById('l-sub').innerText = isAr ? "بوابتك الذكية والاحترافية لخدمات بونشاك" : "Your Smart Gate for Puncak Services";
+    document.getElementById('l-v_card').innerText = isAr ? "الفلل (15)" : "Villas (15)";
+    document.getElementById('l-c_card').innerText = isAr ? "السيارات (15)" : "Cars (15)";
+    document.getElementById('l-s_card').innerText = isAr ? "الخدمات الأخرى" : "Other Services";
+    document.getElementById('l-conv').innerText = isAr ? "صرف" : "Currency";
+
+    // ترجمة الكلمات داخل لوحات الحجز (الفلل والسيارات)
+    document.querySelectorAll('.l-from').forEach(el => el.innerText = isAr ? "من تاريخ" : "From Date");
+    document.querySelectorAll('.l-to').forEach(el => el.innerText = isAr ? "إلى تاريخ" : "To Date");
+    document.querySelectorAll('.l-total').forEach(el => el.innerText = isAr ? "الإجمالي:" : "Total:");
+    document.querySelectorAll('.l-sar').forEach(el => el.innerText = isAr ? "ريال" : "SAR");
+    document.querySelectorAll('.l-back').forEach(el => el.innerText = isAr ? "رجوع" : "Back");
+
+    // ترجمة الحقول النصية (Placeholders)
+    document.getElementById('v-cust-note').placeholder = isAr ? "ملاحظات العميل..." : "Customer notes...";
+    document.getElementById('c-cust-note').placeholder = isAr ? "ملاحظات..." : "Notes...";
+    
+    // ترجمة قسم الخدمات الأخرى
+    document.getElementById('l-cook').innerText = isAr ? "طباخ خاص" : "Private Chef";
+    document.getElementById('l-meat').innerText = isAr ? "ذبيحة وطبخ" : "Sacrifice & Cooking";
         }
+        
 
         function toggleCurr() {
             const box = document.getElementById('curr-box');
