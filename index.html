@@ -118,7 +118,14 @@
     <section id="sec-villas">
         <div style="width:100%; max-width:800px;">
             <button class="nav-btn" onclick="nav('sec-home')" style="margin-bottom:15px;">⬅️ <span class="l-back">رجوع</span></button>
-            <div class="map-box" id="map-v"></div>
+            <div class="map-box" style="position: relative; height: 450px; background: #1a1f2c;">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2687541249764!2d107.0341753!3d-6.7028717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6973e6d13702d7%3A0x86134b223910f545!2sKota%20Bunga!5e0!3m2!1sar!2sid!4v1700000000000!5m2!1sar!2sid" 
+        width="100%" height="100%" style="border:0; border-radius: 25px;" allowfullscreen="" loading="lazy">
+    </iframe>
+    <div id="map-v" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></div>
+            </div>
+            
             
             <div id="v-panel" class="panel" style="display:none;">
                 <div id="v-admin" style="display:none; background:#fffbeb; padding:15px; border-radius:15px; border:2px dashed orange; margin-bottom:15px;">
@@ -220,6 +227,8 @@
         for(let i=1; i<=15; i++) {
             let p = document.createElement('div');
             p.className = 'pin';
+            p.style.pointerEvents = "auto";
+            
             p.style.top = (10 + (i*4)%70) + "%";
             p.style.left = (10 + (i*6)%80) + "%";
             p.innerHTML = `<span>${i}</span>`;
@@ -296,6 +305,29 @@
             }
         }
         genSlots('v-slots', 7); genSlots('c-slots', 5);
+        // كود تحريك الدبابيس فوق الخريطة
+document.querySelectorAll('.pin').forEach(pin => {
+    let isDragging = false;
+    pin.addEventListener('mousedown', () => isDragging = true);
+    pin.addEventListener('touchstart', () => isDragging = true);
+    window.addEventListener('mouseup', () => isDragging = false);
+    window.addEventListener('touchend', () => isDragging = false);
+    
+    const moveAction = (e) => {
+        if (!isDragging) return;
+        let rect = document.querySelector('.map-box').getBoundingClientRect();
+        let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        let x = ((clientX - rect.left) / rect.width) * 100;
+        let y = ((clientY - rect.top) / rect.height) * 100;
+        if (x >= 0 && x <= 96) pin.style.left = x + "%";
+        if (y >= 0 && y <= 95) pin.style.top = y + "%";
+    };
+    
+    window.addEventListener('mousemove', moveAction);
+    window.addEventListener('touchmove', moveAction, { passive: false });
+});
+        
     </script>
 </body>
 </html>
