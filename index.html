@@ -299,12 +299,35 @@
         function saveV() { alert("Saved ✅"); }
         function saveC() { alert("Saved ✅"); }
 
-        function sendWA(type) {
-            let t = (type === 'Villa') ? 'v' : 'c';
-            let msg = `حجز جديد: ${type}%0Aالاسم: ${document.getElementById(t+'-name').innerText}%0Aالتاريخ: ${document.getElementById(t+'-from').value} إلى ${document.getElementById(t+'-to').value}%0Aالإجمالي: ${document.getElementById(t+'-price-val').innerText} ريال`;
-            window.open(`https://wa.me/${WA_NUM}?text=${msg}`, '_blank');
+    function sendWA(type) {
+    let t = (type === 'Villa') ? 'v' : 'c';
 
-        }
+    let from = document.getElementById(t+'-from').value;
+    let to = document.getElementById(t+'-to').value;
+    let guests = document.getElementById(t+'-guests').value;
+
+    if(!from || !to){
+        alert("يرجى اختيار التواريخ أولاً");
+        return;
+    }
+
+    if(!guests){
+        alert("يرجى إدخال عدد الضيوف");
+        return;
+    }
+
+    if(!confirm("سيتم التواصل معك خلال دقائق لتأكيد الحجز. هل تريد المتابعة؟")){
+        return;
+    }
+
+    let msg = `حجز جديد:%0A`
+        + `النوع: ${type}%0A`
+        + `من: ${from}%0A`
+        + `إلى: ${to}%0A`
+        + `عدد الضيوف: ${guests}%0A`;
+
+    window.open(`https://wa.me/${WA_NUM}?text=${msg}`, '_blank');
+    }
 
         // سلايدر
         setInterval(() => {
@@ -352,5 +375,25 @@ document.querySelectorAll('.pin').forEach(pin => {
 });
         
     </script>
+    </script>
+
+<a href="https://wa.me/6285715513240" target="_blank"
+style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+font-weight:bold;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+z-index:9999;">
+💬 واتساب مباشر
+</a>
+
+</body>
+</html>
 </body>
 </html>
