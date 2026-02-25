@@ -173,6 +173,12 @@
                     <div style="flex:1"><label class="l-from">من</label><input type="date" id="c-from" onchange="calcPrice('c')"></div>
                     <div style="flex:1"><label class="l-to">إلى</label><input type="date" id="c-to" onchange="calcPrice('c')"></div>
                 </div>
+                <div style="display:flex; gap:10px;">
+    <div style="flex:1">
+        <label>عدد الركاب</label>
+        <input type="number" id="c-guests" min="1" placeholder="عدد الأشخاص">
+    </div>
+</div>
                 <textarea id="c-cust-note" placeholder="ملاحظات..."></textarea>
                 <div class="price-tag"><span class="l-total">الإجمالي:</span> <span id="c-price-val">0</span> <span class="l-sar">ريال</span></div>
                 <button class="nav-btn" onclick="sendWA('Car')" style="width:100%; background:var(--green); border:none; height:60px; font-size:20px;">حجز السيارة</button>
