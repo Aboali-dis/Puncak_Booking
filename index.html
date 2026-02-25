@@ -148,6 +148,16 @@
         <input type="number" id="v-guests" min="1" placeholder="عدد الأشخاص">
     </div>
                 </div>
+                <div style="display:flex; gap:10px; margin-top:10px;">
+    <div style="flex:1">
+        <label>اسم العميل</label>
+        <input type="text" id="v-cust-name" placeholder="اكتب اسمك">
+    </div>
+    <div style="flex:1">
+        <label>رقم الجوال</label>
+        <input type="tel" id="v-cust-phone" placeholder="05xxxxxxxx">
+    </div>
+                </div>
                 <textarea id="v-cust-note" placeholder="ملاحظات العميل..."></textarea>
                 <div class="price-tag"><span class="l-total">الإجمالي:</span> <span id="v-price-val">0</span> <span class="l-sar">ريال</span></div>
                 <button class="nav-btn" onclick="sendWA('Villa')" style="width:100%; background:var(--green); border:none; height:60px; font-size:20px;">تأكيد الحجز</button>
@@ -180,6 +190,16 @@
         <input type="number" id="c-guests" min="1" placeholder="عدد الأشخاص">
     </div>
 </div>
+                <div style="display:flex; gap:10px; margin-top:10px;">
+    <div style="flex:1">
+        <label>اسم العميل</label>
+        <input type="text" id="c-cust-name" placeholder="اكتب اسمك">
+    </div>
+    <div style="flex:1">
+        <label>رقم الجوال</label>
+        <input type="tel" id="c-cust-phone" placeholder="05xxxxxxxx">
+    </div>
+                </div>
                 <textarea id="c-cust-note" placeholder="ملاحظات..."></textarea>
                 <div class="price-tag"><span class="l-total">الإجمالي:</span> <span id="c-price-val">0</span> <span class="l-sar">ريال</span></div>
                 <button class="nav-btn" onclick="sendWA('Car')" style="width:100%; background:var(--green); border:none; height:60px; font-size:20px;">حجز السيارة</button>
