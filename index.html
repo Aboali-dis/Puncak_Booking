@@ -337,11 +337,15 @@ document.getElementById('l-sub').innerText =
         function saveC() { alert("Saved ✅"); }
 
     function sendWA(type) {
+
     let t = (type === 'Villa') ? 'v' : 'c';
 
     let from = document.getElementById(t+'-from').value;
     let to = document.getElementById(t+'-to').value;
     let guests = document.getElementById(t+'-guests').value;
+    let name = document.getElementById(t+'-cust-name').value;
+    let phone = document.getElementById(t+'-cust-phone').value;
+    let price = document.getElementById(t+'-price-val').innerText;
 
     if(!from || !to){
         alert("يرجى اختيار التواريخ أولاً");
@@ -353,17 +357,26 @@ document.getElementById('l-sub').innerText =
         return;
     }
 
+    if(!name || !phone){
+        alert("يرجى إدخال الاسم ورقم الجوال");
+        return;
+    }
+
     if(!confirm("سيتم التواصل معك خلال دقائق لتأكيد الحجز. هل تريد المتابعة؟")){
         return;
     }
 
-    let msg = `حجز جديد:%0A`
-        + `النوع: ${type}%0A`
-        + `من: ${from}%0A`
-        + `إلى: ${to}%0A`
-        + `عدد الضيوف: ${guests}%0A`;
+    let message = `طلب حجز جديد 🔥
+النوع: ${type}
+الاسم: ${name}
+رقم الجوال: ${phone}
+من: ${from}
+إلى: ${to}
+عدد الضيوف: ${guests}
+الإجمالي: ${price} ريال`;
 
-    window.open(`https://wa.me/${WA_NUM}?text=${msg}`, '_blank');
+    let url = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
     }
 
         // سلايدر
