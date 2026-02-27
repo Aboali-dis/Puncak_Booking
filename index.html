@@ -77,6 +77,37 @@
         .img-slot img { width: 100%; height: 100%; object-fit: cover; }
 
         footer { background: #070a11; padding: 40px 20px; text-align: center; border-top: 1px solid #222; }
+        /* ===== قسم الباقات ===== */
+.packages-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.package-card {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid var(--gold);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.1);
+}
+
+/* ===== قسم VIP ===== */
+.vip-card {
+    background: linear-gradient(135deg, #111, #222);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+                                }
     </style>
 </head>
 <body>
@@ -453,6 +484,47 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 z-index:9999;">
 💬 واتساب مباشر
 </a>
+    <section id="packages">
+    <div class="hero-container">
+        <h2>الباقات</h2>
+
+        <div class="packages-container">
+            <div class="package-card">
+                <h3>باقة برونزية</h3>
+                <p>1000 عملة</p>
+                <p>10$</p>
+                <button>شراء</button>
+            </div>
+
+            <div class="package-card">
+                <h3>باقة فضية</h3>
+                <p>5000 عملة</p>
+                <p>40$</p>
+                <button>شراء</button>
+            </div>
+
+            <div class="package-card">
+                <h3>باقة ذهبية</h3>
+                <p>10000 عملة</p>
+                <p>70$</p>
+                <button>شراء</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="vip">
+    <div class="hero-container">
+        <h2>VIP</h2>
+
+        <div class="vip-card">
+            <h3>عضوية VIP</h3>
+            <p>مميزات خاصة + دعم سريع</p>
+            <p>السعر: 25$ شهرياً</p>
+            <button>اشترك الآن</button>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
