@@ -403,22 +403,29 @@ document.getElementById('l-sub').innerText =
         }
 
         // بناء الفلل
-        const mapV = document.getElementById('map-v');
-        for(let i=1; i<=15; i++) {
-            let p = document.createElement('div');
-            p.className = 'pin';
-            p.style.pointerEvents = "auto";
-            
-            p.style.top = (10 + (i*4)%70) + "%";
-            p.style.left = (10 + (i*6)%80) + "%";
-            p.innerHTML = `<span>${i}</span>`;
-            p.onclick = (e) => {
-                e.stopPropagation();
-                document.getElementById('v-panel').style.display = 'block';
-                document.getElementById('v-name').innerText = (isAr ? "فلة رقم " : "Villa ") + i;
-                if(isAdmin) document.getElementById('v-admin').style.display = 'block';
-            };
-            mapV.appendChild(p);
+const mapV = document.getElementById('map-v');
+
+for(let i=1; i<=15; i++) {
+
+    let p = document.createElement('div');
+    p.className = 'pin';
+    p.style.pointerEvents = "auto";
+    
+    p.style.top = (10 + (i*4)%70) + "%";
+    p.style.left = (10 + (i*6)%80) + "%";
+    p.innerHTML = `<span>${i}</span>`;
+
+    p.onclick = (e) => {
+        e.stopPropagation();
+        document.getElementById('v-panel').style.display = 'block';
+        document.getElementById('v-name').innerText = 
+            (isAr ? "فلة رقم " : "Villa ") + i;
+
+        if(isAdmin)
+            document.getElementById('v-admin').style.display = 'block';
+    };
+
+    mapV.appendChild(p);
         }
 
         // بناء السيارات
