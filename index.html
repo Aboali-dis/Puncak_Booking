@@ -145,6 +145,9 @@
             <div class="card" onclick="nav('sec-cars')"><h2 id="l-c_card">السيارات</h2></div>
             <div class="card wide" onclick="nav('sec-serv')"><h2 id="l-s_card">الخدمات الأخرى</h2></div>
             <div class="card" onclick="nav('packages')">
+             <div class="card wide" onclick="nav('sec-programs')">
+    <h2>🔥 برامج جاهزة</h2>
+</div>
     <h2>الباقات</h2>
 </div>
 
@@ -288,7 +291,52 @@
         <button>اشترك الآن</button>
     </div>
 </section>
+ <section id="sec-programs">
+    <div style="width:100%; max-width:800px;">
+        <button class="nav-btn" onclick="nav('sec-home')" style="margin-bottom:15px;">
+            ⬅️ رجوع
+        </button>
 
+        <div class="hero-container">
+            <h2>🔥 برامج جاهزة</h2>
+            <p>اختر برنامج مناسب وسننسق لك الرحلة كاملة بدون تعب</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card" style="background:white; color:#333;">
+                <h3>👨‍👩‍👧 برنامج عائلة 4 أيام</h3>
+                <p>فلة + سيارة + جولات</p>
+                <button class="nav-btn" 
+                onclick="sendProgram('عائلة 4 أيام')"
+                style="width:100%; background:var(--green); margin-top:10px;">
+                اطلب البرنامج
+                </button>
+            </div>
+
+            <div class="card" style="background:white; color:#333;">
+                <h3>👬 برنامج شباب 3 أيام</h3>
+                <p>فلة + مغامرات + سيارة</p>
+                <button class="nav-btn" 
+                onclick="sendProgram('شباب 3 أيام')"
+                style="width:100%; background:var(--green); margin-top:10px;">
+                اطلب البرنامج
+                </button>
+            </div>
+
+            <div class="card wide" style="background:white; color:#333;">
+                <h3>💍 برنامج شهر عسل</h3>
+                <p>فلة خاصة + تنسيق رومانسي + سيارة</p>
+                <button class="nav-btn" 
+                onclick="sendProgram('شهر عسل')"
+                style="width:100%; background:var(--green); margin-top:10px;">
+                اطلب البرنامج
+                </button>
+            </div>
+
+        </div>
+    </div>
+ </section>
     <footer>
         <h2 style="color:var(--gold)">Puncak Go</h2>
         <p id="l-footer-msg">نحن هنا لخدمتكم في بونشاك، نوفر لكم أفضل الفلل والسيارات بأقل الأسعار وأعلى جودة.</p>
