@@ -554,6 +554,31 @@ document.querySelectorAll('.pin').forEach(pin => {
     window.addEventListener('mousemove', moveAction);
     window.addEventListener('touchmove', moveAction, { passive: false });
 });
+        window.addEventListener('touchmove', moveAction);
+});
+
+// 👇 هنا تضيف الدالة
+
+function sendProgram(programName) {
+
+let message = `السلام عليكم 🌿
+
+أرغب في حجز برنامج جاهز:
+
+📦 البرنامج: ${programName}
+
+عدد الأشخاص:
+تاريخ الوصول:
+عدد الأيام:
+الميزانية التقريبية:
+
+يرجى تزويدي بالتفاصيل المتاحة 🤍`;
+
+let url = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(message)}`;
+window.open(url, '_blank');
+}
+
+</script>
         
     </script>
     </script>
