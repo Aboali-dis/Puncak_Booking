@@ -139,7 +139,8 @@
 
     <!-- حقل الملاحظات -->
     <textarea id="review-note" placeholder="اكتب تعليقك هنا..." style="width:100%; margin-top:10px; border-radius:10px; padding:8px;"></textarea>
-
+    <!-- هنا ستظهر كل التقييمات الجديدة -->
+<div id="reviews-list" style="margin-top:15px;"></div>
     <!-- زر حفظ -->
     <button onclick="addReview()" style="margin-top:10px; padding:8px 15px; background:var(--gold); color:#333; border:none; border-radius:8px; cursor:pointer;">
         حفظ التقييم
@@ -290,14 +291,22 @@ function addReview() {
         return;
     }
 
-    const reviewContainer = document.getElementById('client-review');
+    // نضيف كل تقييم داخل قائمة التقييمات
+    const reviewsList = document.getElementById('reviews-list');
     const newReview = document.createElement('div');
     newReview.style.background = 'rgba(255,255,255,0.05)';
     newReview.style.padding = '10px';
     newReview.style.borderRadius = '10px';
     newReview.style.marginTop = '10px';
     newReview.innerHTML = `<strong>⭐${stars}</strong> - ${text}<br>${note ? note : ''}`;
-    reviewContainer.appendChild(newReview);
+    reviewsList.appendChild(newReview);
+
+    // إعادة تعيين الحقول
+    document.getElementById('review-stars').value = '1';
+    document.getElementById('review-text').value = '';
+    document.getElementById('review-note').value = '';
+    document.getElementById('review-text').style.display = 'none';
+}
 
     // إعادة تعيين الحقول
     document.getElementById('review-stars').value = '1';
