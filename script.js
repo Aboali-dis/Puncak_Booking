@@ -94,7 +94,7 @@ function sendWA(serviceType) {
     let t = (serviceType === 'Villa') ? 'v' : (serviceType === 'Car' ? 'c' : 'v');
     
     // سحب البيانات
-    let name = document.querySelector('.u-name').value || "ابو عمر";
+    let name = document.querySelector('.u-name').value || "";
     let phone = document.querySelector('.u-phone').value || "81118895901";
     let adults = document.querySelector('.u-adults').value || 1;
     let kids = document.querySelector('.u-kids').value || 0;
