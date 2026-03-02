@@ -226,23 +226,78 @@
             </div>
         </div>
     </section>
-
     <section id="sec-serv">
-        <div class="container-box">
-            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
-            <div class="grid" style="margin-top:20px;">
-                <div class="card wide" style="background:white; color:#333">
-                    <h3 data-ar="طباخ خاص" data-en="Private Cook">طباخ خاص</h3>
-                    <button class="confirm-btn" onclick="sendWA('Service: Cook')">طلب الآن</button>
-                </div>
-                <div class="card wide" style="background:white; color:#333">
-                    <h3 data-ar="ذبيحة وطبخ" data-en="Meat & Cooking">ذبيحة وطبخ</h3>
-                    <button class="confirm-btn" onclick="sendWA('Service: Meat')">طلب الآن</button>
-                </div>
+    <div class="container-box">
+        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
+        <h2 style="text-align:center; margin:20px 0; color:var(--gold)">🎭 خطط لليلة حسب مزاجك – Mood Night Planner</h2>
+        
+        <div class="grid" style="margin-top:20px; gap:20px;">
+            <!-- اختيار مطاعم وبارات -->
+            <div class="card wide mood-card" style="background:linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); color:#333; text-align:center;">
+                <h3>🍹 اختيار مطاعم وبارات حسب مزاجك</h3>
+                <p style="font-size:14px; margin:5px 0;">اختر أفضل الأماكن التي تناسب الجو الليلي الذي تحبه.</p>
+                <button class="confirm-btn" onclick="sendWA('Mood: Bars')">اختيار الآن</button>
+            </div>
+
+            <!-- باقة موسيقى وسهرات -->
+            <div class="card wide mood-card" style="background:linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color:#333; text-align:center;">
+                <h3>🎵 باقة موسيقى وسهرات خاصة</h3>
+                <p style="font-size:14px; margin:5px 0;">نختار لك قائمة موسيقية وجلسة مناسبة للجو العام.</p>
+                <button class="confirm-btn" onclick="sendWA('Mood: Music')">اختيار الآن</button>
+            </div>
+
+            <!-- فعاليات وألعاب ليلية -->
+            <div class="card wide mood-card" style="background:linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); color:#333; text-align:center;">
+                <h3>🕹️ فعاليات وألعاب ليلية</h3>
+                <p style="font-size:14px; margin:5px 0;">نشاطات ممتعة تناسب الأصدقاء أو العائلة.</p>
+                <button class="confirm-btn" onclick="sendWA('Mood: Games')">اختيار الآن</button>
+            </div>
+
+            <!-- باقات VIP مفاجئة -->
+            <div class="card wide mood-card" style="background:linear-gradient(135deg, #fddb92 0%, #d1fdff 100%); color:#333; text-align:center;">
+                <h3>✨ باقات VIP مفاجئة</h3>
+                <p style="font-size:14px; margin:5px 0;">تجربة فاخرة مميزة لمساء لا يُنسى.</p>
+                <button class="confirm-btn" onclick="sendWA('Mood: VIP')">اختيار الآن</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- أضف هذا الـ CSS في style.css أو داخل <style> -->
+<style>
+.mood-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+    border-radius: 15px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.mood-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* عند الدخول في الشاشة */
+.mood-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<!-- أضف هذا الـ JS داخل script.js أو قبل </body> -->
+<script>
+// عند تحميل الصفحة، أضف الفئة "visible" لكل بطاقة لتظهر مع حركة
+window.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.mood-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, index * 200); // تأخير 0.2 ثانية بين كل بطاقة
+    });
+});
+</script>
 </section>
     <footer style="padding: 40px; text-align: center;">
     <button class="nav-btn" onclick="nav('sec-terms')" style="margin-bottom: 20px; border: 1px solid var(--gold); background: rgba(250,204,21,0.1);">
