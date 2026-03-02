@@ -39,8 +39,6 @@ function adminLogin() {
         alert("وضع التعديل مفعل ✅");
     }
 }
-
-
 // بناء 15 فلة وتوزيعها فوق الخريطة الحية
 const mapV = document.getElementById('map-v');
 if (mapV) {
@@ -70,7 +68,6 @@ if (mapV) {
         mapV.appendChild(p);
     }
 }
-
 // بناء 15 سيارة
 const gridC = document.getElementById('cars-grid');
 for(let i=1; i<=15; i++) {
