@@ -273,5 +273,38 @@
     </section>
     
     <script src="script.js"></script>
+    <!-- سكربت التقييم -->
+<script>
+function toggleReviewText() {
+    const textBox = document.getElementById('review-text-box');
+    textBox.style.display = textBox.style.display === 'none' ? 'block' : 'none';
+}
+
+function addReview() {
+    const stars = document.getElementById('review-stars').value;
+    const text = document.getElementById('review-text').value;
+    const note = document.getElementById('review-note').value;
+
+    if (!stars || !text) {
+        alert('اختر النجوم والعبارة أولاً');
+        return;
+    }
+
+    const reviewContainer = document.getElementById('client-review');
+    const newReview = document.createElement('div');
+    newReview.style.background = 'rgba(255,255,255,0.05)';
+    newReview.style.padding = '10px';
+    newReview.style.borderRadius = '10px';
+    newReview.style.marginTop = '10px';
+    newReview.innerHTML = `⭐${stars} - ${text}<br>${note ? note : ''}`;
+    reviewContainer.appendChild(newReview);
+
+    // إعادة تعيين الحقول
+    document.getElementById('review-stars').value = '';
+    document.getElementById('review-text').value = '';
+    document.getElementById('review-note').value = '';
+    document.getElementById('review-text-box').style.display = 'none';
+}
+</script>
 </body>
 </html>
