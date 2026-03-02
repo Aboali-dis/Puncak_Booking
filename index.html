@@ -282,23 +282,37 @@ function toggleReviewText() {
 }
 
 function addReview() {
-    const stars = document.getElementById('review-stars').value;
+    const stars = parseInt(document.getElementById('review-stars').value);
     const text = document.getElementById('review-text').value;
     const note = document.getElementById('review-note').value;
+    const userNameInput = document.querySelector('.u-name'); // حقل الاسم العام
+    const userName = userNameInput && userNameInput.value ? userNameInput.value : 'ضيف';
 
     if (!stars || !text) {
         alert('اختر النجوم والعبارة أولاً');
         return;
     }
 
-    // نضيف كل تقييم داخل قائمة التقييمات
     const reviewsList = document.getElementById('reviews-list');
     const newReview = document.createElement('div');
+
+    // ستايل البطاقة
     newReview.style.background = 'rgba(255,255,255,0.05)';
-    newReview.style.padding = '10px';
-    newReview.style.borderRadius = '10px';
+    newReview.style.padding = '12px';
+    newReview.style.borderRadius = '12px';
     newReview.style.marginTop = '10px';
-    newReview.innerHTML = `<strong>⭐${stars}</strong> - ${text}<br>${note ? note : ''}`;
+    newReview.style.borderRight = '3px solid var(--gold)';
+
+    // إنشاء نجوم ذهبية
+    let starsHtml = '';
+    for (let i = 0; i < stars; i++) starsHtml += '⭐';
+    
+    newReview.innerHTML = `
+        <p style="margin:0; font-weight:bold; color:var(--gold);">${starsHtml} - ${text}</p>
+        <small style="display:block; color:#eee; margin-top:5px;">- ${userName}</small>
+        ${note ? `<p style="margin-top:5px; font-style:italic; color:#ccc;">${note}</p>` : ''}
+    `;
+
     reviewsList.appendChild(newReview);
 
     // إعادة تعيين الحقول
@@ -306,6 +320,7 @@ function addReview() {
     document.getElementById('review-text').value = '';
     document.getElementById('review-note').value = '';
     document.getElementById('review-text').style.display = 'none';
+    if(userNameInput) userNameInput.value = '';
 }
 </script>
 </body>
