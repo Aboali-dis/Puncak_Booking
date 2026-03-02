@@ -1,0 +1,179 @@
+l<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puncak Go</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05');"></div>
+    </div>
+    <div class="overlay"></div>
+
+    <header>
+        <div class="logo">Puncak Go</div>
+        <div class="nav-btns">
+            <button class="nav-btn" onclick="toggleCurr()">💰 <span data-ar="صرف" data-en="Exchange">صرف</span></button>
+            <button class="nav-btn" onclick="toggleLang()" id="btn-lang">English</button>
+            <button class="nav-btn" onclick="adminLogin()">⚙️</button>
+        </div>
+    </header>
+
+    <div id="curr-box">
+        <label data-ar="ريال سعودي:" data-en="Saudi Riyal:">ريال سعودي:</label>
+        <input type="number" id="sar-val" placeholder="SAR" oninput="calcCurr()">
+        <div id="idr-res" style="margin-top:10px; font-weight:bold; color:var(--green)">0 IDR</div>
+    </div>
+
+    <section id="sec-home" class="active-sec">
+        <div class="hero-container">
+            <h1 data-ar="مرحباً بك في كوتا بونجا" data-en="Welcome to Kota Bunga">مرحباً بك في كوتا بونجا</h1>
+            <p data-ar="بوابتك الذكية والاحترافية لخدمات بونشاك - Puncak Go" data-en="Your Professional Gate to Puncak - Puncak Go">بوابتك الذكية والاحترافية لخدمات بونشاك - Puncak Go</p>
+        </div>
+        <div class="grid">
+            <div class="card" onclick="nav('sec-villas')"><h2 data-ar="خدمات الفلل" data-en="Villa Services">خدمات الفلل</h2></div>
+            <div class="card" onclick="nav('sec-cars')"><h2 data-ar="خدمات السيارات" data-en="Car Services">خدمات السيارات</h2></div>
+            <div class="card" onclick="nav('sec-tours')"><h2 data-ar="برامج كاملة خاصة" data-en="Private Full Programs">برامج كاملة خاصة</h2></div>
+            <div class="card" onclick="nav('sec-spa')"><h2 data-ar="خدمات VIP" data-en="VIP Services">خدمات VIP</h2></div>
+            <div class="card wide" onclick="nav('sec-serv')"><h2 data-ar="الخدمات الأخرى" data-en="Other Services">الخدمات الأخرى</h2></div>
+        </div>
+    </section>
+
+    <section id="sec-villas">
+        <div class="container-box">
+            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
+            <div class="map-box" id="map-v"></div>
+            <div id="v-panel" class="panel" style="display:none;">
+                <div class="admin-edit-box" style="display:none; background:#fffbeb; padding:15px; border-radius:15px; border:2px dashed orange; margin-bottom:10px;">
+                    <input type="text" id="v-edit-name" placeholder="اسم الفلة">
+                    <input type="number" id="v-edit-price" placeholder="السعر">
+                    <textarea id="v-edit-spec" placeholder="المواصفات"></textarea>
+                    <div class="img-grid" id="v-slots"></div>
+                </div>
+                <h2 id="v-name">فلة</h2>
+                <div id="v-spec-view" class="spec-tag" data-ar="مواصفات الفلة ستظهر هنا..." data-en="Villa specs will appear here...">مواصفات الفلة ستظهر هنا...</div>
+                
+                <div class="user-data">
+                    <input type="text" class="u-name" placeholder="الاسم (ابو عمر)" oninput="syncInputs(this, 'u-name')">
+                    <input type="tel" class="u-phone" placeholder="رقم الهاتف" oninput="syncInputs(this, 'u-phone')">
+                    <div class="flex-row">
+                        <input type="number" class="u-adults" placeholder="بالغين" oninput="syncInputs(this, 'u-adults')">
+                        <input type="number" class="u-kids" placeholder="أطفال" oninput="syncInputs(this, 'u-kids')">
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <input type="date" id="v-from" onchange="calcPrice('v')">
+                    <input type="date" id="v-to" onchange="calcPrice('v')">
+                </div>
+                <textarea id="v-note" placeholder="ملاحظات (نشتي نخزن...)"></textarea>
+                <div class="price-tag"><span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span> <span id="v-price-val">0</span> <span data-ar="ريال" data-en="SAR">ريال</span></div>
+                <button class="confirm-btn" onclick="sendWA('Villa')">تأكيد الحجز ✅</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-cars">
+        <div class="container-box">
+            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
+            <div class="grid" id="cars-grid"></div>
+            <div id="c-panel" class="panel" style="display:none;">
+                <h2 id="c-name">سيارة</h2>
+                <div class="user-data">
+                    <input type="text" class="u-name" placeholder="الاسم" oninput="syncInputs(this, 'u-name')">
+                    <input type="tel" class="u-phone" placeholder="رقم الهاتف" oninput="syncInputs(this, 'u-phone')">
+                </div>
+                <div class="flex-row">
+                    <input type="date" id="c-from" onchange="calcPrice('c')">
+                    <input type="date" id="c-to" onchange="calcPrice('c')">
+                </div>
+                <div class="price-tag"><span id="c-price-val">0</span> ريال</div>
+                <button class="confirm-btn" onclick="sendWA('Car')">حجز السيارة ✅</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-tours">
+        <div class="container-box">
+            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
+            <h2 style="text-align:center; margin:20px 0; color:var(--gold)" data-ar="💎 برامج كاملة خاصة" data-en="💎 Full Private Programs">💎 برامج كاملة خاصة</h2>
+            
+            <div class="user-data" style="background:rgba(255,255,255,0.1); padding:15px; border-radius:15px; margin-bottom:20px;">
+                <input type="text" class="u-name" placeholder="الاسم" oninput="syncInputs(this, 'u-name')">
+                <input type="tel" class="u-phone" placeholder="رقم الهاتف" oninput="syncInputs(this, 'u-phone')">
+            </div>
+
+            <div class="grid">
+                <div class="card wide" style="background:white; color:#333; text-align:right;">
+                    <h3 data-ar="🌹 برنامج العرسان الملكي" data-en="🌹 Royal Honeymoon">🌹 برنامج العرسان الملكي</h3>
+                    <p data-ar="فيلا مسبح خاص + سيارة فخمة + استقبال مطار." data-en="Private Pool Villa + Luxury Car + Airport Pickup.">فيلا مسبح خاص + سيارة فخمة + استقبال مطار.</p>
+                    <button class="confirm-btn" onclick="sendWA('Program: Honeymoon')">طلب البرنامج</button>
+                </div>
+                <div class="card wide" style="background:white; color:#333; text-align:right;">
+                    <h3 data-ar="👨‍👩‍👧‍👦 برنامج العائلة الشامل" data-en="👨‍👩‍👧‍👦 Full Family Program">👨‍👩‍👧‍👦 برنامج العائلة الشامل</h3>
+                    <p data-ar="فيلا كبيرة + ميني باص + طباخ خاص + رحلات." data-en="Large Villa + Minibus + Private Cook + Tours.">فيلا كبيرة + ميني باص + طباخ خاص + رحلات.</p>
+                    <button class="confirm-btn" onclick="sendWA('Program: Family')">طلب البرنامج</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-spa">
+        <div class="container-box">
+            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
+            <h2 style="text-align:center; margin:20px 0; color:var(--gold)" data-ar="🌟 خدمات VIP فخمة" data-en="🌟 Luxury VIP Services">🌟 خدمات VIP فخمة</h2>
+            
+            <div class="user-data" style="background:rgba(255,255,255,0.1); padding:15px; border-radius:15px; margin-bottom:20px;">
+                <input type="text" class="u-name" placeholder="الاسم" oninput="syncInputs(this, 'u-name')">
+                <input type="tel" class="u-phone" placeholder="رقم الهاتف" oninput="syncInputs(this, 'u-phone')">
+            </div>
+
+            <div class="grid">
+                <div class="card" style="background:white; color:#333;">
+                    <h4 data-ar="🤵 خادم شخصي" data-en="🤵 Private Butler">🤵 خادم شخصي</h4>
+                    <button class="confirm-btn" onclick="sendWA('VIP: Butler')" style="font-size:14px; padding:10px;">طلب</button>
+                </div>
+                <div class="card" style="background:white; color:#333;">
+                    <h4 data-ar="💆‍♂️ مساج منزلي" data-en="💆‍♂️ Home Massage">💆‍♂️ مساج منزلي</h4>
+                    <button class="confirm-btn" onclick="sendWA('VIP: Massage')" style="font-size:14px; padding:10px;">طلب</button>
+                </div>
+                <div class="card" style="background:white; color:#333;">
+                    <h4 data-ar="✈️ استقبال VIP" data-en="✈️ VIP Airport">✈️ استقبال VIP</h4>
+                    <button class="confirm-btn" onclick="sendWA('VIP: Airport')" style="font-size:14px; padding:10px;">طلب</button>
+                </div>
+                <div class="card" style="background:white; color:#333;">
+                    <h4 data-ar="🕯️ سهرات خاصة" data-en="🕯️ Private Events">🕯️ سهرات خاصة</h4>
+                    <button class="confirm-btn" onclick="sendWA('VIP: Events')" style="font-size:14px; padding:10px;">طلب</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-serv">
+        <div class="container-box">
+            <button class="nav-btn" onclick="nav('sec-home')">⬅️ <span data-ar="رجوع" data-en="Back">رجوع</span></button>
+            <div class="grid" style="margin-top:20px;">
+                <div class="card wide" style="background:white; color:#333">
+                    <h3 data-ar="طباخ خاص" data-en="Private Cook">طباخ خاص</h3>
+                    <button class="confirm-btn" onclick="sendWA('Service: Cook')">طلب الآن</button>
+                </div>
+                <div class="card wide" style="background:white; color:#333">
+                    <h3 data-ar="ذبيحة وطبخ" data-en="Meat & Cooking">ذبيحة وطبخ</h3>
+                    <button class="confirm-btn" onclick="sendWA('Service: Meat')">طلب الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="color:var(--gold)">Puncak Go</h2>
+        <p data-ar="نحن هنا لخدمتكم في بونشاك." data-en="We are here to serve you in Puncak.">نحن هنا لخدمتكم في بونشاك.</p>
+        <p>© 2026 Puncak Go</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
