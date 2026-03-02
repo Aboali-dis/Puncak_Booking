@@ -40,18 +40,35 @@ function adminLogin() {
     }
 }
 
-// بناء 15 فلة
+
+// بناء 15 فلة وتوزيعها فوق الخريطة الحية
 const mapV = document.getElementById('map-v');
-for(let i=1; i<=15; i++) {
-    let p = document.createElement('div');
-    p.className = 'pin';
-    p.style.top = (10 + (i*4)%70) + "%"; p.style.left = (10 + (i*6)%80) + "%";
-    p.innerHTML = `<span>${i}</span>`;
-    p.onclick = () => {
-        document.getElementById('v-panel').style.display = 'block';
-        document.getElementById('v-name').innerText = (isAr ? "فلة رقم " : "Villa ") + i;
-    };
-    mapV.appendChild(p);
+if (mapV) {
+    mapV.innerHTML = ''; // تنظيف الحاوية
+    for (let i = 1; i <= 15; i++) {
+        let p = document.createElement('div');
+        p.className = 'pin';
+        
+        // توزيع الدبابيس بشكل احترافي فوق الخريطة
+        p.style.top = (20 + (i * 15) % 60) + "%"; 
+        p.style.left = (15 + (i * 25) % 75) + "%";
+        
+        p.innerHTML = `<span>${i}</span>`;
+        
+        // عند النقر على الرقم
+        p.onclick = (e) => {
+            e.stopPropagation(); // منع انتقال النقر للخريطة
+            document.getElementById('v-panel').style.display = 'block';
+            document.getElementById('v-name').innerText = (isAr ? "فلة رقم " : "Villa ") + i;
+            
+            // النزول تلقائياً لمكان البيانات
+            window.scrollTo({
+                top: document.getElementById('v-panel').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        };
+        mapV.appendChild(p);
+    }
 }
 
 // بناء 15 سيارة
