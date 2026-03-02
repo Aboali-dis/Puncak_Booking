@@ -274,10 +274,10 @@
     
     <script src="script.js"></script>
     <!-- سكربت التقييم -->
-<script>
+    <script>
 function toggleReviewText() {
-    const textBox = document.getElementById('review-text-box');
-    textBox.style.display = textBox.style.display === 'none' ? 'block' : 'none';
+    const textSelect = document.getElementById('review-text');
+    textSelect.style.display = textSelect.style.display === 'none' ? 'inline-block' : 'none';
 }
 
 function addReview() {
@@ -296,15 +296,15 @@ function addReview() {
     newReview.style.padding = '10px';
     newReview.style.borderRadius = '10px';
     newReview.style.marginTop = '10px';
-    newReview.innerHTML = `⭐${stars} - ${text}<br>${note ? note : ''}`;
+    newReview.innerHTML = `<strong>⭐${stars}</strong> - ${text}<br>${note ? note : ''}`;
     reviewContainer.appendChild(newReview);
 
     // إعادة تعيين الحقول
-    document.getElementById('review-stars').value = '';
+    document.getElementById('review-stars').value = '1';
     document.getElementById('review-text').value = '';
     document.getElementById('review-note').value = '';
-    document.getElementById('review-text-box').style.display = 'none';
+    document.getElementById('review-text').style.display = 'none';
 }
-</script>
+    </script>
 </body>
 </html>
