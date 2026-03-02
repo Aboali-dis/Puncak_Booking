@@ -73,7 +73,7 @@
                 <div id="v-spec-view" class="spec-tag" data-ar="مواصفات الفلة ستظهر هنا..." data-en="Villa specs will appear here...">مواصفات الفلة ستظهر هنا...</div>
                 
                 <div class="user-data">
-                    <input type="text" class="u-name" placeholder="الاسم (ابو عمر)" oninput="syncInputs(this, 'u-name')">
+                    <input type="text" class="u-name" placeholder="الاسم ()" oninput="syncInputs(this, 'u-name')">
                     <input type="tel" class="u-phone" placeholder="رقم الهاتف" oninput="syncInputs(this, 'u-phone')">
                     <div class="flex-row">
                         <input type="number" class="u-adults" placeholder="بالغين" oninput="syncInputs(this, 'u-adults')">
@@ -84,7 +84,7 @@
                     <input type="date" id="v-from" onchange="calcPrice('v')">
                     <input type="date" id="v-to" onchange="calcPrice('v')">
                 </div>
-                <textarea id="v-note" placeholder="ملاحظات (نشتي نخزن...)"></textarea>
+                <textarea id="v-note" placeholder="ملاحظات (...)"></textarea>
                 <div class="price-tag"><span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span> <span id="v-price-val">0</span> <span data-ar="ريال" data-en="SAR">ريال</span></div>
                 <button class="confirm-btn" onclick="sendWA('Villa')">تأكيد الحجز ✅</button>
             </div>
