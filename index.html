@@ -275,7 +275,7 @@
     
     <script src="script.js"></script>
     <!-- سكربت التقييم -->
-    <script>
+<script>
 function toggleReviewText() {
     const textSelect = document.getElementById('review-text');
     textSelect.style.display = textSelect.style.display === 'none' ? 'inline-block' : 'none';
@@ -307,13 +307,6 @@ function addReview() {
     document.getElementById('review-note').value = '';
     document.getElementById('review-text').style.display = 'none';
 }
-
-    // إعادة تعيين الحقول
-    document.getElementById('review-stars').value = '1';
-    document.getElementById('review-text').value = '';
-    document.getElementById('review-note').value = '';
-    document.getElementById('review-text').style.display = 'none';
-}
-    </script>
+</script>
 </body>
 </html>
