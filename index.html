@@ -1,117 +1,92 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="main-html">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puncak Go</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PuncakGo</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-    <div class="bg-slider">
-        <div class="slide active" style="background-image: url('puncak1.jpg');"></div>
-        <div class="slide" style="background-image: url('puncak2.jpg');"></div>
-        <div class="slide" style="background-image: url('puncak3.jpg');"></div>
-        <div class="slide" style="background-image: url('puncak4.jpg');"></div>
-    </div>
-    <div class="overlay"></div>
+<!-- ===== Top Bar ===== -->
+<div class="top-bar glass">
 
-    <header class="main-header">
-    <div class="header-top-bar">
-        <div class="side-btns">
-            <button class="btn-premium">💎 بريميوم</button>
-            <button class="btn-tool">💰 صرف</button>
-        </div>
-        
-        <select id="lang-select" onchange="changeLanguage()" class="lang-select">
-            <option value="ar">العربية</option>
-            <option value="en">English</option>
-        </select>
-    </div>
+<div class="currency">
+<select id="currency">
+<option value="idr">IDR</option>
+<option value="usd">USD</option>
+<option value="sar">SAR</option>
+</select>
+</div>
 
-    <div class="logo-center">
-        <img src="logo-puncakgo.png" alt="Puncak Go" class="site-logo">
-    </div>
-    </header>
-    
-    
+<div class="language">
+<select id="language">
+<option value="en">English</option>
+<option value="ar">العربية</option>
+<option value="id">Bahasa</option>
+</select>
+</div>
 
-    <main class="container">
-        <div class="hero-section">
-            <h1 id="welcome-title">مرحباً بك في كوتا بونجا</h1>
-            <div class="promo-box">
-                <p id="promo-text">✨ اطلب من بونشاك قو واحصل على خصم 10% من فاتورتك ✨</p>
-            </div>
-        </div>
+</div>
 
-        <div class="services-grid">
-            <div class="service-card" onclick="openVillas()">
-                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/619/619153.png"></div>
-                <h3 id="srv-villas">إيجار فلل</h3>
-            </div>
-            <div class="service-card" onclick="openCars()">
-                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/3202/3202926.png"></div>
-                <h3 id="srv-cars">تأجير سيارات</h3>
-            </div>
-            <div class="service-card" onclick="openTours()">
-                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/854/854878.png"></div>
-                <h3 id="srv-tours">خدمات سياحية</h3>
-            </div>
-        </div>
+<!-- ===== Logo Section ===== -->
+<div class="logo-section">
 
-        <div class="others-wrapper">
-            <button class="btn-others-full" onclick="toggleOthers()">
-                <span id="btn-others">➕ خدمات أخرى (مطاعم، بقالات، طباخ...)</span>
-            </button>
-        </div>
-        
-    </main>
-<section class="about-puncak">
-    <h2 id="about-title">عن Puncak Go</h2>
-    <p id="about-desc">نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الفلل والسيارات والخدمات السياحية بأعلى معايير الجودة والاحترافية لضمان راحة عائلاتكم.</p>
-</section>
+<img src="logo-puncakgo.png" class="logo">
 
-<section id="terms-section" class="content-page" style="display: none;">
-    <h2 class="gold-text">الشروط والأحكام</h2>
-    <div class="terms-box">
-        <ul>
-            <li>يتوجب دفع عربون لتأكيد حجز الفلل والسيارات.</li>
-            <li>في حال الإلغاء قبل 48 ساعة، يتم استرداد نصف العربون.</li>
-            <li>الشركة غير مسؤولة عن فقدان الممتلكات الشخصية داخل الفلل.</li>
-        </ul>
-        <button class="btn-tool" onclick="goHome()">العودة للرئيسية</button>
-    </div>
-</section>
-    
-    <nav class="nav-bottom">
-        <div class="nav-btn" onclick="goHome()">
-            <span>🏠</span>
-            <p id="nav-home">الهوم</p>
-        </div>
-        <div class="nav-btn" onclick="openTerms()">
-            <span>📜</span>
-            <p id="nav-terms">الشروط والاحكام</p>
-        </div>
-        <div class="nav-btn" onclick="openHistory()">
-            <span>🕒</span>
-            <p id="nav-history">الهيستوري</p>
-        </div>
-    </nav>
+<h1>PuncakGo</h1>
 
-    <div id="modal-others" class="modal">
-        <div class="modal-box glass">
-            <span class="close-btn" onclick="toggleOthers()">&times;</span>
-            <h2 id="m-title">خدمات إضافية</h2>
-            <ul class="m-list">
-                <li>🍽️ <span id="m-res">مطاعم عربية</span></li>
-                <li>🛒 <span id="m-gro">بقالات عربية</span></li>
-                <li>👨‍🍳 <span id="m-chef">طباخ خاص</span></li>
-                <li>✂️ <span id="m-bar">حلاق خاص</span></li>
-                <li>🥩 <span id="m-meat">مسالخ لحوم فرش</span></li>
-            </ul>
-        </div>
-    </div>
+<p data-key="tagline">Your gateway to villas, cars & tours in Puncak</p>
 
-    <script src="script.js"></script>
+</div>
+
+<!-- ===== Main Glass Box ===== -->
+<div class="main-glass glass">
+
+<h2 data-key="welcome">Welcome to Puncak</h2>
+
+<p data-key="subtitle">Book your villa, car, and enjoy your trip</p>
+
+<div class="buttons">
+
+<button class="service-btn" data-key="rentVilla">🏡 Rent Villa</button>
+
+<button class="service-btn" data-key="rentCar">🚗 Rent Car</button>
+
+<button class="service-btn" data-key="tours">🗺 Tours</button>
+
+</div>
+
+</div>
+
+<!-- ===== Special Offer ===== -->
+<div class="offer-box glass">
+
+<span data-key="offer">✨ Book Villa + Car and get 10% Discount</span>
+
+</div>
+
+<!-- ===== Extra Services ===== -->
+<div class="extra-services">
+
+<button class="extra-btn glass" data-key="moreServices">More Services</button>
+
+</div>
+
+<!-- ===== Bottom Navigation ===== -->
+<div class="bottom-nav glass">
+
+<button data-key="home">🏠 Home</button>
+
+<button data-key="terms">📜 Terms</button>
+
+<button data-key="history">📊 History</button>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
-</html>
+    </html>
