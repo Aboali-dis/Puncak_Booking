@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-tag">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puncak Go | بونشاك قو</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* التنسيقات الجديدة المطلوبة */
+        /* التنسيقات المصححة */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.8);
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #site-logo {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.5));
+        }
         .discount-bar {
             background: linear-gradient(90deg, #b2944d, #d4af37);
             color: #fff;
@@ -14,8 +30,8 @@
             padding: 10px;
             font-weight: bold;
             border-radius: 10px;
-            margin: 15px 0;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            margin: 10px auto;
+            max-width: 90%;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -25,72 +41,36 @@
         }
         .other-services-btn {
             background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            color: var(--gold);
+            border: 1px solid #d4af37;
+            color: #d4af37;
             padding: 12px;
             border-radius: 50px;
-            width: 100%;
-            margin-top: 15px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .vip-float-btn {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #000;
-            color: var(--gold);
-            padding: 10px 30px;
-            border: 2px solid var(--gold);
-            border-radius: 50px;
-            z-index: 10;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .car-option-box {
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            text-align: center;
+            width: 90%;
+            display: block;
+            margin: 20px auto;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="bg-slider">
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');"></div>
-    </div>
-    <div class="overlay"></div>
-
     <header>
-        <div class="logo">Puncak Go</div>
-        <div class="nav-btns">
-            <header>
-    <div class="logo">
-        <img src="logo-puncakgo.png" alt="Puncak Go Logo" id="site-logo">
-    </div>
-    <div class="nav-btns">
-        <button class="nav-btn" onclick="toggleCurr()">💰 صرف</button>
-        <button class="nav-btn" onclick="toggleLang()" id="btn-lang">English</button>
-        <button class="nav-btn" onclick="adminLogin()">⚙️</button>
-    </div>
-            </header>
-            
-
-    <div class="container-box">
-        <div class="discount-bar">
-            ✨ اطلب من بونشاك قو واحصل على 10% تخفيض من فاتورتك ✨
+        <div class="logo">
+            <img src="logo-puncakgo.png" alt="Puncak Go" id="site-logo">
         </div>
+        <div class="nav-btns">
+            <button class="nav-btn" onclick="toggleCurr()">💰 صرف</button>
+            <button class="nav-btn" onclick="adminLogin()">⚙️</button>
+        </div>
+    </header>
+
+    <div class="discount-bar">
+        ✨ اطلب من بونشاك قو واحصل على 10% تخفيض من فاتورتك ✨
     </div>
 
     <section id="sec-home" class="active-sec">
-        <div class="hero-container">
+        <div class="hero-container" style="text-align:center; padding:20px;">
             <h1>مرحباً بك في كوتا بونجا</h1>
-            <p>بوابتك الذكية والاحترافية لخدمات بونشاك - Puncak Go</p>
+            <p>بوابتك الذكية والاحترافية لخدمات بونشاك</p>
         </div>
         
         <div class="grid">
@@ -99,104 +79,58 @@
             <div class="card" onclick="nav('sec-tours')"><h2>خدمات سياحية</h2></div>
         </div>
 
-        <div class="container-box">
-            <button class="other-services-btn" onclick="nav('sec-others')">
-                ➕ خدمات أخرى (مطاعم، بقالات، طباخ...)
-            </button>
+        <button class="other-services-btn" onclick="nav('sec-others')">
+            ➕ خدمات أخرى (مطاعم، بقالات، طباخ...)
+        </button>
+    </section>
+
+    <section id="sec-villas" style="display:none; padding:20px;">
+        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
+        <div style="position:relative; margin-top:10px;">
+            <button class="vip-float-btn" style="position:absolute; top:10px; left:50%; transform:translateX(-50%); z-index:5; background:#000; color:#d4af37; border:1px solid #d4af37; padding:10px 20px; border-radius:20px;">🏆 Villa VIP</button>
+            <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border-radius:15px; border:0;"></iframe>
         </div>
     </section>
 
-    <section id="sec-villas" style="display:none;">
-        <div class="container-box">
-            <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-            <div class="map-box" style="position:relative;">
-                <button class="vip-float-btn" onclick="nav('sec-villas-vip')">🏆 Villa VIP</button>
-                <iframe src="https://www.google.com/maps/embed?..." width="100%" height="400" style="border:0; border-radius: 20px;"></iframe>
-            </div>
+    <section id="sec-cars" style="display:none; padding:20px;">
+        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
+        <h2 style="text-align:center; color:#d4af37;">خيارات السيارات</h2>
+        <div class="car-option-box" onclick="showCarBooking('with-driver')" style="background:#fff; color:#333; padding:20px; border-radius:15px; margin:10px 0; text-align:center;">
+            <h3>🚗 مع سائق خاص</h3>
+            <p>سائقين محترفين لخدمتكم طوال اليوم.</p>
+        </div>
+        <div class="car-option-box" onclick="showCarBooking('no-driver')" style="background:#fff; color:#333; padding:20px; border-radius:15px; margin:10px 0; text-align:center;">
+            <h3>🔑 بدون سائق</h3>
+            <p>يرجى التواصل لتوضيح الشروط والقوانين.</p>
         </div>
     </section>
 
-    <section id="sec-cars" style="display:none;">
-        <div class="container-box">
-            <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-            <h2 style="text-align:center; color:var(--gold); margin:20px 0;">خيارات تأجير السيارات</h2>
-            
-            <div class="car-option-box" onclick="showCarBooking('with-driver')">
-                <h3>🚗 مع سائق خاص</h3>
-                <p>نخبة من السائقين المحترفين لخدمتكم طوال اليوم.</p>
-            </div>
-
-            <div class="car-option-box" onclick="showCarBooking('no-driver')">
-                <h3>🔑 بدون سائق</h3>
-                <p>للمزيد من الخصوصية (تطبق الشروط والأحكام الخاصة).</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="sec-tours" style="display:none;">
-        <div class="container-box">
-            <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-            <h2 style="color:var(--gold); text-align:center;">خدمات سياحية</h2>
-            
-            <div class="panel">
-                <h3>📑 تأشيرات (الفيزا)</h3>
-                <input type="text" placeholder="نوع التأشيرة المطلوبة">
-                <input type="number" placeholder="مدة الإقامة (أيام)">
-                <button class="confirm-btn" onclick="sendWA('استفسار فيزا')">استفسار (تأكيد) ✉️</button>
-            </div>
-
-            <div class="panel" style="margin-top:20px;">
-                <h3>🗺️ استشارات برامج سياحية</h3>
-                <select id="tour-city">
-                    <option>بونشاك</option>
-                    <option>بالي</option>
-                    <option>باندونق</option>
-                </select>
-                <input type="date" placeholder="تاريخ البدء">
-                <button class="confirm-btn" onclick="sendWA('استشارة برنامج')">طلب استشارة مجانية</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="sec-others" style="display:none;">
-        <div class="container-box">
-            <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-            <h2 style="color:var(--gold); text-align:center;">خدماتنا الإضافية</h2>
-            <div class="grid">
-                <div class="card" onclick="sendWA('مطعم عربي')">🍴 المطاعم العربية</div>
-                <div class="card" onclick="sendWA('بقالة عربية')">🛒 البقالات العربية</div>
-                <div class="card" onclick="sendWA('متاجر عود')">🪵 متاجر العود</div>
-                <div class="card" onclick="sendWA('حلاق خاص')">✂️ حلاق خاص</div>
-                <div class="card" onclick="sendWA('طباخ خاص')">👨‍🍳 طباخ خاص</div>
-                <div class="card" onclick="sendWA('مسلخ لحم فريش')">🥩 مسالخ لحوم فريش</div>
-            </div>
+    <section id="sec-others" style="display:none; padding:20px;">
+        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
+        <h2 style="color:#d4af37; text-align:center;">خدمات إضافية</h2>
+        <div class="grid">
+            <div class="card" onclick="sendWA('مطعم عربي')">🍴 مطاعم عربية</div>
+            <div class="card" onclick="sendWA('طباخ خاص')">👨‍🍳 طباخ خاص</div>
+            <div class="card" onclick="sendWA('مسلخ فريش')">🥩 لحوم فريش</div>
         </div>
     </section>
 
     <script>
-        // دالة التنقل المحسنة
         function nav(secId) {
             document.querySelectorAll('section').forEach(s => s.style.display = 'none');
             document.getElementById(secId).style.display = 'block';
-            window.scrollTo(0,0);
         }
 
-        // دالة عرض حجز السيارات مع الكلام الاحترافي
         function showCarBooking(type) {
-            let msg = "";
             if(type === 'with-driver') {
-                msg = "مرحباً بكم. نوفر لكم أفضل السيارات الحديثة مع سائقين يجيدون التعامل مع الضيوف العرب لضمان رحلة مريحة وآمنة.";
+                alert("نوفر لكم أفضل السيارات مع سائقين يجيدون التعامل مع الضيوف العرب.");
             } else {
-                msg = "يوجد جميع أنواع السيارات، ولكن يرجى التواصل مع خدمة العملاء لتوضيح الشروط والقوانين الخاصة بالتأجير بدون سائق لضمان سلامتكم.";
+                alert("يرجى التواصل مع خدمة العملاء لتوضيح شروط التأجير بدون سائق.");
             }
-            alert(msg);
-            // هنا يمكن فتح الـ Form الخاص بالحجز
         }
 
         function sendWA(service) {
-            const phone = "YOUR_NUMBER_HERE"; // ضع رقمك هنا
-            const text = encodeURIComponent(`مرحباً Puncak Go، أرغب في الاستفسار عن: ${service}`);
-            window.open(`https://wa.me/${phone}?text=${text}`);
+            window.open(`https://wa.me/رقمك_هنا?text=استفسار عن ${service}`);
         }
     </script>
 </body>
