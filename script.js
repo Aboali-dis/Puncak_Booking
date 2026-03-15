@@ -1,33 +1,32 @@
 const translations = {
     ar: {
         welcome: "مرحباً بك في كوتا بونجا",
-        promo: "✨ احصل على خصم 10% على جميع الخدمات ✨",
+        promo: "✨ اطلب من بونشاك قو واحصل على خصم 10% من فاتورتك ✨",
         villas: "إيجار فلل",
         cars: "تأجير سيارات",
         tours: "خدمات سياحية",
         others: "➕ خدمات أخرى (مطاعم، بقالات...)",
-        premium: "بريميوم",
-        curr: "صرف",
+        about_t: "عن Puncak Go",
+        about_d: "نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الخدمات السياحية.",
         home: "الهوم",
-        history: "الهيستوري",
-        modal: "خدمات إضافية"
+        terms: "الشروط والاحكام",
+        history: "الهيستوري"
     },
     en: {
         welcome: "Welcome to Kota Bunga",
-        promo: "✨ Get 10% Off on All Services ✨",
+        promo: "✨ Get 10% discount on your bill with Puncak Go ✨",
         villas: "Rent Villas",
         cars: "Car Rental",
-        tours: "Tour Services",
+        tours: "Tours",
         others: "➕ Other Services (Food, Shops...)",
-        premium: "Premium",
-        curr: "Currency",
+        about_t: "About Puncak Go",
+        about_d: "Your partner in Puncak, providing the best villas and travel services.",
         home: "Home",
-        history: "History",
-        modal: "Extra Services"
+        terms: "Terms",
+        history: "History"
     }
 };
 
-// تبديل اللغة
 function changeLanguage() {
     const lang = document.getElementById('lang-select').value;
     const t = translations[lang];
@@ -37,25 +36,23 @@ function changeLanguage() {
     document.getElementById('srv-cars').innerText = t.cars;
     document.getElementById('srv-tours').innerText = t.tours;
     document.getElementById('btn-others').innerText = t.others;
-    document.getElementById('txt-premium').innerText = t.premium;
-    document.getElementById('txt-curr').innerText = t.curr;
+    document.getElementById('about-title').innerText = t.about_t;
+    document.getElementById('about-desc').innerText = t.about_d;
     document.getElementById('nav-home').innerText = t.home;
+    document.getElementById('nav-terms').innerText = t.terms;
     document.getElementById('nav-history').innerText = t.history;
-    document.getElementById('modal-title').innerText = t.modal;
     document.getElementById('main-html').dir = (lang === 'ar') ? 'rtl' : 'ltr';
 }
 
-// السلايدر
-let current = 0;
+// Slider logic
+let cur = 0;
 const slides = document.querySelectorAll('.slide');
-function nextSlide() {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-}
-setInterval(nextSlide, 7000);
+setInterval(() => {
+    slides[cur].classList.remove('active');
+    cur = (cur + 1) % slides.length;
+    slides[cur].classList.add('active');
+}, 7000);
 
-// النافذة المنبثقة
 function toggleOthers() {
     const m = document.getElementById('others-modal');
     m.style.display = (m.style.display === 'block') ? 'none' : 'block';
