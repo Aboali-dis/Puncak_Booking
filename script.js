@@ -1,60 +1,115 @@
+// ===== Language System =====
+
 const translations = {
 
-en: {
-tagline: "Your gateway to villas, cars & tours in Puncak",
-welcome: "Welcome to Puncak",
-subtitle: "Book your villa, car, and enjoy your trip",
-rentVilla: "🏡 Rent Villa",
-rentCar: "🚗 Rent Car",
-tours: "🗺 Tours",
-offer: "✨ Book Villa + Car and get 10% Discount",
-moreServices: "More Services",
-home: "🏠 Home",
-terms: "📜 Terms",
-history: "📊 History"
+en:{
+
+title:"Your gateway to villas, cars & tours in Puncak",
+
+welcome:"Welcome to Puncak",
+
+desc:"Book your villa, car, and enjoy your trip",
+
+villa:"🏡 Rent Villa",
+
+car:"🚗 Rent Car",
+
+tour:"🗺 Tours",
+
+offer:"✨ Book Villa + Car and get 10% Discount",
+
+more:"More Services",
+
+home:"🏠 Home",
+
+terms:"📜 Terms",
+
+history:"📊 History"
+
 },
 
-ar: {
-tagline: "بوابتك إلى الفلل والسيارات والجولات في بونشاك",
-welcome: "مرحباً بك في بونشاك",
-subtitle: "احجز الفيلا والسيارة واستمتع برحلتك",
-rentVilla: "🏡 استئجار فيلا",
-rentCar: "🚗 استئجار سيارة",
-tours: "🗺 الجولات السياحية",
-offer: "✨ احجز فيلا + سيارة واحصل على خصم 10٪",
-moreServices: "خدمات إضافية",
-home: "🏠 الرئيسية",
-terms: "📜 الشروط",
-history: "📊 السجل"
+ar:{
+
+title:"بوابتك لحجز الفلل والسيارات والرحلات في بونشاك",
+
+welcome:"مرحبا بكم في بونشاك",
+
+desc:"احجز الفيلا أو السيارة واستمتع برحلتك",
+
+villa:"🏡 حجز فيلا",
+
+car:"🚗 حجز سيارة",
+
+tour:"🗺 رحلات",
+
+offer:"✨ احجز فيلا + سيارة واحصل على خصم 10٪",
+
+more:"خدمات إضافية",
+
+home:"🏠 الرئيسية",
+
+terms:"📜 الشروط",
+
+history:"📊 السجل"
+
 },
 
-id: {
-tagline: "Gerbang Anda untuk villa, mobil dan tur di Puncak",
-welcome: "Selamat datang di Puncak",
-subtitle: "Pesan villa, mobil dan nikmati perjalanan Anda",
-rentVilla: "🏡 Sewa Villa",
-rentCar: "🚗 Sewa Mobil",
-tours: "🗺 Tur Wisata",
-offer: "✨ Pesan Villa + Mobil dapat diskon 10%",
-moreServices: "Layanan Lainnya",
-home: "🏠 Beranda",
-terms: "📜 Syarat",
-history: "📊 Riwayat"
+id:{
+
+title:"Gerbang Anda ke villa, mobil & tur di Puncak",
+
+welcome:"Selamat datang di Puncak",
+
+desc:"Pesan villa atau mobil dan nikmati perjalanan Anda",
+
+villa:"🏡 Sewa Villa",
+
+car:"🚗 Sewa Mobil",
+
+tour:"🗺 Tur",
+
+offer:"✨ Pesan Villa + Mobil dapat Diskon 10%",
+
+more:"Layanan Lain",
+
+home:"🏠 Beranda",
+
+terms:"📜 Syarat",
+
+history:"📊 Riwayat"
+
 }
 
 };
 
-const languageSelector = document.getElementById("language");
+// ===== Change Language =====
 
-languageSelector.addEventListener("change", function(){
-setLanguage(this.value);
+const langSelect=document.getElementById("language");
+
+langSelect.addEventListener("change",function(){
+
+const lang=this.value;
+
+document.querySelector(".logo-section p").innerText=translations[lang].title;
+
+document.querySelector(".main-glass h2").innerText=translations[lang].welcome;
+
+document.querySelector(".main-glass p").innerText=translations[lang].desc;
+
+document.querySelectorAll(".service-btn")[0].innerText=translations[lang].villa;
+
+document.querySelectorAll(".service-btn")[1].innerText=translations[lang].car;
+
+document.querySelectorAll(".service-btn")[2].innerText=translations[lang].tour;
+
+document.querySelector(".offer-box").innerText=translations[lang].offer;
+
+document.querySelector(".extra-btn").innerText=translations[lang].more;
+
+document.querySelectorAll(".bottom-nav button")[0].innerText=translations[lang].home;
+
+document.querySelectorAll(".bottom-nav button")[1].innerText=translations[lang].terms;
+
+document.querySelectorAll(".bottom-nav button")[2].innerText=translations[lang].history;
+
 });
-
-function setLanguage(lang){
-
-document.querySelectorAll("[data-key]").forEach(element=>{
-const key = element.getAttribute("data-key");
-element.textContent = translations[lang][key];
-});
-
-}
