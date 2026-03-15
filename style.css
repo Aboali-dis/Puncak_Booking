@@ -19,15 +19,15 @@ background-attachment:fixed;
 
 color:white;
 
-height:100vh;
+min-height:100vh;
 
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:flex-start;
+
+position:relative;
 
 }
-
 
 /* ===== Dark Overlay ===== */
 
@@ -43,29 +43,34 @@ left:0;
 width:100%;
 height:100%;
 
-background:rgba(0,0,0,0.45);
+background:rgba(0,0,0,0.55);
 
-z-index:-1;
+z-index:0;
 
 }
 
+/* ===== Make Content Above Overlay ===== */
+
+body > *{
+position:relative;
+z-index:1;
+}
 
 /* ===== Glass Effect ===== */
 
 .glass{
 
-background:rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.12);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(15px);
 
 border:1px solid rgba(255,255,255,0.2);
 
 border-radius:15px;
 
-padding:10px 15px;
+padding:12px 18px;
 
 }
-
 
 /* ===== Top Bar ===== */
 
@@ -81,20 +86,25 @@ margin-top:15px;
 
 }
 
+/* ===== Select Style ===== */
+
 select{
 
-background:transparent;
+background:rgba(255,255,255,0.1);
 
-border:none;
+border:1px solid rgba(255,255,255,0.2);
 
 color:white;
+
+padding:5px 8px;
+
+border-radius:6px;
 
 font-size:14px;
 
 outline:none;
 
 }
-
 
 /* ===== Logo Section ===== */
 
@@ -130,7 +140,6 @@ margin-top:5px;
 
 }
 
-
 /* ===== Main Glass Box ===== */
 
 .main-glass{
@@ -161,7 +170,6 @@ opacity:0.9;
 
 }
 
-
 /* ===== Buttons ===== */
 
 .buttons{
@@ -174,9 +182,11 @@ gap:12px;
 
 }
 
+/* ===== Service Buttons ===== */
+
 .service-btn{
 
-padding:12px;
+padding:14px;
 
 border:none;
 
@@ -186,9 +196,11 @@ font-size:16px;
 
 cursor:pointer;
 
-background:rgba(255,255,255,0.2);
+background:linear-gradient(45deg,#d4af37,#f5d97b);
 
-color:white;
+color:black;
+
+font-weight:bold;
 
 transition:0.3s;
 
@@ -196,10 +208,9 @@ transition:0.3s;
 
 .service-btn:hover{
 
-background:rgba(255,255,255,0.35);
+transform:scale(1.05);
 
 }
-
 
 /* ===== Offer Box ===== */
 
@@ -214,7 +225,6 @@ font-weight:bold;
 text-align:center;
 
 }
-
 
 /* ===== Extra Services ===== */
 
@@ -234,14 +244,15 @@ border-radius:12px;
 
 font-size:15px;
 
-color:white;
+color:black;
 
 cursor:pointer;
 
-background:rgba(255,255,255,0.2);
+background:linear-gradient(45deg,#d4af37,#f5d97b);
+
+font-weight:bold;
 
 }
-
 
 /* ===== Bottom Navigation ===== */
 
@@ -275,7 +286,6 @@ cursor:pointer;
 
 }
 
-
 /* ===== Mobile Responsive ===== */
 
 @media(max-width:600px){
@@ -292,4 +302,4 @@ width:90%;
 
 }
 
-    }
+}
