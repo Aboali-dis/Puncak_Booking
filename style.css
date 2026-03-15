@@ -1,117 +1,295 @@
-:root {
-    --gold: #d4af37;
-    --dark: #0a0e17;
-    --glass: rgba(255, 255, 255, 0.1);
+/* ===== General Reset ===== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-body { background: var(--dark); color: white; line-height: 1.6; }
+/* ===== Background ===== */
 
-/* السلايدر */
-.bg-slider { position: fixed; width: 100%; height: 100%; z-index: -2; }
-.slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: 2s; }
-.slide.active { opacity: 1; }
-.overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: -1; }
+body{
 
-/* الهيدر المطور */
-/* الهيدر الجديد الموسط */
-.main-header {
-    background: linear-gradient(to bottom, #000, rgba(0,0,0,0.8));
-    padding: 15px 5%;
-    border-bottom: 2px solid var(--gold);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+background-image:url("puncak-background.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
 
-.header-top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
+color:white;
 
-.side-btns { display: flex; gap: 8px; }
+height:100vh;
 
-/* تنسيق الشعار في النص */
-.logo-center-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-}
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
 
-.site-logo-main {
-    height: 110px; /* حجم كبير وواضح */
-    width: auto;
-    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6)); /* توهج ذهبي */
-}
-
-/* تحسين أزرار الهيدر */
-.btn-premium, .btn-tool, .lang-select {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-    border-radius: 8px;
-    border: 1px solid var(--gold);
 }
 
 
-/* تنسيق النصوص للوضوح */
-h1, h2, h3, p { text-shadow: 2px 2px 10px #000; }
+/* ===== Dark Overlay ===== */
 
-/* الحاوية الرئيسية */
-.container { padding: 40px 20px 100px; text-align: center; }
+body::before{
 
-.promo-box {
-    background: rgba(212, 175, 55, 0.2); border: 1px solid var(--gold);
-    padding: 15px; border-radius: 50px; margin: 25px auto; max-width: 400px;
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.45);
+
+z-index:-1;
+
 }
 
-/* بطاقات الخدمات */
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px; }
-.service-card {
-    background: rgba(255,255,255,0.05); border: 1px solid var(--gold);
-    padding: 20px 5px; border-radius: 15px; backdrop-filter: blur(10px);
-}
-.service-card img { width: 40px; margin-bottom: 10px; }
 
-/* زر الخدمات الإضافية الموضح */
-.btn-others-full {
-    width: 100%; max-width: 400px; padding: 15px;
-    background: rgba(0,0,0,0.7); border: 2px solid var(--gold);
-    color: var(--gold); border-radius: 50px; font-weight: bold; font-size: 1rem;
-}
+/* ===== Glass Effect ===== */
 
-/* عن الموقع */
-.about-puncak {
-    background: rgba(0,0,0,0.8); padding: 25px; border-radius: 20px;
-    margin-top: 40px; border-top: 3px solid var(--gold); text-align: right;
-}
-.about-puncak h2 { color: var(--gold); margin-bottom: 15px; }
+.glass{
 
-/* الشريط السفلي */
-.nav-bottom {
-    position: fixed; bottom: 0; width: 100%; background: #000;
-    display: flex; justify-content: space-around; padding: 12px 0;
-    border-top: 2px solid var(--gold); z-index: 1000;
-}
-.nav-btn { text-align: center; color: var(--gold); cursor: pointer; }
-.nav-btn p { font-size: 0.75rem; margin-top: 4px; }
+background:rgba(255,255,255,0.15);
 
-/* نافذة المودال */
-.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
-.modal-box { width: 85%; max-width: 400px; margin: 25% auto; background: #111; padding: 30px; border-radius: 20px; border: 1px solid var(--gold); text-align: right; }
-.m-list li { list-style: none; padding: 15px 0; border-bottom: 1px solid #333; }
-.close-btn { color: var(--gold); float: left; font-size: 30px; cursor: pointer; }
-/* تأكد من إضافة هذا لتوضيح النصوص */
-.about-puncak, .content-page {
-    margin: 20px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة خلف الكلام */
-    border-radius: 15px;
-    border: 1px solid var(--gold);
-    max-width: 90%;
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.2);
+
+border-radius:15px;
+
+padding:10px 15px;
+
 }
 
-.gold-text { color: var(--gold); margin-bottom: 10px; }
+
+/* ===== Top Bar ===== */
+
+.top-bar{
+
+width:90%;
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:15px;
+
+}
+
+select{
+
+background:transparent;
+
+border:none;
+
+color:white;
+
+font-size:14px;
+
+outline:none;
+
+}
+
+
+/* ===== Logo Section ===== */
+
+.logo-section{
+
+text-align:center;
+
+margin-top:40px;
+
+}
+
+.logo{
+
+width:130px;
+
+margin-bottom:10px;
+
+}
+
+.logo-section h1{
+
+font-size:32px;
+
+font-weight:bold;
+
+}
+
+.logo-section p{
+
+opacity:0.9;
+
+margin-top:5px;
+
+}
+
+
+/* ===== Main Glass Box ===== */
+
+.main-glass{
+
+margin-top:40px;
+
+width:85%;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+.main-glass h2{
+
+font-size:24px;
+
+margin-bottom:10px;
+
+}
+
+.main-glass p{
+
+margin-bottom:20px;
+
+opacity:0.9;
+
+}
+
+
+/* ===== Buttons ===== */
+
+.buttons{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.service-btn{
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+cursor:pointer;
+
+background:rgba(255,255,255,0.2);
+
+color:white;
+
+transition:0.3s;
+
+}
+
+.service-btn:hover{
+
+background:rgba(255,255,255,0.35);
+
+}
+
+
+/* ===== Offer Box ===== */
+
+.offer-box{
+
+margin-top:25px;
+
+padding:15px;
+
+font-weight:bold;
+
+text-align:center;
+
+}
+
+
+/* ===== Extra Services ===== */
+
+.extra-services{
+
+margin-top:20px;
+
+}
+
+.extra-btn{
+
+padding:12px 25px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:15px;
+
+color:white;
+
+cursor:pointer;
+
+background:rgba(255,255,255,0.2);
+
+}
+
+
+/* ===== Bottom Navigation ===== */
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:15px;
+
+width:90%;
+
+display:flex;
+
+justify-content:space-around;
+
+padding:10px;
+
+}
+
+.bottom-nav button{
+
+background:transparent;
+
+border:none;
+
+color:white;
+
+font-size:14px;
+
+cursor:pointer;
+
+}
+
+
+/* ===== Mobile Responsive ===== */
+
+@media(max-width:600px){
+
+.logo{
+
+width:110px;
+
+}
+
+.main-glass{
+
+width:90%;
+
+}
+
+    }
