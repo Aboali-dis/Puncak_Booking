@@ -1,3 +1,25 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%; /* تأكد من ترك مساحة جيدة */
+    background: rgba(0,0,0,0.8); /* خلفية سوداء شفافة لتناسب الشعار */
+    border-bottom: 2px solid var(--gold);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+#site-logo {
+    height: 55px; /* حجم مناسب للهيدر، تحكم فيه حسب الرغبة */
+    width: auto;
+    object-fit: contain;
+    /* إضافة لمسة احترافية للشعار */
+    filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.4));
+}
+
+
 :root {
     --gold: #d4af37;
     --dark: #0b101b;
