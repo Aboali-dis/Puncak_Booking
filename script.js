@@ -113,29 +113,7 @@ document.querySelectorAll(".bottom-nav button")[1].innerText=translations[lang].
 document.querySelectorAll(".bottom-nav button")[2].innerText=translations[lang].history;
 
 });
-// ===== Currency Convert =====
 
-const currencySelect = document.getElementById("currency");
-
-currencySelect.addEventListener("change", function(){
-
-let amount = prompt("Enter amount");
-
-if(!amount) return;
-
-let rate = 1;
-
-if(this.value === "usd"){
-rate = 15500;
-}
-
-if(this.value === "sar"){
-rate = 4100;
-}
-
-if(this.value === "eur"){
-rate = 16800;
-}
 
 let result = amount * rate;
 
