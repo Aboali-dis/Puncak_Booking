@@ -17,83 +17,82 @@
     <div class="overlay"></div>
 
     <header class="main-header">
-        <div class="logo-container">
-            <img src="logo-puncakgo.png" alt="Logo" class="big-logo">
-            <div class="brand-info">
-                <span class="brand-title">Puncak Go</span>
-                <span class="brand-sub">بوابتك الذكية في إندونيسيا ✈️</span>
+        <div class="header-content">
+            <div class="logo-box">
+                <img src="logo-puncakgo.png" alt="Puncak Go" class="site-logo">
             </div>
-        </div>
-        <div class="header-actions">
-            <button class="gold-btn">💎 <span id="txt-premium">بريميوم</span></button>
-            <button class="dark-btn">💰 <span id="txt-curr">صرف</span></button>
-            <select id="lang-select" onchange="changeLanguage()" class="lang-picker">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-                <option value="id">Indonesia</option>
-            </select>
+            <div class="header-btns">
+                <button class="btn-premium">💎 <span id="txt-premium">بريميوم</span></button>
+                <button class="btn-tool">💰 <span id="txt-curr">صرف</span></button>
+                <select id="lang-select" onchange="changeLanguage()" class="lang-select">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                    <option value="id">Indonesia</option>
+                </select>
+            </div>
         </div>
     </header>
 
-    <main class="content-wrapper">
-        <div class="hero-text">
+    <main class="container">
+        <div class="hero-section">
             <h1 id="welcome-title">مرحباً بك في كوتا بونجا</h1>
-            <div class="promo-banner">
-                <span id="promo-text">✨ اطلب من بونشاك قو واحصل على خصم 10% من فاتورتك ✨</span>
+            <div class="promo-box">
+                <p id="promo-text">✨ اطلب من بونشاك قو واحصل على خصم 10% من فاتورتك ✨</p>
             </div>
         </div>
 
-        <div class="services-main">
-            <div class="s-card" onclick="openVillas()">
-                <img src="https://cdn-icons-png.flaticon.com/128/619/619153.png" alt="">
+        <div class="services-grid">
+            <div class="service-card" onclick="openVillas()">
+                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/619/619153.png"></div>
                 <h3 id="srv-villas">إيجار فلل</h3>
             </div>
-            <div class="s-card" onclick="openCars()">
-                <img src="https://cdn-icons-png.flaticon.com/128/3202/3202926.png" alt="">
+            <div class="service-card" onclick="openCars()">
+                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/3202/3202926.png"></div>
                 <h3 id="srv-cars">تأجير سيارات</h3>
             </div>
-            <div class="s-card" onclick="openTours()">
-                <img src="https://cdn-icons-png.flaticon.com/128/854/854878.png" alt="">
+            <div class="service-card" onclick="openTours()">
+                <div class="icon-bg"><img src="https://cdn-icons-png.flaticon.com/128/854/854878.png"></div>
                 <h3 id="srv-tours">خدمات سياحية</h3>
             </div>
         </div>
 
-        <div class="extra-services-container">
-            <button class="btn-others-clear" onclick="toggleOthers()">
+        <div class="others-wrapper">
+            <button class="btn-others-full" onclick="toggleOthers()">
                 <span id="btn-others">➕ خدمات أخرى (مطاعم، بقالات، طباخ...)</span>
             </button>
         </div>
 
-        <section class="about-site">
+        <section class="about-puncak">
             <h2 id="about-title">عن Puncak Go</h2>
             <p id="about-desc">نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الفلل والسيارات والخدمات السياحية بأعلى معايير الجودة والاحترافية لضمان راحة عائلاتكم.</p>
         </section>
     </main>
 
-    <nav class="bottom-toolbar">
-        <div class="t-item" onclick="goHome()">
+    <nav class="nav-bottom">
+        <div class="nav-btn" onclick="goHome()">
             <span>🏠</span>
             <p id="nav-home">الهوم</p>
         </div>
-        <div class="t-item" onclick="openTerms()">
+        <div class="nav-btn" onclick="openTerms()">
             <span>📜</span>
             <p id="nav-terms">الشروط والاحكام</p>
         </div>
-        <div class="t-item" onclick="openHistory()">
+        <div class="nav-btn" onclick="openHistory()">
             <span>🕒</span>
             <p id="nav-history">الهيستوري</p>
         </div>
     </nav>
 
-    <div id="others-modal" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-x" onclick="toggleOthers()">&times;</span>
-            <h2 id="m-title">الخدمات الإضافية</h2>
+    <div id="modal-others" class="modal">
+        <div class="modal-box glass">
+            <span class="close-btn" onclick="toggleOthers()">&times;</span>
+            <h2 id="m-title">خدمات إضافية</h2>
             <ul class="m-list">
                 <li>🍽️ <span id="m-res">مطاعم عربية</span></li>
                 <li>🛒 <span id="m-gro">بقالات عربية</span></li>
                 <li>👨‍🍳 <span id="m-chef">طباخ خاص</span></li>
-                <li>✂️ <span id="m-barber">حلاق خاص</span></li>
+                <li>✂️ <span id="m-bar">حلاق خاص</span></li>
+                <li>🥩 <span id="m-meat">مسالخ لحوم فرش</span></li>
             </ul>
         </div>
     </div>
