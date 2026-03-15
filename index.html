@@ -17,12 +17,23 @@
     <div class="overlay"></div>
 
     <header class="main-header">
-    <div class="header-content">
-        <div class="logo-box">
-            <img src="logo-puncakgo.png" alt="Puncak Go" class="site-logo">
+    <div class="header-top-bar">
+        <div class="side-btns">
+            <button class="btn-premium">💎 بريميوم</button>
+            <button class="btn-tool">💰 صرف</button>
         </div>
-        </div>
+        
+        <select id="lang-select" onchange="changeLanguage()" class="lang-select">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+        </select>
+    </div>
+
+    <div class="logo-center">
+        <img src="logo-puncakgo.png" alt="Puncak Go" class="site-logo">
+    </div>
     </header>
+    
     
 
     <main class="container">
