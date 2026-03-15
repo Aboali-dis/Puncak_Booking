@@ -1,25 +1,3 @@
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%; /* تأكد من ترك مساحة جيدة */
-    background: rgba(0,0,0,0.8); /* خلفية سوداء شفافة لتناسب الشعار */
-    border-bottom: 2px solid var(--gold);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-#site-logo {
-    height: 55px; /* حجم مناسب للهيدر، تحكم فيه حسب الرغبة */
-    width: auto;
-    object-fit: contain;
-    /* إضافة لمسة احترافية للشعار */
-    filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.4));
-}
-
-
 :root {
     --gold: #d4af37;
     --dark: #0b101b;
@@ -28,80 +6,80 @@ header {
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-/* السلايدر المتحرك */
-.bg-slider {
-    position: fixed; width: 100%; height: 100%; z-index: -2;
-}
-.slide {
-    position: absolute; width: 100%; height: 100%;
-    background-size: cover; background-position: center;
-    opacity: 0; transition: opacity 2s ease-in-out;
+body { background: var(--dark); color: white; overflow-x: hidden; }
+
+/* السلايدر */
+.bg-slider { position: fixed; width: 100%; height: 100%; z-index: -2; }
+.slide { 
+    position: absolute; width: 100%; height: 100%; 
+    background-size: cover; background-position: center; 
+    opacity: 0; transition: 2s; 
 }
 .slide.active { opacity: 1; }
-.overlay {
-    position: fixed; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); z-index: -1;
+.overlay { position: fixed; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: -1; }
+
+/* توضيح الخطوط بظلال قوية */
+h1, h2, h3, p, span {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 1);
 }
 
 /* الهيدر */
 header {
-    background: rgba(11, 16, 27, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--gold);
-    position: fixed; width: 100%; top: 0; z-index: 100;
-    padding: 10px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 5%; background: rgba(11, 16, 27, 0.9);
+    border-bottom: 2px solid var(--gold); position: fixed; width: 100%; top: 0; z-index: 1000;
 }
-.header-top { display: flex; justify-content: space-between; align-items: center; }
-.main-logo { height: 40px; vertical-align: middle; }
-.brand-name { color: var(--gold); font-weight: bold; font-size: 1.2rem; }
+#site-logo { height: 40px; }
+.brand-text { color: var(--gold); font-weight: bold; margin-right: 5px; }
 
-.header-tools { display: flex; gap: 8px; }
-select, .tool-btn, .premium-btn {
+.header-tools { display: flex; gap: 8px; align-items: center; }
+.tool-btn, .premium-btn, select {
     background: var(--glass); border: 1px solid var(--gold);
-    color: white; padding: 5px 10px; border-radius: 8px; font-size: 0.8rem;
+    color: white; padding: 5px 10px; border-radius: 8px; cursor: pointer;
 }
-.premium-btn { background: linear-gradient(45deg, #d4af37, #facc15); color: black; font-weight: bold; }
+.premium-btn { background: var(--gold); color: black; font-weight: bold; }
 
 /* المحتوى */
-.content { padding: 100px 20px 80px; text-align: center; }
-.welcome-box h1 { margin-bottom: 10px; font-size: 1.5rem; }
-
-/* شريط العروض المتحرك */
-.ticker-wrap {
-    overflow: hidden; background: rgba(212, 175, 55, 0.2);
-    padding: 5px 0; border-radius: 50px; margin: 15px 0;
-}
-.ticker {
-    white-space: nowrap; animation: ticker 15s linear infinite;
-    display: inline-block; color: var(--gold); font-weight: bold;
-}
-@keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+.content { padding: 100px 20px 100px; text-align: center; }
+.discount-bar {
+    background: rgba(212, 175, 55, 0.3); padding: 10px;
+    border-radius: 50px; margin: 20px auto; max-width: 350px;
+    border: 1px solid var(--gold);
 }
 
-/* الكروت */
 .services-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px;
 }
 .service-card {
     background: var(--glass); border: 1px solid var(--gold);
-    padding: 20px 10px; border-radius: 15px; backdrop-filter: blur(5px);
+    padding: 20px 10px; border-radius: 15px; backdrop-filter: blur(10px);
 }
-.card-icon { font-size: 1.8rem; margin-bottom: 10px; }
-.service-card h3 { font-size: 0.9rem; }
+.card-img { width: 40px; margin-bottom: 10px; }
 
-.other-btn {
+.other-services-btn {
+    width: 100%; max-width: 350px; padding: 12px; margin-top: 25px;
     background: transparent; border: 1px solid rgba(212, 175, 55, 0.5);
-    color: var(--gold); width: 100%; padding: 12px;
-    border-radius: 50px; margin-top: 25px;
+    color: var(--gold); border-radius: 50px; cursor: pointer;
 }
 
-/* الشريط السفلي */
-.bottom-nav {
-    position: fixed; bottom: 0; width: 100%;
-    background: rgba(11, 16, 27, 0.95);
-    display: flex; justify-content: space-around;
-    padding: 10px; border-top: 1px solid var(--gold);
+/* النافذة المنبثقة */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.85);
 }
-.nav-item { text-align: center; color: var(--gold); font-size: 0.8rem; }
+.modal-content {
+    background: #111; border: 1px solid var(--gold);
+    width: 85%; max-width: 400px; margin: 20% auto;
+    padding: 30px; border-radius: 20px; text-align: right;
+}
+.others-list li { padding: 15px 0; border-bottom: 1px solid #333; list-style: none; }
+.close { color: var(--gold); float: left; font-size: 30px; cursor: pointer; }
+
+/* الملاحة السفلية */
+.bottom-nav {
+    position: fixed; bottom: 0; width: 100%; background: #0b101b;
+    display: flex; justify-content: space-around; padding: 10px;
+    border-top: 1px solid var(--gold);
+}
+.nav-item { text-align: center; color: var(--gold); font-size: 12px; }
+        
