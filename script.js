@@ -1,134 +1,92 @@
-const WA_NUM = "6285715513240";
-let isAr = true, isAdmin = false;
-let vBasePrice = 500, cBasePrice = 200;
-
-function nav(id) {
-    document.querySelectorAll('section').forEach(s => s.classList.remove('active-sec'));
-    document.getElementById(id).classList.add('active-sec');
-    window.scrollTo(0,0);
-}
-
-// مزامنة البيانات بين الحقول
-function syncInputs(el, className) {
-    document.querySelectorAll('.' + className).forEach(input => { input.value = el.value; });
-}
-
-function toggleLang() {
-    isAr = !isAr;
-    document.getElementById('html-tag').dir = isAr ? 'rtl' : 'ltr';
-    document.getElementById('btn-lang').innerText = isAr ? 'English' : 'العربية';
-    document.querySelectorAll('[data-ar]').forEach(el => {
-        el.innerText = isAr ? el.dataset.ar : el.dataset.en;
-    });
-}
-
-function toggleCurr() {
-    const box = document.getElementById('curr-box');
-    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
-}
-
-function calcCurr() {
-    let v = document.getElementById('sar-val').value;
-    document.getElementById('idr-res').innerText = (v * 4200).toLocaleString() + " IDR";
-}
-
-function adminLogin() {
-    if(prompt("Pass:") === "1234") {
-        isAdmin = true;
-        document.querySelectorAll('.admin-edit-box').forEach(b => b.style.display = 'block');
-        alert("وضع التعديل مفعل ✅");
+// 1. قاموس اللغات - هنا نضع كل نصوص الموقع
+const translations = {
+    ar: {
+        welcome: "مرحباً بك في كوتا بونجا",
+        promo: "✨ اطلب من بونشاك قو واحصل على خصم 10% من فاتورتك ✨",
+        villas: "إيجار فلل",
+        cars: "تأجير سيارات",
+        tours: "خدمات سياحية",
+        others: "➕ خدمات أخرى (مطاعم، بقالات، طباخ...)",
+        curr: "صرف",
+        premium: "بريميوم",
+        home: "الهوم",
+        history: "الهيستوري",
+        footer: "Puncak Go - جميع الحقوق محفوظة 2026",
+        terms: "الشروط والأحكام"
+    },
+    en: {
+        welcome: "Welcome to Kota Bunga",
+        promo: "✨ Order from Puncak Go and get 10% discount on your bill ✨",
+        villas: "Rent Villas",
+        cars: "Car Rental",
+        tours: "Tour Services",
+        others: "➕ Other Services (Restaurants, Groceries...)",
+        curr: "Currency",
+        premium: "Premium",
+        home: "Home",
+        history: "History",
+        footer: "Puncak Go - All Rights Reserved 2026",
+        terms: "Terms & Conditions"
+    },
+    id: {
+        welcome: "Selamat Datang di Kota Bunga",
+        promo: "✨ Pesan dari Puncak Go dan dapatkan diskon 10% ✨",
+        villas: "Sewa Villa",
+        cars: "Sewa Mobil",
+        tours: "Layanan Wisata",
+        others: "➕ Layanan Lain (Restoran, Toko...)",
+        curr: "Kurs",
+        premium: "Premium",
+        home: "Beranda",
+        history: "Riwayat",
+        footer: "Puncak Go - Hak Cipta Dilindungi 2026",
+        terms: "Syarat & Ketentuan"
     }
-}
-// بناء 15 فلة وتوزيعها فوق الخريطة الحية
-const mapV = document.getElementById('map-v');
-if (mapV) {
-    mapV.innerHTML = ''; // تنظيف الحاوية
-    for (let i = 1; i <= 15; i++) {
-        let p = document.createElement('div');
-        p.className = 'pin';
-        
-        // توزيع الدبابيس بشكل احترافي فوق الخريطة
-        p.style.top = (20 + (i * 15) % 60) + "%"; 
-        p.style.left = (15 + (i * 25) % 75) + "%";
-        
-        p.innerHTML = `<span>${i}</span>`;
-        
-        // عند النقر على الرقم
-        p.onclick = (e) => {
-            e.stopPropagation(); // منع انتقال النقر للخريطة
-            document.getElementById('v-panel').style.display = 'block';
-            document.getElementById('v-name').innerText = (isAr ? "فلة رقم " : "Villa ") + i;
-            
-            // النزول تلقائياً لمكان البيانات
-            window.scrollTo({
-                top: document.getElementById('v-panel').offsetTop - 100,
-                behavior: 'smooth'
-            });
-        };
-        mapV.appendChild(p);
-    }
-}
-// بناء 15 سيارة
-const gridC = document.getElementById('cars-grid');
-for(let i=1; i<=15; i++) {
-    let c = document.createElement('div');
-    c.className = 'card'; c.style.background = 'white'; c.style.color = '#333';
-    c.innerHTML = `<h3>${isAr ? 'سيارة ' : 'Car '}${i}</h3>`;
-    c.onclick = () => {
-        document.getElementById('c-panel').style.display = 'block';
-        document.getElementById('c-name').innerText = (isAr ? "سيارة رقم " : "Car ") + i;
-    };
-    gridC.appendChild(c);
+};
+
+// 2. وظيفة تغيير اللغة
+function changeLanguage() {
+    const lang = document.getElementById('lang-select').value;
+    const t = translations[lang];
+
+    // تغيير النصوص بناءً على الـ ID
+    document.getElementById('welcome-title').innerText = t.welcome;
+    document.getElementById('promo-text').innerText = t.promo;
+    document.getElementById('srv-villas').innerText = t.villas;
+    document.getElementById('srv-cars').innerText = t.cars;
+    document.getElementById('srv-tours').innerText = t.tours;
+    document.getElementById('btn-others').innerText = t.others;
+    document.getElementById('txt-curr').innerText = t.curr;
+    document.getElementById('txt-premium').innerText = t.premium;
+    document.getElementById('nav-home').innerText = t.home;
+    document.getElementById('nav-history').innerText = t.history;
+    document.getElementById('txt-footer').innerText = t.footer;
+    document.getElementById('txt-terms').innerText = t.terms;
+
+    // تغيير اتجاه الصفحة (RTL للعربي)
+    document.getElementById('main-html').dir = (lang === 'ar') ? 'rtl' : 'ltr';
 }
 
-function calcPrice(t) {
-    let f = document.getElementById(t+'-from').value;
-    let o = document.getElementById(t+'-to').value;
-    if(f && o) {
-        let d = Math.ceil((new Date(o) - new Date(f)) / (1000*60*60*24));
-        if(d > 0) document.getElementById(t+'-price-val').innerText = d * (t==='v' ? vBasePrice : cBasePrice);
+// 3. نظام السلايدر (تغيير الصور كل 7 ثوانٍ)
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+setInterval(nextSlide, 7000); // 7000 مللي ثانية = 7 ثواني
+
+// 4. وظائف التنقل (فتح الأقسام)
+function openSection(section) {
+    console.log("Opening section: " + section);
+    // هنا سنبرمج لاحقاً ظهور قوائم الفلل والسيارات VIP والعادي
+    if(section === 'villas') {
+        alert("سيتم فتح قسم الفلل (VIP والعادي) الآن...");
     }
 }
 
-function sendWA(serviceType) {
-    let t = (serviceType === 'Villa') ? 'v' : (serviceType === 'Car' ? 'c' : 'v');
-    
-    // سحب البيانات
-    let name = document.querySelector('.u-name').value || "";
-    let phone = document.querySelector('.u-phone').value || "81118895901";
-    let adults = document.querySelector('.u-adults').value || 1;
-    let kids = document.querySelector('.u-kids').value || 0;
-    
-    let from = document.getElementById(t+'-from')?.value || "2026-02-26";
-    let to = document.getElementById(t+'-to')?.value || "2026-02-26";
-    let total = document.getElementById(t+'-price-val')?.innerText || "0";
-    let note = document.getElementById(t+'-note')?.value || "لا يوجد";
-    let service = (serviceType === 'Villa' || serviceType === 'Car') ? document.getElementById(t+'-name').innerText : serviceType;
-
-    // الصيغة المطلوبة
-    let message = `السلام عليكم 🌿%0A%0A` +
-                  `تم إرسال طلب حجز عبر موقع PuncakGo:%0A%0A` +
-                  `━━━━━━━━━━━━━━%0A` +
-                  `🏠 الخدمة: ${service}%0A` +
-                  `👤 العميل: ${name}%0A` +
-                  `📞 الهاتف: ${phone}%0A` +
-                  `📅 الوصول: ${from}%0A` +
-                  `📅 المغادرة: ${to}%0A` +
-                  `👥 عدد الضيوف: ${adults} بالغين | ${kids} أطفال%0A` +
-                  `📝 ملاحظات: ${note}%0A` +
-                  `💰 المبلغ الإجمالي: ${total} ريال%0A` +
-                  `━━━━━━━━━━━━━━%0A%0A` +
-                  `يرجى تأكيد التوفر في أقرب وقت ممكن.%0A` +
-                  `شكراً 🤍`;
-
-    window.open(`https://wa.me/${WA_NUM}?text=${message}`, '_blank');
+function goHome() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// السلايدر
-setInterval(() => {
-    const slides = document.querySelectorAll('.slide');
-    let active = document.querySelector('.slide.active');
-    active.classList.remove('active');
-    let next = active.nextElementSibling || slides[0];
-    next.classList.add('active');
-}, 5000);
