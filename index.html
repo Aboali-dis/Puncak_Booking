@@ -1,137 +1,83 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="main-html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puncak Go | بونشاك قو</title>
+    <title>Puncak Go</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* التنسيقات المصححة */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: rgba(0,0,0,0.8);
-            border-bottom: 2px solid #d4af37;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        #site-logo {
-            height: 50px;
-            width: auto;
-            filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.5));
-        }
-        .discount-bar {
-            background: linear-gradient(90deg, #b2944d, #d4af37);
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-weight: bold;
-            border-radius: 10px;
-            margin: 10px auto;
-            max-width: 90%;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-        .other-services-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            padding: 12px;
-            border-radius: 50px;
-            width: 90%;
-            display: block;
-            margin: 20px auto;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
+
+    <div class="bg-slider">
+        <div class="slide active" style="background-image: url('puncak1.jpg');"></div>
+        <div class="slide" style="background-image: url('puncak2.jpg');"></div>
+        <div class="slide" style="background-image: url('puncak3.jpg');"></div>
+        <div class="slide" style="background-image: url('puncak4.jpg');"></div>
+    </div>
+    <div class="overlay"></div>
+
     <header>
-        <div class="logo">
-            <img src="logo-puncakgo.png" alt="Puncak Go" id="site-logo">
-        </div>
-        <div class="nav-btns">
-            <button class="nav-btn" onclick="toggleCurr()">💰 صرف</button>
-            <button class="nav-btn" onclick="adminLogin()">⚙️</button>
+        <div class="header-top">
+            <div class="logo-area">
+                <img src="logo-puncakgo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Puncak Go ✈️</span>
+            </div>
+            <div class="header-tools">
+                <select id="lang-select" onchange="changeLanguage()">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                    <option value="id">Indonesia</option>
+                </select>
+                <button class="tool-btn" onclick="openCurrency()">💰 <span id="txt-curr">صرف</span></button>
+                <button class="premium-btn">💎 <span id="txt-premium">بريميوم</span></button>
+            </div>
         </div>
     </header>
 
-    <div class="discount-bar">
-        ✨ اطلب من بونشاك قو واحصل على 10% تخفيض من فاتورتك ✨
-    </div>
-
-    <section id="sec-home" class="active-sec">
-        <div class="hero-container" style="text-align:center; padding:20px;">
-            <h1>مرحباً بك في كوتا بونجا</h1>
-            <p>بوابتك الذكية والاحترافية لخدمات بونشاك</p>
-        </div>
-        
-        <div class="grid">
-            <div class="card" onclick="nav('sec-villas')"><h2>إيجار فلل</h2></div>
-            <div class="card" onclick="nav('sec-cars')"><h2>تأجير سيارات</h2></div>
-            <div class="card" onclick="nav('sec-tours')"><h2>خدمات سياحية</h2></div>
+    <main class="content">
+        <div class="welcome-box">
+            <h1 id="welcome-title">مرحباً بك في كوتا بونجا</h1>
+            <div class="ticker-wrap">
+                <div class="ticker">
+                    <span id="promo-text">✨ عرض خاص: احجز الآن واحصل على خصم 10% على جميع الخدمات ✨</span>
+                </div>
+            </div>
         </div>
 
-        <button class="other-services-btn" onclick="nav('sec-others')">
-            ➕ خدمات أخرى (مطاعم، بقالات، طباخ...)
-        </button>
-    </section>
-
-    <section id="sec-villas" style="display:none; padding:20px;">
-        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-        <div style="position:relative; margin-top:10px;">
-            <button class="vip-float-btn" style="position:absolute; top:10px; left:50%; transform:translateX(-50%); z-index:5; background:#000; color:#d4af37; border:1px solid #d4af37; padding:10px 20px; border-radius:20px;">🏆 Villa VIP</button>
-            <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border-radius:15px; border:0;"></iframe>
+        <div class="services-grid">
+            <div class="service-card" onclick="openSection('villas')">
+                <div class="card-icon">🏘️</div>
+                <h3 id="srv-villas">إيجار فلل</h3>
+            </div>
+            <div class="service-card" onclick="openSection('cars')">
+                <div class="card-icon">🚗</div>
+                <h3 id="srv-cars">تأجير سيارات</h3>
+            </div>
+            <div class="service-card" onclick="openSection('tours')">
+                <div class="card-icon">🗺️</div>
+                <h3 id="srv-tours">خدمات سياحية</h3>
+            </div>
         </div>
-    </section>
 
-    <section id="sec-cars" style="display:none; padding:20px;">
-        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-        <h2 style="text-align:center; color:#d4af37;">خيارات السيارات</h2>
-        <div class="car-option-box" onclick="showCarBooking('with-driver')" style="background:#fff; color:#333; padding:20px; border-radius:15px; margin:10px 0; text-align:center;">
-            <h3>🚗 مع سائق خاص</h3>
-            <p>سائقين محترفين لخدمتكم طوال اليوم.</p>
+        <button class="other-btn" id="btn-others">➕ خدمات أخرى (مطاعم، حلاق...)</button>
+    </main>
+
+    <footer>
+        <p id="txt-footer">Puncak Go - جميع الحقوق محفوظة 2026</p>
+        <a href="#" id="txt-terms">الشروط والأحكام</a>
+    </footer>
+
+    <nav class="bottom-nav">
+        <div class="nav-item" onclick="goHome()">
+            <span>🏠</span>
+            <p id="nav-home">الهوم</p>
         </div>
-        <div class="car-option-box" onclick="showCarBooking('no-driver')" style="background:#fff; color:#333; padding:20px; border-radius:15px; margin:10px 0; text-align:center;">
-            <h3>🔑 بدون سائق</h3>
-            <p>يرجى التواصل لتوضيح الشروط والقوانين.</p>
+        <div class="nav-item" onclick="openHistory()">
+            <span>📜</span>
+            <p id="nav-history">الهيستوري</p>
         </div>
-    </section>
+    </nav>
 
-    <section id="sec-others" style="display:none; padding:20px;">
-        <button class="nav-btn" onclick="nav('sec-home')">⬅️ رجوع</button>
-        <h2 style="color:#d4af37; text-align:center;">خدمات إضافية</h2>
-        <div class="grid">
-            <div class="card" onclick="sendWA('مطعم عربي')">🍴 مطاعم عربية</div>
-            <div class="card" onclick="sendWA('طباخ خاص')">👨‍🍳 طباخ خاص</div>
-            <div class="card" onclick="sendWA('مسلخ فريش')">🥩 لحوم فريش</div>
-        </div>
-    </section>
-
-    <script>
-        function nav(secId) {
-            document.querySelectorAll('section').forEach(s => s.style.display = 'none');
-            document.getElementById(secId).style.display = 'block';
-        }
-
-        function showCarBooking(type) {
-            if(type === 'with-driver') {
-                alert("نوفر لكم أفضل السيارات مع سائقين يجيدون التعامل مع الضيوف العرب.");
-            } else {
-                alert("يرجى التواصل مع خدمة العملاء لتوضيح شروط التأجير بدون سائق.");
-            }
-        }
-
-        function sendWA(service) {
-            window.open(`https://wa.me/رقمك_هنا?text=استفسار عن ${service}`);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
