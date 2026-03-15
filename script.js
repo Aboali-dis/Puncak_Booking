@@ -5,22 +5,22 @@ const translations = {
         villas: "إيجار فلل",
         cars: "تأجير سيارات",
         tours: "خدمات سياحية",
-        others: "➕ خدمات أخرى (مطاعم، بقالات...)",
+        others: "➕ خدمات أخرى (مطاعم، بقالات، طباخ...)",
         about_t: "عن Puncak Go",
-        about_d: "نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الخدمات السياحية.",
+        about_d: "نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الفلل والسيارات والخدمات السياحية بأعلى معايير الجودة والاحترافية لضمان راحة عائلاتكم.",
         home: "الهوم",
         terms: "الشروط والاحكام",
         history: "الهيستوري"
     },
     en: {
         welcome: "Welcome to Kota Bunga",
-        promo: "✨ Get 10% discount on your bill with Puncak Go ✨",
+        promo: "✨ Order from Puncak Go and get 10% discount ✨",
         villas: "Rent Villas",
         cars: "Car Rental",
-        tours: "Tours",
-        others: "➕ Other Services (Food, Shops...)",
+        tours: "Tour Services",
+        others: "➕ Other Services (Restaurants, Shops...)",
         about_t: "About Puncak Go",
-        about_d: "Your partner in Puncak, providing the best villas and travel services.",
+        about_d: "Your partner in Puncak, providing luxury villas and professional travel services for your family comfort.",
         home: "Home",
         terms: "Terms",
         history: "History"
@@ -44,16 +44,16 @@ function changeLanguage() {
     document.getElementById('main-html').dir = (lang === 'ar') ? 'rtl' : 'ltr';
 }
 
-// Slider logic
-let cur = 0;
+// Slider
+let current = 0;
 const slides = document.querySelectorAll('.slide');
 setInterval(() => {
-    slides[cur].classList.remove('active');
-    cur = (cur + 1) % slides.length;
-    slides[cur].classList.add('active');
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
 }, 7000);
 
 function toggleOthers() {
-    const m = document.getElementById('others-modal');
+    const m = document.getElementById('modal-others');
     m.style.display = (m.style.display === 'block') ? 'none' : 'block';
 }
