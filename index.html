@@ -1,117 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ar" dir="rtl">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PuncakGo</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuncakGo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ===== Top Bar ===== -->
+    <div class="top-bar">
+        <div class="top-btns">
+            <button class="premium-btn">💎 بريميوم</button>
+            <button class="currency-btn" onclick="toggleConverter()">💰 صرف</button>
+        </div>
+        
+        <select id="language" onchange="changeLanguage()">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="id">Indonesia</option>
+        </select>
+    </div>
 
-<div class="top-bar">
+    <div class="logo-section">
+        <img src="logo-puncakgo.png" class="logo" alt="Puncak Go">
+        <h1 class="site-title">PuncakGo</h1>
+        <p id="tagline">بوابتك للفلل، السيارات، والجولات في بونشاك</p>
+    </div>
 
-<select id="currency">
-<option value="usd">USD</option>
-<option value="sar">SAR</option>
-<option value="eur">EUR</option>
-</select>
+    <main class="main-content">
+        
+        <div class="welcome-area">
+            <h2 id="welcome">مرحباً بك في بونشاك</h2>
+            <p id="desc">احجز فيلتك، سيارتك، واستمتع برحلتك معنا</p>
+        </div>
 
-<select id="language">
-<option value="en">English</option>
-<option value="ar">العربية</option>
-<option value="id">Indonesia</option>
-</select>
+        <div class="services-grid">
+            <button class="service-card card-right" id="villaBtn">
+                <span class="icon">🏡</span>
+                <p id="txt-villa">إيجار فلل</p>
+            </button>
 
-</div>
+            <button class="service-card card-left" id="carBtn">
+                <span class="icon">🚗</span>
+                <p id="txt-car">تأجير سيارات</p>
+            </button>
 
+            <button class="service-card card-bottom" id="tourBtn">
+                <span class="icon">🗺</span>
+                <p id="txt-tour">جولات سياحية</p>
+            </button>
+        </div>
 
-<!-- ===== Logo ===== -->
+        <button class="others-btn" onclick="openOthers()">
+            <span id="txt-others">+ خدمات أخرى (مطاعم، بقالات...)</span>
+        </button>
 
-<div class="logo-section">
+        <div class="offer-box glass" id="offer">
+            ✨ احجز فيلا + سيارة واحصل على خصم 10% ✨
+        </div>
 
-<img src="logo-puncakgo.png" class="logo">
+        <section class="about-section glass">
+            <h3 id="about-title">عن Puncak Go</h3>
+            <p id="about-text">نحن رفاقكم في رحلتكم إلى بونشاك، نوفر لكم أفضل الخدمات السياحية بأعلى معايير الجودة لضمان راحة عائلاتكم.</p>
+        </section>
 
-<h1>PuncakGo</h1>
+    </main>
 
-<p id="tagline">
-Your gateway to villas, cars & tours in Puncak
-</p>
+    <div id="converter" class="modal">
+        <div class="modal-content glass">
+            <span class="close" onclick="toggleConverter()">&times;</span>
+            <h3>محول العملات الذكي</h3>
+            <input type="number" id="amount" placeholder="أدخل المبلغ بالريال">
+            <p id="result">النتيجة ستظهر هنا...</p>
+        </div>
+    </div>
 
-</div>
+    <div class="bottom-nav">
+        <button onclick="goHome()">🏠 <p>الرئيسية</p></button>
+        <button onclick="openTerms()">📜 <p>الشروط</p></button>
+        <button onclick="openHistory()">📊 <p>السجل</p></button>
+    </div>
 
-
-<!-- ===== Main Box ===== -->
-
-<div class="main-glass glass">
-
-<h2 id="welcome">
-Welcome to Puncak
-</h2>
-
-<p id="desc">
-Book your villa, car, and enjoy your trip
-</p>
-
-<div class="buttons">
-
-<button class="service-btn" id="villaBtn">
-🏡 Rent Villa
-</button>
-
-<button class="service-btn" id="carBtn">
-🚗 Rent Car
-</button>
-
-<button class="service-btn" id="tourBtn">
-🗺 Tours
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ===== Offer ===== -->
-
-<div class="offer-box glass" id="offer">
-
-✨ Book Villa + Car and get 10% Discount
-
-</div>
-
-
-<!-- ===== Currency Converter Popup ===== -->
-
-<div id="converter" class="converter">
-
-<input type="number" id="amount" placeholder="Enter amount">
-
-<p id="result"></p>
-
-</div>
-
-
-<!-- ===== Bottom Nav ===== -->
-
-<div class="bottom-nav">
-
-<button id="homeBtn">🏠 Home</button>
-<button id="termsBtn">📜 Terms</button>
-<button id="historyBtn">📊 History</button>
-
-</div>
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
