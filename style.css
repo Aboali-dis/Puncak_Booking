@@ -2,54 +2,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial;
 }
 
 body {
     background-image: url("puncak-background.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* لتثبيت الخلفية عند التمرير */
+    background-attachment: fixed; /* لتظل الخلفية ثابتة وواضحة خلف الحقول */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff; /* جعل الخط الافتراضي أبيض ليتناسب مع الخلفيات الداكنة */
 }
 
-/* TOP BAR - الهيدر بلون مختلف وحجم أكبر */
+/* TOP BAR - تعديل اللون ليظهر الشعار */
 .topbar {
-    width: 100%; /* عرض كامل للهيدر */
-    background: rgba(0, 0, 0, 0.7); /* خلفية داكنة لإبراز الشعار */
-    border-bottom: 2px solid #d4af37; /* إطار ذهبي سفلي */
-    padding: 20px 5%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4); /* خلفية داكنة خفيفة لتمييز الهيدر */
+    border-radius: 12px;
+    color: #fff;
 }
 
-/* LOGO - تحسين ظهور الشعار */
+/* LOGO */
 .logo {
-    width: 450px; /* زيادة الحجم كما طلبت */
-    max-width: 85%;
-    display: block;
-    margin: 0 auto;
+    width: 380px;
+    max-width: 90%;
+    margin-top: 10px;
 }
 
 /* HERO IMAGE */
 .hero {
     width: 90%;
-    height: 220px; /* زيادة الارتفاع قليلاً */
+    height: 180px;
     background-image: url("puncak-background.jpg");
     background-size: cover;
     background-position: center;
     border-radius: 20px;
-    margin-top: 25px;
-    border: 2px solid #d4af37; /* برواز ذهبي */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    margin-top: 15px;
+    border: 2px solid #d4af37; /* برواز ذهبي للهيرو */
 }
 
-/* SERVICES - حقول الخدمات */
+/* SERVICES */
 .services {
     margin-top: 30px;
     width: 90%;
@@ -58,28 +56,22 @@ body {
     gap: 15px;
 }
 
-/* الكروت - تحويل الشفافية لشيء يبرز الخلفية */
+/* الكروت - شفافية داكنة مع برواز ذهبي */
 .card {
-    background: rgba(20, 20, 20, 0.6); /* خلفية داكنة تسمح برؤية ما خلفها بوضوح */
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.5); /* خلفية داكنة لتبرز الخلفية الأصلية للموقع */
+    backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 25px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
-    color: #f1f1f1;
-    border: 2px solid #d4af37; /* برواز ذهبي فخم */
-    text-align: center;
+    color: #d4af37; /* نص ذهبي */
+    border: 2px solid #d4af37; /* برواز ذهبي */
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.card:hover {
-    background: rgba(212, 175, 55, 0.2); /* تأثير ذهبي خفيف عند اللمس */
-    transform: translateY(-3px);
+    text-align: center;
 }
 
 .center {
-    grid-column: 1 / 3;
+    grid-column: 1/3;
 }
 
 /* EXTRA BUTTON - حقل الخدمات الأخرى */
@@ -89,40 +81,31 @@ body {
     padding: 20px;
     border-radius: 15px;
     border: 2px solid #d4af37; /* برواز ذهبي */
-    background: rgba(0, 0, 0, 0.6);
-    color: #d4af37; /* نص ذهبي ليكون واضحاً جداً */
-    font-size: 20px;
+    background: rgba(0, 0, 0, 0.6); /* داكن أكثر للوضوح */
+    color: #fff;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
 }
 
-/* BOTTOM NAV - البار السفلي بألوان مختلفة */
+/* BOTTOM NAV - ألوان مختلفة كما طلبت */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: #1a1a1a; /* لون داكن مختلف تماماً عن الهيدر */
+    background: #111; /* أسود ملكي */
     padding: 15px;
-    border-top: 2px solid #d4af37; /* برواز ذهبي علوي */
+    border-top: 2px solid #d4af37; /* خط ذهبي علوي */
 }
 
 .bottom-nav a {
-    color: #d4af37; /* نصوص ذهبية للروابط */
+    color: #d4af37; /* نصوص ذهبية */
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
-}
-
-/* قسم "عن الموقع" - مساحة للنص قبل الفوتر */
-.about-site {
-    width: 90%;
-    margin: 40px 0 100px 0; /* مسافة كافية من الأسفل للبار */
-    padding: 20px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
-    text-align: center;
-    line-height: 1.6;
+    border: 1px solid #d4af37; /* برواز صغير لكل زر تحت */
+    padding: 5px 10px;
+    border-radius: 5px;
 }
