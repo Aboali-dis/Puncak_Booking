@@ -2,18 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-image: url("puncak-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /* تم إزالة الخلفية المصورة واستبدالها بلون سادة */
+    background-color: #f5f5f7; /* لون رمادي فاتح جداً (أو أبيض #ffffff) */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around; /* توزيع العناصر بشكل متوازن */
 }
 
 /* TOP BAR */
@@ -23,66 +22,68 @@ body {
     justify-content: space-between;
     margin-top: 15px;
     padding: 12px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
     border-radius: 12px;
-    border: 1px solid #d4af37;
-    color: #fff;
+    border: 1px solid #d4af37; /* برواز ذهبي (اختياري) */
+    color: #444; /* لون نص داكن */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* LOGO SECTION - اسم الملف logo.png وتكبيره */
+/* LOGO SECTION */
 .logo-section {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .logo {
-    width: 450px; /* حجم كبير للشعار */
+    width: 400px;
     height: auto;
 }
 
-/* SERVICES - الحقول في منتصف الصفحة */
+/* SERVICES */
 .services {
-    margin-top: 60px; /* مسافة تجعلها تتوسط الشاشة بين الشعار والأسفل */
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-/* الكروت - حجم كبير لإظهار أيقونة الفلة والسيارة بوضوح */
+/* الكروت الذهبية الكبيرة */
 .card {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    background: #fff; /* خلفية بيضاء سادة */
     border-radius: 15px;
-    padding: 40px 15px; /* تكبير الحقل جداً لبروز الأيقونات */
-    font-size: 22px; /* خط كبير وواضح */
+    padding: 30px 15px; /* حجم كبير */
+    font-size: 18px;
     font-weight: bold;
-    color: #d4af37;
-    border: 2px solid #d4af37;
-    cursor: pointer;
+    color: #d4af37; /* نص ذهبي */
+    border: 2px solid #d4af37; /* برواز ذهبي */
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف للعمق */
+    cursor: pointer;
 }
 
 .center {
     grid-column: 1/3;
 }
 
-/* EXTRA BUTTON - حقل الخدمات الأخرى بنفس الحجم الكبير */
-.extra {
-    margin-top: 15px;
+/* OTHER SERVICES */
+.extra-section {
     width: 90%;
-    padding: 30px; 
+}
+
+.extra {
+    width: 100%;
+    padding: 25px; /* حجم كبير */
     border-radius: 15px;
     border: 2px solid #d4af37;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    font-size: 22px;
+    background: #fff;
+    color: #d4af37;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    margin-bottom: 110px; /* ترك مساحة للبار السفلي */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* BOTTOM NAV */
@@ -92,16 +93,22 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: #000;
+    background: #fff;
     padding: 15px;
     border-top: 2px solid #d4af37;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .bottom-nav a {
-    color: #d4af37;
+    color: #444; /* لون نص داكن */
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid #d4af37;
-    padding: 5px 12px;
+    border: 1px solid transparent; /* برواز شفاف في البداية */
+    padding: 5px 10px;
+}
+
+.bottom-nav a:hover {
+    color: #d4af37;
+    border: 1px solid #d4af37; /* برواز ذهبي عند الوقوف على الرابط */
     border-radius: 5px;
 }
