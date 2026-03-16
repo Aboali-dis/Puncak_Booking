@@ -14,98 +14,69 @@
 
 <body>
 
-<!-- ===== Top Bar ===== -->
+
+<!-- ===== TOP BAR ===== -->
 
 <div class="top-bar">
 
-<select id="currency">
-<option value="usd">USD</option>
-<option value="sar">SAR</option>
-<option value="eur">EUR</option>
-</select>
+<button id="currencyBtn">💱</button>
 
 <select id="language">
+
 <option value="en">English</option>
 <option value="ar">العربية</option>
 <option value="id">Indonesia</option>
+
 </select>
 
 </div>
 
 
-<!-- ===== Logo ===== -->
+<!-- ===== LOGO ===== -->
 
 <div class="logo-section">
 
 <img src="logo-puncakgo.png" class="logo">
 
-<h1>PuncakGo</h1>
-
-<p id="tagline">
-Your gateway to villas, cars & tours in Puncak
-</p>
-
 </div>
 
 
-<!-- ===== Main Box ===== -->
+<!-- ===== SERVICES ===== -->
 
-<div class="main-glass glass">
+<div class="services">
 
-<h2 id="welcome">
-Welcome to Puncak
-</h2>
-
-<p id="desc">
-Book your villa, car, and enjoy your trip
-</p>
-
-<div class="buttons">
-
-<button class="service-btn" id="villaBtn">
+<button class="card" id="villaBtn">
 🏡 Rent Villa
 </button>
 
-<button class="service-btn" id="carBtn">
+<button class="card" id="carBtn">
 🚗 Rent Car
 </button>
 
-<button class="service-btn" id="tourBtn">
+<button class="card center" id="tourBtn">
 🗺 Tours
 </button>
 
 </div>
 
-</div>
+
+<!-- ===== EXTRA SERVICES ===== -->
+
+<button class="extra-btn" id="extraBtn">
+✨ Other Services
+</button>
 
 
-<!-- ===== Offer ===== -->
 
-<div class="offer-box glass" id="offer">
+<!-- ===== CURRENCY POPUP ===== -->
 
-✨ Book Villa + Car and get 10% Discount
-
-</div>
-
-
-<!-- ===== Currency Converter Popup ===== -->
-
-<div id="converter" class="converter">
+<div class="currency-box" id="currencyBox">
 
 <input type="number" id="amount" placeholder="Enter amount">
 
 <p id="result"></p>
 
-</div>
-
-
-<!-- ===== Bottom Nav ===== -->
-
-<div class="bottom-nav">
-
-<button id="homeBtn">🏠 Home</button>
-<button id="termsBtn">📜 Terms</button>
-<button id="historyBtn">📊 History</button>
+<button onclick="closeCurrency()">Close</button>
 
 </div>
 
