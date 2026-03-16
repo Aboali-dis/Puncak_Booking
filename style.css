@@ -10,9 +10,6 @@ body{
 background-image:url("puncak-background.jpg");
 background-size:cover;
 background-position:center;
-background-attachment:fixed;
-
-color:white;
 
 min-height:100vh;
 
@@ -22,94 +19,63 @@ align-items:center;
 
 }
 
-body::before{
-
-content:"";
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,0.55);
-
-z-index:-1;
-
-}
-
 
 /* TOP BAR */
 
-.top-bar{
+.topbar{
 
-width:100%;
+width:90%;
 
 display:flex;
 
 justify-content:space-between;
 
-padding:12px 20px;
+margin-top:15px;
 
-background:rgba(0,0,0,0.7);
-
-}
-
-#currencyBtn{
-
-background:transparent;
-
-border:none;
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
+color:#444;
 
 }
-
-select{
-
-background:transparent;
-
-border:none;
-
-color:white;
-
-}
-
 
 
 /* LOGO */
 
-.logo-section{
+.logo{
 
-margin-top:20px;
+width:380px;
 
-text-align:center;
+max-width:90%;
+
+margin-top:10px;
+
+}
+
+
+/* HERO IMAGE */
+
+.hero{
 
 width:90%;
 
+height:180px;
+
+background-image:url("puncak-background.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+border-radius:20px;
+
+margin-top:15px;
+
 }
-
-.logo{
-
-width:95%;
-
-max-width:450px;
-
-}
-
 
 
 /* SERVICES */
 
 .services{
 
-margin-top:40px;
+margin-top:30px;
 
 width:90%;
 
@@ -117,25 +83,23 @@ display:grid;
 
 grid-template-columns:1fr 1fr;
 
-gap:20px;
+gap:15px;
 
 }
 
 .card{
 
-background:rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.6);
 
-backdrop-filter:blur(15px);
+backdrop-filter:blur(10px);
 
-border:none;
+border-radius:15px;
 
-border-radius:18px;
+padding:25px;
 
-padding:35px;
+font-size:16px;
 
-font-size:18px;
-
-color:white;
+border:1px solid #e5c36a;
 
 cursor:pointer;
 
@@ -148,71 +112,27 @@ grid-column:1/3;
 }
 
 
-
 /* EXTRA BUTTON */
 
-.extra-btn{
+.extra{
 
-margin-top:35px;
+margin-top:25px;
 
 width:90%;
 
-padding:22px;
+padding:20px;
 
-border:none;
+border-radius:15px;
 
-border-radius:18px;
+border:1px solid #e5c36a;
 
-font-size:20px;
+background:rgba(255,255,255,0.7);
 
-font-weight:bold;
-
-background:linear-gradient(45deg,#d4af37,#f5d97b);
-
-color:black;
+font-size:18px;
 
 cursor:pointer;
 
 }
-
-
-
-/* CURRENCY WINDOW */
-
-.currency-box{
-
-display:none;
-
-position:fixed;
-
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
-
-background:rgba(0,0,0,0.9);
-
-padding:30px;
-
-border-radius:15px;
-
-text-align:center;
-
-}
-
-.currency-box input{
-
-padding:10px;
-
-border:none;
-
-border-radius:8px;
-
-margin-bottom:10px;
-
-}
-
 
 
 /* BOTTOM NAV */
@@ -229,22 +149,8 @@ display:flex;
 
 justify-content:space-around;
 
-background:rgba(0,0,0,0.8);
+background:rgba(255,255,255,0.9);
 
 padding:10px;
-
-}
-
-.bottom-nav button{
-
-background:none;
-
-border:none;
-
-color:white;
-
-font-size:16px;
-
-cursor:pointer;
 
 }
