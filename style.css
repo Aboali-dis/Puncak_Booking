@@ -9,13 +9,10 @@ body {
     background-image: url("puncak-background.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* هذا يضمن توزيع العناصر بين أعلى وأسفل الصفحة */
-    justify-content: space-between; 
 }
 
 /* TOP BAR */
@@ -24,64 +21,53 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-    padding: 12px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 12px;
-    border: 1px solid #d4af37;
-    color: #fff;
+    color: #444;
 }
 
-/* LOGO - تكبير الشعار وجعله في المنتصف */
+/* LOGO - هنا التعديل لتكبير الشعار */
 .logo {
-    width: 500px; /* تكبير الحجم كما طلبت */
-    max-width: 95%; /* لضمان عدم خروجه عن شاشة الهاتف */
-    height: auto;
-    margin-top: 30px; /* إعطاؤه مساحة في الأعلى */
+    width: 600px; /* كبّرته لك ليكون واضح جداً */
+    max-width: 95%;
+    margin-top: 20px;
 }
 
-/* CONTAINER FOR SERVICES - دفع العناصر للأسفل */
-.main-content {
-    width: 90%;
-    margin-top: auto; /* دفع كل ما تحته إلى أسفل الصفحة */
-    margin-bottom: 90px; /* ترك مسافة لكي لا يغطي عليه البار السفلي */
-}
-
+/* SERVICES - هنا التعديل لنقلهم للأسفل */
 .services {
+    margin-top: auto; /* هذا يدفعه لآخر الصفحة فوق البار السفلي */
+    margin-bottom: 20px; 
+    width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 15px;
 }
 
-/* الكروت الذهبية */
 .card {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 20px;
+    padding: 25px;
     font-size: 16px;
-    font-weight: bold;
-    color: #d4af37; /* نص ذهبي واضح */
-    border: 2px solid #d4af37;
-    text-align: center;
+    border: 1px solid #e5c36a;
     cursor: pointer;
+    text-align: center;
 }
 
 .center {
     grid-column: 1/3;
 }
 
-/* EXTRA BUTTON - Other Services */
+/* EXTRA BUTTON */
 .extra {
-    margin-top: 12px;
-    width: 100%; /* تأخذ عرض الحاوية بالكامل */
-    padding: 18px;
+    margin-top: 10px;
+    width: 90%;
+    padding: 20px;
     border-radius: 15px;
-    border: 2px solid #d4af37;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
+    border: 1px solid #e5c36a;
+    background: rgba(255, 255, 255, 0.7);
     font-size: 18px;
-    font-weight: bold;
+    cursor: pointer;
     text-align: center;
+    margin-bottom: 80px; /* مساحة عشان ما يغطي عليه البار السفلي */
 }
 
 /* BOTTOM NAV */
@@ -91,16 +77,6 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: #000;
-    padding: 15px;
-    border-top: 2px solid #d4af37;
-}
-
-.bottom-nav a {
-    color: #d4af37;
-    text-decoration: none;
-    font-weight: bold;
-    border: 1px solid #d4af37;
-    padding: 6px 12px;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
 }
