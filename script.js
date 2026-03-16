@@ -1,122 +1,79 @@
-// ===== Language System =====
+// ===== LANGUAGE SYSTEM =====
 
 const translations = {
 
 en:{
-
-title:"Your gateway to villas, cars & tours in Puncak",
-
+tagline:"Your gateway to villas, cars & tours in Puncak",
 welcome:"Welcome to Puncak",
-
 desc:"Book your villa, car, and enjoy your trip",
-
 villa:"🏡 Rent Villa",
-
 car:"🚗 Rent Car",
-
 tour:"🗺 Tours",
-
-offer:"✨ Book Villa + Car and get 10% Discount",
-
-more:"More Services",
-
-home:"🏠 Home",
-
-terms:"📜 Terms",
-
-history:"📊 History"
-
+offer:"✨ Book Villa + Car and get 10% Discount"
 },
 
 ar:{
-
-title:"بوابتك لحجز الفلل والسيارات والرحلات في بونشاك",
-
+tagline:"بوابتك لحجز الفلل والسيارات في بونشاك",
 welcome:"مرحبا بكم في بونشاك",
-
 desc:"احجز الفيلا أو السيارة واستمتع برحلتك",
-
 villa:"🏡 حجز فيلا",
-
 car:"🚗 حجز سيارة",
-
 tour:"🗺 رحلات",
-
-offer:"✨ احجز فيلا + سيارة واحصل على خصم 10٪",
-
-more:"خدمات إضافية",
-
-home:"🏠 الرئيسية",
-
-terms:"📜 الشروط",
-
-history:"📊 السجل"
-
+offer:"✨ احجز فيلا + سيارة واحصل على خصم 10٪"
 },
 
 id:{
-
-title:"Gerbang Anda ke villa, mobil & tur di Puncak",
-
+tagline:"Gerbang Anda ke villa dan mobil di Puncak",
 welcome:"Selamat datang di Puncak",
-
 desc:"Pesan villa atau mobil dan nikmati perjalanan Anda",
-
 villa:"🏡 Sewa Villa",
-
 car:"🚗 Sewa Mobil",
-
 tour:"🗺 Tur",
-
-offer:"✨ Pesan Villa + Mobil dapat Diskon 10%",
-
-more:"Layanan Lain",
-
-home:"🏠 Beranda",
-
-terms:"📜 Syarat",
-
-history:"📊 Riwayat"
-
+offer:"✨ Pesan Villa + Mobil dapat Diskon 10%"
 }
 
 };
 
-// ===== Change Language =====
+document.getElementById("language").onchange=function(){
 
-const langSelect=document.getElementById("language");
+let lang=this.value;
 
-langSelect.addEventListener("change",function(){
+document.getElementById("tagline").innerText=translations[lang].tagline;
+document.getElementById("welcome").innerText=translations[lang].welcome;
+document.getElementById("desc").innerText=translations[lang].desc;
 
-const lang=this.value;
+document.getElementById("villaBtn").innerText=translations[lang].villa;
+document.getElementById("carBtn").innerText=translations[lang].car;
+document.getElementById("tourBtn").innerText=translations[lang].tour;
 
-document.querySelector(".logo-section p").innerText=translations[lang].title;
+document.getElementById("offer").innerText=translations[lang].offer;
 
-document.querySelector(".main-glass h2").innerText=translations[lang].welcome;
-
-document.querySelector(".main-glass p").innerText=translations[lang].desc;
-
-document.querySelectorAll(".service-btn")[0].innerText=translations[lang].villa;
-
-document.querySelectorAll(".service-btn")[1].innerText=translations[lang].car;
-
-document.querySelectorAll(".service-btn")[2].innerText=translations[lang].tour;
-
-document.querySelector(".offer-box").innerText=translations[lang].offer;
-
-document.querySelector(".extra-btn").innerText=translations[lang].more;
-
-document.querySelectorAll(".bottom-nav button")[0].innerText=translations[lang].home;
-
-document.querySelectorAll(".bottom-nav button")[1].innerText=translations[lang].terms;
-
-document.querySelectorAll(".bottom-nav button")[2].innerText=translations[lang].history;
-
-});
+}
 
 
-let result = amount * rate;
+// ===== CURRENCY CONVERTER =====
 
-alert("Result in IDR: " + result.toLocaleString());
+const currency=document.getElementById("currency");
+const converter=document.getElementById("converter");
+const amount=document.getElementById("amount");
+const result=document.getElementById("result");
 
-});
+currency.onclick=function(){
+
+converter.style.display="block";
+
+}
+
+amount.oninput=function(){
+
+let rate=1;
+
+if(currency.value==="usd") rate=15500;
+if(currency.value==="sar") rate=4100;
+if(currency.value==="eur") rate=16800;
+
+let total=amount.value*rate;
+
+result.innerText="IDR "+total.toLocaleString();
+
+}
