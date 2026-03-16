@@ -1,105 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>PuncakGo</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-
 <!-- TOP BAR -->
 
-<div class="top-bar">
+<div class="topbar">
 
-<button id="currencyBtn">💱</button>
+<div>💱 Currency</div>
 
-<select id="language">
-
-<option value="en">English</option>
-<option value="ar">العربية</option>
-<option value="id">Indonesia</option>
-
+<select>
+<option>English</option>
+<option>العربية</option>
+<option>Indonesia</option>
 </select>
 
 </div>
-
 
 
 <!-- LOGO -->
 
 <div class="logo-section">
 
-<img src="logo-puncakgo.png" class="logo">
+<img src="logo.png" class="logo">
 
 </div>
 
 
+<!-- HERO IMAGE -->
 
-<!-- MAIN SERVICES -->
+<div class="hero"></div>
+
+
+<!-- SERVICES -->
 
 <div class="services">
 
-<button class="card" id="villaBtn">
-🏡 Rent Villa
-</button>
+<button class="card">🏡 Rent Villa</button>
 
-<button class="card" id="carBtn">
-🚗 Rent Car
-</button>
+<button class="card">🚗 Rent Car</button>
 
-<button class="card center" id="tourBtn">
-🗺 Tours
-</button>
+<button class="card center">🗺 Tours</button>
 
 </div>
-
 
 
 <!-- OTHER SERVICES -->
 
-<button class="extra-btn" id="extraBtn">
-✨ Other Services
+<button class="extra">
+Other Services
 </button>
-
-
-
-<!-- CURRENCY WINDOW -->
-
-<div class="currency-box" id="currencyBox">
-
-<input type="number" id="amount" placeholder="Enter amount">
-
-<p id="result"></p>
-
-<button onclick="closeCurrency()">Close</button>
-
-</div>
-
 
 
 <!-- BOTTOM NAV -->
 
 <div class="bottom-nav">
 
-<button>🏠 Home</button>
-
-<button>📜 Rules</button>
-
-<button>📊 History</button>
+<button>Home</button>
+<button>Rules</button>
+<button>History</button>
 
 </div>
 
-
-<script src="script.js"></script>
-
 </body>
-
 </html>
