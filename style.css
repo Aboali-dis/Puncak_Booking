@@ -1,82 +1,196 @@
-/* الخلفية العامة والتعتيم */
-body {
-    background-image: url("puncak-background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
-/* الشريط العلوي المنفصل */
-.top-bar {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1.5px solid #d4af37;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+body{
+
+background-image:url("puncak-background.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:white;
+
+min-height:100vh;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
 }
 
-/* تنسيق الكلام الترحيبي (حر خارج الصناديق) */
-.welcome-area {
-    text-align: center;
-    margin: 30px 0;
-    padding: 0 15px;
+/* dark overlay */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.55);
+
+z-index:-1;
+
 }
 
-#welcome { font-size: 1.8rem; text-shadow: 2px 2px 4px #000; }
-#desc { font-size: 1rem; opacity: 0.9; }
+/* top bar */
 
-/* توزيع الحقول (يمين، يسار، تحت) ببرواز ذهبي */
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    width: 90%;
-    max-width: 400px;
+.top-bar{
+
+width:90%;
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:20px;
+
 }
 
-.service-card {
-    background: rgba(0, 0, 0, 0.6); /* خلفية داكنة شفافة */
-    backdrop-filter: blur(10px);
-    border: 1.5px solid #d4af37; /* برواز ذهبي */
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
+/* remove white fields */
+
+select{
+
+background:transparent;
+border:none;
+color:white;
+font-size:14px;
+outline:none;
+
 }
 
-.card-bottom {
-    grid-column: span 2; /* الحقل الثالث تحتهم بعرض كامل */
+/* logo */
+
+.logo-section{
+
+text-align:center;
+margin-top:30px;
+
 }
 
-/* صندوق العرض المستقل */
-.offer-box {
-    margin: 20px 0;
-    width: 90%;
-    max-width: 400px;
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid #d4af37;
-    padding: 15px;
-    border-radius: 50px;
-    text-align: center;
+.logo{
+
+width:220px;
+
 }
 
-/* شريط التنقل السفلي الثابت */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #000;
-    display: flex;
-    justify-content: space-around;
-    padding: 12px 0;
-    border-top: 2px solid #d4af37;
+/* glass */
+
+.glass{
+
+background:rgba(255,255,255,0.12);
+
+backdrop-filter:blur(15px);
+
+border-radius:15px;
+
+padding:25px;
+
+}
+
+/* main */
+
+.main-glass{
+
+width:85%;
+margin-top:30px;
+text-align:center;
+
+}
+
+.buttons{
+
+margin-top:20px;
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+}
+
+/* golden buttons */
+
+.service-btn{
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+background:linear-gradient(45deg,#d4af37,#f5d97b);
+
+color:black;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* offer */
+
+.offer-box{
+
+margin-top:25px;
+width:85%;
+text-align:center;
+
+}
+
+/* bottom nav */
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:15px;
+
+width:90%;
+
+display:flex;
+
+justify-content:space-around;
+
+}
+
+/* currency converter */
+
+.converter{
+
+display:none;
+
+position:fixed;
+
+bottom:90px;
+
+background:rgba(0,0,0,0.8);
+
+padding:20px;
+
+border-radius:12px;
+
+}
+
+.converter input{
+
+padding:10px;
+
+border:none;
+
+border-radius:8px;
+
+margin-bottom:10px;
+
 }
