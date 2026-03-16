@@ -1,37 +1,116 @@
-/* الكروت - تحويلها إلى شكل دائري */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    /* خلفية سادة تعطي مظهر عصري ونظيف */
+    background-color: #f5f5f7; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* TOP BAR */
+.topbar {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #d4af37;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* LOGO SECTION */
+.logo-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.logo {
+    width: 320px; /* حجم الشعار الجديد Puncak Go */
+    height: auto;
+}
+
+/* SERVICES - الحقول الدائرية */
+.services {
+    margin-top: 50px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    justify-items: center; /* توسيط الدوائر */
+}
+
+/* تصميم الدائرة للحقول */
 .card {
-    background: #fff; 
-    /* هذا الرقم يجعلها دائرية تماماً إذا كان الطول والعرض متساويين */
-    border-radius: 50%; 
-    width: 140px;  /* تحديد عرض ثابت */
-    height: 140px; /* تحديد طول ثابت متساوي مع العرض */
+    background: #fff;
+    width: 150px; /* عرض متساوي مع الطول */
+    height: 150px;
+    border-radius: 50%; /* هذا ما يجعلها دائرية تماماً */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: #d4af37; 
+    color: #d4af37;
     border: 2px solid #d4af37;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     cursor: pointer;
-    margin: auto; /* لتوسيط الدوائر داخل الشبكة */
+    text-align: center;
+    padding: 10px;
 }
 
-/* تعديل شبكة الخدمات لتناسب الدوائر */
-.services {
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-/* حقل التورز والخدمات الأخرى يفضل أن يبقى بيضاوي (Oval) وليس دائري تماماً */
-/* لكي يستوعب النص الطويل بشكل مريح */
+/* حقل التورز يفضل أن يكون بيضاوي لاستيعاب النص */
 .center {
     grid-column: 1/3;
-    width: 100%; /* يأخذ العرض كاملاً */
-    height: 80px; /* طول أقل ليكون بيضاوي */
-    border-radius: 50px; /* زوايا منحنية جداً ليصبح بيضاوي */
+    width: 90%;
+    height: 80px;
+    border-radius: 50px; /* شكل بيضاوي */
+}
+
+/* EXTRA SERVICES */
+.extra {
+    margin-top: 25px;
+    width: 90%;
+    padding: 25px;
+    border-radius: 50px; /* شكل بيضاوي متناسق */
+    border: 2px solid #d4af37;
+    background: #fff;
+    color: #d4af37;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 100px;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+    padding: 15px;
+    border-top: 2px solid #d4af37;
+}
+
+.bottom-nav a {
+    color: #444;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
 }
