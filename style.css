@@ -1,20 +1,15 @@
-/* ===== Reset ===== */
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial;
 }
-
-/* ===== Background ===== */
 
 body{
 
 background-image:url("puncak-background.jpg");
 background-size:cover;
 background-position:center;
-background-repeat:no-repeat;
 background-attachment:fixed;
 
 color:white;
@@ -25,11 +20,9 @@ display:flex;
 flex-direction:column;
 align-items:center;
 
-position:relative;
-
 }
 
-/* ===== Dark Overlay ===== */
+/* dark overlay */
 
 body::before{
 
@@ -45,34 +38,11 @@ height:100%;
 
 background:rgba(0,0,0,0.55);
 
-z-index:0;
+z-index:-1;
 
 }
 
-body > *{
-
-position:relative;
-z-index:1;
-
-}
-
-/* ===== Glass ===== */
-
-.glass{
-
-background:rgba(255,255,255,0.12);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,0.2);
-
-border-radius:15px;
-
-padding:12px 18px;
-
-}
-
-/* ===== Top Bar ===== */
+/* top bar */
 
 .top-bar{
 
@@ -82,79 +52,76 @@ display:flex;
 
 justify-content:space-between;
 
-margin-top:15px;
+margin-top:20px;
 
 }
 
-/* ===== Select ===== */
+/* remove white fields */
 
 select{
 
 background:transparent;
-
 border:none;
-
 color:white;
-
 font-size:14px;
-
 outline:none;
-
-cursor:pointer;
 
 }
 
-/* ===== Logo ===== */
+/* logo */
 
 .logo-section{
 
 text-align:center;
-
-margin-top:40px;
+margin-top:30px;
 
 }
 
 .logo{
 
-width:120px;
-
-margin-bottom:10px;
+width:220px;
 
 }
 
-/* ===== Main Card ===== */
+/* glass */
+
+.glass{
+
+background:rgba(255,255,255,0.12);
+
+backdrop-filter:blur(15px);
+
+border-radius:15px;
+
+padding:25px;
+
+}
+
+/* main */
 
 .main-glass{
 
-margin-top:35px;
-
 width:85%;
-
+margin-top:30px;
 text-align:center;
 
-padding:30px;
-
 }
-
-/* ===== Buttons ===== */
 
 .buttons{
 
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
 margin-top:20px;
+
+display:flex;
+flex-direction:column;
+gap:12px;
 
 }
 
-/* ===== Service Buttons ===== */
+/* golden buttons */
 
 .service-btn{
 
-padding:14px;
+padding:15px;
 
 border:none;
 
@@ -162,69 +129,27 @@ border-radius:12px;
 
 font-size:16px;
 
-cursor:pointer;
-
 background:linear-gradient(45deg,#d4af37,#f5d97b);
 
 color:black;
 
 font-weight:bold;
 
-transition:0.3s;
+cursor:pointer;
 
 }
 
-.service-btn:hover{
-
-transform:scale(1.05);
-
-}
-
-/* ===== Offer ===== */
+/* offer */
 
 .offer-box{
 
 margin-top:25px;
-
-padding:15px;
-
-font-weight:bold;
-
+width:85%;
 text-align:center;
 
-width:85%;
-
 }
 
-/* ===== Extra Button ===== */
-
-.extra-services{
-
-margin-top:20px;
-
-}
-
-.extra-btn{
-
-padding:12px 25px;
-
-border:none;
-
-border-radius:12px;
-
-font-size:15px;
-
-color:black;
-
-cursor:pointer;
-
-background:linear-gradient(45deg,#d4af37,#f5d97b);
-
-font-weight:bold;
-
-}
-
-/* ===== Bottom Navigation ===== */
+/* bottom nav */
 
 .bottom-nav{
 
@@ -238,38 +163,34 @@ display:flex;
 
 justify-content:space-around;
 
-padding:12px;
+}
+
+/* currency converter */
+
+.converter{
+
+display:none;
+
+position:fixed;
+
+bottom:90px;
+
+background:rgba(0,0,0,0.8);
+
+padding:20px;
+
+border-radius:12px;
 
 }
 
-.bottom-nav button{
+.converter input{
 
-background:transparent;
+padding:10px;
 
 border:none;
 
-color:white;
+border-radius:8px;
 
-font-size:14px;
-
-cursor:pointer;
-
-}
-
-/* ===== Mobile ===== */
-
-@media(max-width:600px){
-
-.logo{
-
-width:100px;
-
-}
-
-.main-glass{
-
-width:90%;
-
-}
+margin-bottom:10px;
 
 }
