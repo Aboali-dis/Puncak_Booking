@@ -1,114 +1,37 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    /* تم إزالة الخلفية المصورة واستبدالها بلون سادة */
-    background-color: #f5f5f7; /* لون رمادي فاتح جداً (أو أبيض #ffffff) */
-    min-height: 100vh;
+/* الكروت - تحويلها إلى شكل دائري */
+.card {
+    background: #fff; 
+    /* هذا الرقم يجعلها دائرية تماماً إذا كان الطول والعرض متساويين */
+    border-radius: 50%; 
+    width: 140px;  /* تحديد عرض ثابت */
+    height: 140px; /* تحديد طول ثابت متساوي مع العرض */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around; /* توزيع العناصر بشكل متوازن */
-}
-
-/* TOP BAR */
-.topbar {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.9); /* خلفية بيضاء شبه شفافة */
-    border-radius: 12px;
-    border: 1px solid #d4af37; /* برواز ذهبي (اختياري) */
-    color: #444; /* لون نص داكن */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* LOGO SECTION */
-.logo-section {
-    width: 100%;
-    display: flex;
     justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #d4af37; 
+    border: 2px solid #d4af37;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin: auto; /* لتوسيط الدوائر داخل الشبكة */
 }
 
-.logo {
-    width: 400px;
-    height: auto;
-}
-
-/* SERVICES */
+/* تعديل شبكة الخدمات لتناسب الدوائر */
 .services {
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 20px;
+    margin-top: 40px;
 }
 
-/* الكروت الذهبية الكبيرة */
-.card {
-    background: #fff; /* خلفية بيضاء سادة */
-    border-radius: 15px;
-    padding: 30px 15px; /* حجم كبير */
-    font-size: 18px;
-    font-weight: bold;
-    color: #d4af37; /* نص ذهبي */
-    border: 2px solid #d4af37; /* برواز ذهبي */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف للعمق */
-    cursor: pointer;
-}
-
+/* حقل التورز والخدمات الأخرى يفضل أن يبقى بيضاوي (Oval) وليس دائري تماماً */
+/* لكي يستوعب النص الطويل بشكل مريح */
 .center {
     grid-column: 1/3;
-}
-
-/* OTHER SERVICES */
-.extra-section {
-    width: 90%;
-}
-
-.extra {
-    width: 100%;
-    padding: 25px; /* حجم كبير */
-    border-radius: 15px;
-    border: 2px solid #d4af37;
-    background: #fff;
-    color: #d4af37;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* BOTTOM NAV */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background: #fff;
-    padding: 15px;
-    border-top: 2px solid #d4af37;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.bottom-nav a {
-    color: #444; /* لون نص داكن */
-    text-decoration: none;
-    font-weight: bold;
-    border: 1px solid transparent; /* برواز شفاف في البداية */
-    padding: 5px 10px;
-}
-
-.bottom-nav a:hover {
-    color: #d4af37;
-    border: 1px solid #d4af37; /* برواز ذهبي عند الوقوف على الرابط */
-    border-radius: 5px;
+    width: 100%; /* يأخذ العرض كاملاً */
+    height: 80px; /* طول أقل ليكون بيضاوي */
+    border-radius: 50px; /* زوايا منحنية جداً ليصبح بيضاوي */
 }
