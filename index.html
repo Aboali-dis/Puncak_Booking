@@ -15,26 +15,14 @@
 <body>
 
 <!-- ===== Top Bar ===== -->
-  
-<button onclick="convertCurrency()">Convert</button>
 
-<p id="result"></p>
-
-  </div>
-
-<div class="top-bar glass">
-
-<div>
+<div class="top-bar">
 
 <select id="currency">
-<option value="idr">IDR</option>
 <option value="usd">USD</option>
 <option value="sar">SAR</option>
+<option value="eur">EUR</option>
 </select>
-
-</div>
-
-<div>
 
 <select id="language">
 <option value="en">English</option>
@@ -44,10 +32,8 @@
 
 </div>
 
-</div>
 
-
-<!-- ===== Logo Section ===== -->
+<!-- ===== Logo ===== -->
 
 <div class="logo-section">
 
@@ -55,30 +41,36 @@
 
 <h1>PuncakGo</h1>
 
-<p>Your gateway to villas, cars & tours in Puncak</p>
+<p id="tagline">
+Your gateway to villas, cars & tours in Puncak
+</p>
 
 </div>
 
 
-<!-- ===== Main App Card ===== -->
+<!-- ===== Main Box ===== -->
 
 <div class="main-glass glass">
 
-<h2>Welcome to Puncak</h2>
+<h2 id="welcome">
+Welcome to Puncak
+</h2>
 
-<p>Book your villa, car, and enjoy your trip</p>
+<p id="desc">
+Book your villa, car, and enjoy your trip
+</p>
 
 <div class="buttons">
 
-<button class="service-btn">
+<button class="service-btn" id="villaBtn">
 🏡 Rent Villa
 </button>
 
-<button class="service-btn">
+<button class="service-btn" id="carBtn">
 🚗 Rent Car
 </button>
 
-<button class="service-btn">
+<button class="service-btn" id="tourBtn">
 🗺 Tours
 </button>
 
@@ -87,41 +79,33 @@
 </div>
 
 
-<!-- ===== Offer Box ===== -->
+<!-- ===== Offer ===== -->
 
-<div class="offer-box glass">
+<div class="offer-box glass" id="offer">
 
 ✨ Book Villa + Car and get 10% Discount
 
 </div>
 
 
-<!-- ===== Extra Services ===== -->
+<!-- ===== Currency Converter Popup ===== -->
 
-<div class="extra-services">
+<div id="converter" class="converter">
 
-<button class="extra-btn">
-More Services
-</button>
+<input type="number" id="amount" placeholder="Enter amount">
+
+<p id="result"></p>
 
 </div>
 
 
-<!-- ===== Bottom Navigation ===== -->
+<!-- ===== Bottom Nav ===== -->
 
-<div class="bottom-nav glass">
+<div class="bottom-nav">
 
-<button>
-🏠 Home
-</button>
-
-<button>
-📜 Terms
-</button>
-
-<button>
-📊 History
-</button>
+<button id="homeBtn">🏠 Home</button>
+<button id="termsBtn">📜 Terms</button>
+<button id="historyBtn">📊 History</button>
 
 </div>
 
