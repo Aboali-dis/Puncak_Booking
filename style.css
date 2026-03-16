@@ -22,7 +22,7 @@ align-items:center;
 
 }
 
-/* dark overlay */
+/* overlay */
 
 body::before{
 
@@ -42,155 +42,189 @@ z-index:-1;
 
 }
 
-/* top bar */
+
+/* ===== TOP BAR ===== */
 
 .top-bar{
 
-width:90%;
+width:100%;
 
 display:flex;
 
 justify-content:space-between;
 
-margin-top:20px;
+padding:12px 20px;
+
+background:rgba(0,0,0,0.7);
+
+backdrop-filter:blur(10px);
 
 }
 
-/* remove white fields */
-
-select{
+#currencyBtn{
 
 background:transparent;
+
 border:none;
+
 color:white;
-font-size:14px;
-outline:none;
 
-}
-
-/* logo */
-
-.logo-section{
-
-text-align:center;
-margin-top:30px;
-
-}
-
-.logo{
-
-width:220px;
-
-}
-
-/* glass */
-
-.glass{
-
-background:rgba(255,255,255,0.12);
-
-backdrop-filter:blur(15px);
-
-border-radius:15px;
-
-padding:25px;
-
-}
-
-/* main */
-
-.main-glass{
-
-width:85%;
-margin-top:30px;
-text-align:center;
-
-}
-
-.buttons{
-
-margin-top:20px;
-
-display:flex;
-flex-direction:column;
-gap:12px;
-
-}
-
-/* golden buttons */
-
-.service-btn{
-
-padding:15px;
-
-border:none;
-
-border-radius:12px;
-
-font-size:16px;
-
-background:linear-gradient(45deg,#d4af37,#f5d97b);
-
-color:black;
-
-font-weight:bold;
+font-size:20px;
 
 cursor:pointer;
 
 }
 
-/* offer */
+select{
 
-.offer-box{
+background:transparent;
 
-margin-top:25px;
-width:85%;
+border:none;
+
+color:white;
+
+font-size:14px;
+
+outline:none;
+
+}
+
+
+/* ===== LOGO ===== */
+
+.logo-section{
+
+margin-top:20px;
+
+width:90%;
+
 text-align:center;
 
 }
 
-/* bottom nav */
+.logo{
 
-.bottom-nav{
+width:95%;
 
-position:fixed;
-
-bottom:15px;
-
-width:90%;
-
-display:flex;
-
-justify-content:space-around;
+max-width:450px;
 
 }
 
-/* currency converter */
 
-.converter{
+/* ===== SERVICES ===== */
+
+.services{
+
+margin-top:40px;
+
+width:90%;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,0.12);
+
+backdrop-filter:blur(15px);
+
+border:none;
+
+border-radius:18px;
+
+padding:35px;
+
+font-size:18px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.center{
+
+grid-column:1/3;
+
+}
+
+
+/* ===== EXTRA BUTTON ===== */
+
+.extra-btn{
+
+margin-top:35px;
+
+width:90%;
+
+padding:22px;
+
+border:none;
+
+border-radius:18px;
+
+font-size:20px;
+
+font-weight:bold;
+
+background:linear-gradient(45deg,#d4af37,#f5d97b);
+
+color:black;
+
+cursor:pointer;
+
+}
+
+
+/* ===== CURRENCY POPUP ===== */
+
+.currency-box{
 
 display:none;
 
 position:fixed;
 
-bottom:90px;
+top:50%;
 
-background:rgba(0,0,0,0.8);
+left:50%;
 
-padding:20px;
+transform:translate(-50%,-50%);
 
-border-radius:12px;
+background:rgba(0,0,0,0.9);
+
+padding:30px;
+
+border-radius:15px;
+
+text-align:center;
 
 }
 
-.converter input{
+.currency-box input{
 
-padding:10px;
+padding:12px;
 
 border:none;
 
 border-radius:8px;
 
-margin-bottom:10px;
+margin-bottom:15px;
+
+}
+
+.currency-box button{
+
+padding:8px 15px;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
 
 }
