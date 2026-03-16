@@ -9,22 +9,23 @@ body {
     background-image: url("puncak-background.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* لتظل الخلفية ثابتة وواضحة خلف الحقول */
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* TOP BAR - تعديل اللون ليظهر الشعار */
+/* TOP BAR - الهيدر */
 .topbar {
     width: 90%;
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.4); /* خلفية داكنة خفيفة لتمييز الهيدر */
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5); /* لون داكن للهيدر */
     border-radius: 12px;
+    border: 1px solid #d4af37; /* برواز ذهبي نحيف */
     color: #fff;
 }
 
@@ -35,37 +36,27 @@ body {
     margin-top: 10px;
 }
 
-/* HERO IMAGE */
-.hero {
-    width: 90%;
-    height: 180px;
-    background-image: url("puncak-background.jpg");
-    background-size: cover;
-    background-position: center;
-    border-radius: 20px;
-    margin-top: 15px;
-    border: 2px solid #d4af37; /* برواز ذهبي للهيرو */
-}
+/* تم حذف قسم HERO IMAGE من هنا */
 
-/* SERVICES */
+/* SERVICES - الحقول تبدأ الآن مباشرة تحت الشعار */
 .services {
-    margin-top: 30px;
+    margin-top: 40px; /* مسافة بسيطة تحت الشعار */
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-/* الكروت - شفافية داكنة مع برواز ذهبي */
+/* الكروت ببرواز ذهبي وخلفية داكنة واضحة */
 .card {
-    background: rgba(0, 0, 0, 0.5); /* خلفية داكنة لتبرز الخلفية الأصلية للموقع */
+    background: rgba(0, 0, 0, 0.6); 
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 25px;
     font-size: 16px;
     font-weight: bold;
     color: #d4af37; /* نص ذهبي */
-    border: 2px solid #d4af37; /* برواز ذهبي */
+    border: 2px solid #d4af37; /* برواز ذهبي ملكي */
     cursor: pointer;
     text-align: center;
 }
@@ -80,8 +71,8 @@ body {
     width: 90%;
     padding: 20px;
     border-radius: 15px;
-    border: 2px solid #d4af37; /* برواز ذهبي */
-    background: rgba(0, 0, 0, 0.6); /* داكن أكثر للوضوح */
+    border: 2px solid #d4af37;
+    background: rgba(0, 0, 0, 0.7);
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -89,23 +80,24 @@ body {
     text-align: center;
 }
 
-/* BOTTOM NAV - ألوان مختلفة كما طلبت */
+/* BOTTOM NAV - البار السفلي */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background: #111; /* أسود ملكي */
+    background: #000; /* أسود سادة للفصل */
     padding: 15px;
-    border-top: 2px solid #d4af37; /* خط ذهبي علوي */
+    border-top: 2px solid #d4af37;
 }
 
 .bottom-nav a {
-    color: #d4af37; /* نصوص ذهبية */
+    color: #d4af37;
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid #d4af37; /* برواز صغير لكل زر تحت */
-    padding: 5px 10px;
-    border-radius: 5px;
+    border: 1px solid #d4af37;
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: rgba(212, 175, 55, 0.1); /* لمسة ذهبية خفيفة */
 }
