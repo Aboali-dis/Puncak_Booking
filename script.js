@@ -1,4 +1,4 @@
-// ===== CURRENCY WINDOW =====
+// CURRENCY
 
 const currencyBtn = document.getElementById("currencyBtn");
 const currencyBox = document.getElementById("currencyBox");
@@ -14,13 +14,11 @@ currencyBox.style.display = "block";
 function closeCurrency(){
 
 currencyBox.style.display = "none";
+
 amount.value = "";
 result.innerText = "";
 
 }
-
-
-// ===== LIVE CONVERT =====
 
 amount.oninput = function(){
 
@@ -34,7 +32,7 @@ result.innerText = "IDR " + Math.round(total).toLocaleString();
 
 
 
-// ===== LANGUAGE SYSTEM =====
+// LANGUAGES
 
 const translations = {
 
@@ -48,14 +46,14 @@ extra:"✨ Other Services"
 ar:{
 villa:"🏡 حجز فيلا",
 car:"🚗 حجز سيارة",
-tour:"🗺 رحلات سياحية",
+tour:"🗺 رحلات",
 extra:"✨ خدمات أخرى"
 },
 
 id:{
 villa:"🏡 Sewa Villa",
 car:"🚗 Sewa Mobil",
-tour:"🗺 Tur Wisata",
+tour:"🗺 Tur",
 extra:"✨ Layanan Lain"
 }
 
