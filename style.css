@@ -1,236 +1,82 @@
-/* الإعدادات العامة */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-:root {
-    --gold: #d4af37;
-    --gold-light: #f5d97b;
-    --glass-bg: rgba(0, 0, 0, 0.65); /* خلفية داكنة للحقول لبروز النص */
-    --glass-border: 1.5px solid rgba(212, 175, 55, 0.6); /* برواز ذهبي شفاف */
-}
-
+/* الخلفية العامة والتعتيم */
 body {
     background-image: url("puncak-background.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
-    min-height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* طبقة التعتيم العامة للخلفية */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: -1;
-}
-
-/* ===== الشريط العلوي (Top Bar) بلون مختلف ===== */
+/* الشريط العلوي المنفصل */
 .top-bar {
     width: 100%;
-    background: rgba(0, 0, 0, 0.85); /* لون داكن مختلف عن باقي الصفحة */
-    padding: 12px 5%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 5%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid #d4af37;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.top-btns { display: flex; gap: 8px; }
-
-.premium-btn, .currency-btn {
-    background: var(--gold);
-    color: black;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-select {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--gold);
-    border-radius: 5px;
-    color: white;
-    padding: 4px;
-    outline: none;
-}
-
-/* ===== قسم الشعار (وضوح عالٍ وتوسط) ===== */
-.logo-section {
-    text-align: center;
-    margin: 30px 0;
-    width: 100%;
-}
-
-.logo {
-    width: 160px; /* حجم مدروس للوضوح */
-    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5)); /* توهج لبروز الشعار */
-    margin-bottom: 10px;
-}
-
-.site-title {
-    font-size: 2rem;
-    color: var(--gold);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-}
-
-#tagline {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-top: 5px;
-}
-
-/* ===== منطقة الترحيب (خارج الصندوق) ===== */
+/* تنسيق الكلام الترحيبي (حر خارج الصناديق) */
 .welcome-area {
     text-align: center;
-    margin-bottom: 30px;
-    padding: 0 20px;
+    margin: 30px 0;
+    padding: 0 15px;
 }
 
-#welcome { font-size: 1.5rem; margin-bottom: 5px; }
-#desc { font-size: 0.95rem; opacity: 0.8; }
+#welcome { font-size: 1.8rem; text-shadow: 2px 2px 4px #000; }
+#desc { font-size: 1rem; opacity: 0.9; }
 
-/* ===== توزيع حقول الخدمات (البرنامج) ===== */
-.main-content {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+/* توزيع الحقول (يمين، يسار، تحت) ببرواز ذهبي */
 .services-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* يمين ويسار */
-    gap: 15px;
-    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 90%;
     max-width: 400px;
 }
 
 .service-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: var(--glass-border);
-    border-radius: 18px;
-    padding: 25px 10px;
-    color: white;
+    background: rgba(0, 0, 0, 0.6); /* خلفية داكنة شفافة */
+    backdrop-filter: blur(10px);
+    border: 1.5px solid #d4af37; /* برواز ذهبي */
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
     cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: 0.3s;
 }
-
-.service-card .icon { font-size: 2.2rem; margin-bottom: 10px; }
-.service-card p { font-weight: bold; font-size: 1rem; }
 
 .card-bottom {
-    grid-column: span 2; /* تأخذ العرض كامل تحتهم */
-    flex-direction: row !important;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px;
+    grid-column: span 2; /* الحقل الثالث تحتهم بعرض كامل */
 }
 
-/* زر خدمات أخرى */
-.others-btn {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px dashed var(--gold);
-    color: var(--gold-light);
-    border-radius: 12px;
-    font-weight: bold;
-}
-
-/* صندوق العرض */
+/* صندوق العرض المستقل */
 .offer-box {
-    margin-top: 25px;
-    width: 100%;
+    margin: 20px 0;
+    width: 90%;
     max-width: 400px;
-    background: rgba(212, 175, 55, 0.15);
-    border: 1px solid var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
     padding: 15px;
     border-radius: 50px;
     text-align: center;
-    font-weight: bold;
-    font-size: 0.85rem;
 }
 
-/* عن الموقع في الأسفل */
-.about-section {
-    margin: 40px 0 100px 0;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    padding: 20px;
-}
-
-.about-section h3 { color: var(--gold); margin-bottom: 10px; }
-
-/* ===== شريط التنقل السفلي الفخم ===== */
+/* شريط التنقل السفلي الثابت */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background: #000;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
-    border-top: 1.5px solid var(--gold);
-    z-index: 1000;
+    padding: 12px 0;
+    border-top: 2px solid #d4af37;
 }
-
-.bottom-nav button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-/* النافذة المنبثقة (المودال) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-}
-
-.modal-content {
-    background: var(--glass-bg);
-    border: var(--glass-border);
-    margin: 20% auto;
-    padding: 30px;
-    width: 80%;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.close { color: var(--gold); float: right; font-size: 28px; font-weight: bold; }
-  
