@@ -50,7 +50,7 @@ body {
 
 /* --- الصفحة الرئيسية --- */
 .logo-space { text-align: center; padding: 25px 0; }
-.logo-img { width: 70%; max-width: 250px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
+.logo-img { width: 100%; max-width: 300px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
 
 .main-content-area { 
     padding: 25px 20px 100px 20px; 
