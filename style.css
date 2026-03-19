@@ -1,116 +1,153 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+:root {
+    /* 1. الألوان الأساسية (الهوية الجديدة) */
+    --bg-color: #F8F9FA;         /* خلفية التطبيق - أبيض رمادي بارد */
+    --card-bg: rgba(255, 255, 255, 0.85); /* كروت شفافة */
+    --accent-gold: #D4AF37;      /* الذهبي الملكي */
+    --text-main: #2C3E50;        /* نص أساسي - كحلي غامق جداً */
+    --text-sub: #7F8C8D;         /* نص فرعي - رمادي */
+    --white: #ffffff;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-body {
-    /* خلفية سادة تعطي مظهر عصري ونظيف */
-    background-color: #f5f5f7; 
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* TOP BAR */
-.topbar {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding: 12px;
-    background: #fff;
-    border-radius: 12px;
-    border: 1px solid #d4af37;
-    color: #444;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-main); 
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* LOGO SECTION */
-.logo-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+/* --- الشريط العلوي --- */
+.topbar { 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 15px; background: var(--white); 
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    position: sticky; top: 0; z-index: 1000;
+}
+.premium { color: var(--accent-gold); font-weight: bold; font-size: 16px; letter-spacing: 1px; }
+.lang-select { 
+    background: var(--bg-color); color: var(--text-main); 
+    border: 1px solid var(--accent-gold); border-radius: 8px; padding: 4px; font-size: 12px;
+}
+.badge { 
+    color: var(--accent-gold); border: 1px solid var(--accent-gold); 
+    padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;
 }
 
-.logo {
-    width: 320px; /* حجم الشعار الجديد Puncak Go */
-    height: auto;
+/* --- شريط العروض (Promo) --- */
+.promo-banner {
+    background: #000; color: var(--accent-gold);
+    padding: 6px 0; font-size: 12px; font-weight: bold;
+    border-bottom: 1px solid var(--accent-gold);
 }
 
-/* SERVICES - الحقول الدائرية */
-.services {
-    margin-top: 50px;
-    width: 90%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    justify-items: center; /* توسيط الدوائر */
+/* --- الصفحة الرئيسية --- */
+.logo-space { text-align: center; padding: 25px 0; }
+.logo-img { width: 70%; max-width: 250px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
+
+.main-content-area { 
+    padding: 25px 20px 100px 20px; 
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('puncak.jpg');
+    background-size: cover; background-position: center; 
+    border-radius: 40px 40px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
 }
 
-/* تصميم الدائرة للحقول */
-.card {
-    background: #fff;
-    width: 150px; /* عرض متساوي مع الطول */
-    height: 150px;
-    border-radius: 50%; /* هذا ما يجعلها دائرية تماماً */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: #d4af37;
-    border: 2px solid #d4af37;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
+/* الكروت بنظام Glassmorphism */
+.card, .item-card, .wide-card { 
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow);
+    border-radius: 22px;
 }
 
-/* حقل التورز يفضل أن يكون بيضاوي لاستيعاب النص */
-.center {
-    grid-column: 1/3;
-    width: 90%;
-    height: 80px;
-    border-radius: 50px; /* شكل بيضاوي */
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.card { 
+    padding: 25px; display: flex; flex-direction: column; 
+    align-items: center; border: none; cursor: pointer;
+}
+.card .icon { font-size: 40px; margin-bottom: 10px; }
+.card .text { font-weight: bold; color: var(--text-main); font-size: 15px; }
+
+.wide-card { 
+    width: 100%; margin-top: 15px; padding: 20px; border: none;
+    display: flex; align-items: center; justify-content: center; gap: 15px;
+    font-weight: bold; font-size: 17px; color: var(--text-main); cursor: pointer;
 }
 
-/* EXTRA SERVICES */
-.extra {
-    margin-top: 25px;
-    width: 90%;
-    padding: 25px;
-    border-radius: 50px; /* شكل بيضاوي متناسق */
-    border: 2px solid #d4af37;
-    background: #fff;
-    color: #d4af37;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom: 100px;
+.extra-btn { 
+    width: 100%; margin-top: 20px; padding: 15px; border-radius: 15px; border: none;
+    background: linear-gradient(45deg, #D4AF37, #B8860B); color: #fff; 
+    font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
-/* BOTTOM NAV */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background: #fff;
-    padding: 15px;
-    border-top: 2px solid #d4af37;
+/* --- القوائم والعناصر --- */
+.full-page { min-height: 100vh; padding-bottom: 80px; }
+.sub-header { 
+    padding: 15px; display: flex; align-items: center; justify-content: space-between;
+    background: var(--white); border-bottom: 1px solid #eee;
+}
+.back-btn { border: none; background: #f0f0f0; font-size: 18px; padding: 5px 10px; border-radius: 10px; }
+
+.filter-btns { display: flex; gap: 10px; padding: 15px; }
+.filter-btns button { 
+    flex: 1; padding: 10px; border: 1px solid #ddd; background: var(--white); 
+    color: var(--text-sub); font-weight: bold; border-radius: 12px; font-size: 13px;
+}
+.filter-btns button.active { background: var(--accent-gold); color: white; border-color: var(--accent-gold); }
+
+.item-card { margin: 15px; overflow: hidden; position: relative; }
+.item-img { width: 100%; height: 200px; object-fit: cover; }
+.special-badge {
+    position: absolute; top: 12px; right: 12px; background: #e74c3c;
+    color: white; padding: 4px 12px; border-radius: 8px; font-size: 10px; font-weight: bold;
 }
 
-.bottom-nav a {
-    color: #444;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
+.book-btn { 
+    background: var(--accent-gold); color: white; border: none; 
+    padding: 10px 22px; border-radius: 12px; font-weight: bold; font-size: 14px;
 }
+
+/* --- النافذة المنبثقة (Booking Modal) --- */
+.order-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.order-content {
+    background: var(--white); width: 92%; max-width: 400px;
+    border-radius: 30px; padding: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.order-input {
+    width: 100%; background: #F2F4F7; border: 1px solid #EAECEF;
+    color: var(--text-main); padding: 12px; border-radius: 12px; margin-bottom: 12px; outline: none;
+}
+.confirm-btn {
+    width: 100%; padding: 16px; background: #27ae60;
+    color: white; border: none; border-radius: 15px; font-weight: bold; font-size: 16px; margin-top: 10px;
+}
+
+/* --- التنقل السفلي --- */
+.bottom-nav { 
+    position: fixed; bottom: 0; width: 100%; background: rgba(255, 255, 255, 0.95); 
+    display: flex; justify-content: space-around; padding: 12px; 
+    border-top: 1px solid #eee; backdrop-filter: blur(10px); z-index: 1000;
+}
+.bottom-nav a { text-decoration: none; color: #95a5a6; font-size: 11px; text-align: center; transition: 0.3s; }
+.bottom-nav a i { font-size: 20px; margin-bottom: 4px; }
+.bottom-nav a.active { color: var(--accent-gold); font-weight: bold; }
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 360px) {
+    .card .icon { font-size: 32px; }
+    .card .text { font-size: 13px; }
+        }
+    
