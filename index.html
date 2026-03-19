@@ -92,7 +92,37 @@
     <div id="trip-container" class="items-list" style="padding: 10px;">
         </div>
 </div>
+<div id="add-page" class="full-page" style="display:none;">
+    
+    <div class="sub-header">
+        <button class="back-btn" onclick="goHome()">⬅</button>
+        <h2>إضافة إعلان</h2>
+    </div>
 
+    <div style="padding:15px;">
+
+        <input type="text" id="item-name" class="order-input" placeholder="اسم الفيلا أو السيارة">
+
+        <input type="number" id="item-price" class="order-input" placeholder="السعر">
+
+        <select id="item-type" class="order-input">
+            <option value="villa">فيلا</option>
+            <option value="car">سيارة</option>
+            <option value="tour">جولة</option>
+        </select>
+
+        <!-- 👇 هذا حقل الصور -->
+        <input type="file" id="item-image" class="order-input" multiple>
+
+        <textarea id="item-desc" class="order-input" placeholder="الوصف"></textarea>
+
+        <button onclick="saveItem()" class="confirm-btn">
+            حفظ
+        </button>
+
+    </div>
+
+</div>
 <div class="bottom-nav">
     <a href="javascript:void(0)" onclick="goHome()" id="btn-home" class="active"><i class="fas fa-home"></i><br><span id="navHome">الرئيسية</span></a>
     <a href="javascript:void(0)" onclick="openPage('trip-page')" id="btn-trip"><i class="fas fa-map-marked-alt"></i><br><span id="navTrip">رحلتي</span></a>
