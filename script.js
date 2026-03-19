@@ -233,4 +233,44 @@ window.onload = () => {
     }
     goHome();
 };
-        
+     function saveItem(){
+
+const name = document.getElementById("item-name").value;
+const price = document.getElementById("item-price").value;
+const type = document.getElementById("item-type").value;
+const desc = document.getElementById("item-desc").value;
+
+const files = document.getElementById("item-image").files;
+
+let images = [];
+
+for(let i = 0; i < files.length; i++){
+    images.push(URL.createObjectURL(files[i]));
+}
+
+const newItem = {
+    name: { ar: name, en: name },
+    price: price,
+    img: images[0],
+    desc: { ar: desc, en: desc }
+};
+
+if(type === "villa"){
+    villas.push(newItem);
+    displayItems(villas, 'villa-container');
+    openPage('villa-page');
+}
+
+if(type === "car"){
+    cars.push(newItem);
+    displayItems(cars, 'car-container');
+    openPage('car-page');
+}
+
+if(type === "tour"){
+    toursData.push(newItem);
+    displayItems(toursData, 'tour-container');
+    openPage('tour-page');
+}
+
+     }   
