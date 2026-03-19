@@ -1,49 +1,157 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puncak Go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Puncak Go | بونشاك جو</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+<div id="home-page">
     <div class="topbar">
-        <div>$ Currency</div>
-        <select>
-            <option>English</option>
-            <option>العربية</option>
-            <option>Indonesia</option>
+        <select id="language" class="lang-select">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="id">Indonesia</option>
         </select>
+        <div class="premium">Puncak Go ⭐</div>
+        <div id="currencySelect" class="badge">IDR <i class="fas fa-wallet"></i></div>
     </div>
 
-    <div class="logo-section">
-        <img src="logo.png" alt="Puncak Go Logo" class="logo">
+    <div class="promo-banner" id="promoBanner">
+        <marquee scrollamount="5">⚡ عرض خاص: خصم 10% عند الحجز لأكثر من 5 أيام! استخدم الكود: <span style="color: #d4af37; font-weight: bold;">KHALED10</span> ⚡</marquee>
     </div>
 
-    <div class="services">
-        <button class="card">
-            <span>🏡</span><br>
-            Rent Villa
+    <div id="currencyBox" class="order-content" style="display:none; position: fixed; top: 60px; left: 5%; z-index: 2001; width: 90%; background: white; padding: 15px; border: 1px solid var(--accent-gold);">
+        <input type="number" id="inputAmount" class="order-input" placeholder="المبلغ بالدولار $">
+        <button onclick="convertCurrency()" class="confirm-btn" style="padding: 10px; margin-top: 5px;">تحويل للروبية</button>
+        <p id="result" style="text-align: center; font-weight: bold; margin-top: 10px; color: #27ae60;"></p>
+    </div>
+
+    <div class="logo-space">
+        <img src="logo1.png" class="logo-img" alt="Puncak Go Logo" onerror="this.src='https://via.placeholder.com/250x100?text=Puncak+Go'">
+    </div>
+
+    <div class="main-content-area">
+        <div class="services-grid">
+            <button class="card" onclick="openPage('villa-page')">
+                <span class="icon">🏡</span>
+                <span class="text" id="villaText">فلل بونشاك</span>
+            </button>
+            <button class="card" onclick="openPage('car-page')">
+                <span class="icon">🚗</span>
+                <span class="text" id="carText">تأجير سيارات</span>
+            </button>
+        </div>
+
+        <button class="wide-card" onclick="openPage('tour-page')">
+            <span class="icon">🗺️</span>
+            <span class="text" id="tourText">جولات سياحية</span>
         </button>
-        <button class="card">
-            <span>🚗</span><br>
-            Rent Car
-        </button>
-        <button class="card center">
-            <span>🗺️</span> Tours
-        </button>
-    </div>
 
-    <div class="extra-section">
-        <button class="extra">Other Services</button>
+        <button class="extra-btn" id="otherText">خدمات أخرى (توصيل، تموين، ذبائح)</button>
     </div>
+</div>
 
-    <div class="bottom-nav">
-        <a href="#">Home</a>
-        <a href="#">Rules</a>
-        <a href="#">History</a>
+<div id="villa-page" class="full-page" style="display:none;">
+    <div class="sub-header">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-chevron-right"></i></button>
+        <h2 id="villasTitle">قائمة الفلل</h2>
     </div>
+    <div class="filter-btns">
+        <button id="btn-vip" class="active" onclick="filterVillas('VIP')">💎 VIP</button>
+        <button id="btn-normal" onclick="filterVillas('Normal')">🏠 اقتصادية</button>
+    </div>
+    <div id="villa-container" class="items-list"></div>
+</div>
 
+<div id="car-page" class="full-page" style="display:none;">
+    <div class="sub-header">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-chevron-right"></i></button>
+        <h2 id="carTitle">السيارات والسائقين</h2>
+    </div>
+    <div id="car-container" class="items-list"></div>
+</div>
+
+<div id="tour-page" class="full-page" style="display:none;">
+    <div class="sub-header">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-chevron-right"></i></button>
+        <h2 id="tourTitle">أجمل الجولات</h2>
+    </div>
+    <div id="tour-container" class="items-list"></div>
+</div>
+
+<div id="trip-page" class="full-page" style="display:none;">
+    <div class="sub-header">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-chevron-right"></i></button>
+        <h2 id="tripTitle">حجوزاتي النشطة</h2>
+    </div>
+    <div id="trip-container" class="items-list" style="padding: 10px;">
+        </div>
+</div>
+
+<div class="bottom-nav">
+    <a href="javascript:void(0)" onclick="goHome()" id="btn-home" class="active"><i class="fas fa-home"></i><br><span id="navHome">الرئيسية</span></a>
+    <a href="javascript:void(0)" onclick="openPage('trip-page')" id="btn-trip"><i class="fas fa-map-marked-alt"></i><br><span id="navTrip">رحلتي</span></a>
+    <a href="javascript:void(0)" onclick="alert('قريباً: إدارة الملف الشخصي')" id="btn-profile"><i class="fas fa-user-circle"></i><br><span id="navProfile">بروفايل</span></a>
+</div>
+
+<div id="booking-modal" class="order-overlay" style="display:none;">
+    <div class="order-content">
+        <div class="order-header">
+            <h3 id="modalTitle">تأكيد طلب الحجز</h3>
+            <button onclick="closeBooking()" class="close-btn">×</button>
+        </div>
+        <div class="order-body">
+            <p id="selected-item-name" style="color:var(--accent-gold); font-weight:bold; text-align:center; padding:10px; background:#f9f9f9; border-radius:8px; margin-bottom:15px;"></p>
+            
+            <label><i class="fas fa-user"></i> الاسم الكامل:</label>
+            <input type="text" id="cust-name" class="order-input" placeholder="الاسم كما في الجواز" required>
+            
+            <div style="display:flex; gap:10px;">
+                <div style="flex:1;">
+                    <label><i class="fas fa-calendar-check"></i> من تاريخ:</label>
+                    <input type="date" id="date-from" class="order-input" onchange="calculateDays()">
+                </div>
+                <div style="flex:1;">
+                    <label><i class="fas fa-calendar-times"></i> إلى تاريخ:</label>
+                    <input type="date" id="date-to" class="order-input" onchange="calculateDays()">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px;">
+                <div style="flex:1;">
+                    <label><i class="fas fa-clock"></i> عدد الأيام:</label>
+                    <input type="number" id="cust-days" class="order-input" readonly placeholder="0">
+                </div>
+                <div style="flex:1;">
+                    <label><i class="fas fa-users"></i> الأشخاص:</label>
+                    <input type="number" id="cust-guests" class="order-input" placeholder="عدد الضيوف">
+                </div>
+            </div>
+
+            <label><i class="fas fa-credit-card"></i> طريقة الدفع المفضلة:</label>
+            <select id="pay-method" class="order-input" style="background: white; border: 1px solid #ddd; height: 45px;">
+                <option value="كاش عند الوصول (Cash)">كاش عند الوصول (Cash)</option>
+                <option value="تحويل بنكي (Bank Transfer)">تحويل بنكي (Bank Transfer)</option>
+                <option value="دفع إلكتروني (QRIS/Dana)">دفع إلكتروني (QRIS/Dana)</option>
+            </select>
+
+            <label><i class="fas fa-comment-dots"></i> ملاحظات أو طلبات خاصة:</label>
+            <textarea id="cust-notes" class="order-input" style="height:60px; padding:10px;" placeholder="مثال: أريد سرير إضافي، أو توفير شريحة اتصال..."></textarea>
+
+            <button onclick="confirmBooking()" class="confirm-btn" style="background: #25D366; border: none; font-weight: bold;">
+                إرسال الحجز للواتساب <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
 </body>
-</html>
+    </html>
+                        
