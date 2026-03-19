@@ -233,26 +233,23 @@ window.onload = () => {
     }
     goHome();
 };
-     function saveItem(){
+function saveItem(){
+alert("تم الضغط"); // 👈 هذا للتجربة
 
 const name = document.getElementById("item-name").value;
 const price = document.getElementById("item-price").value;
 const type = document.getElementById("item-type").value;
-const desc = document.getElementById("item-desc").value;
 
-const files = document.getElementById("item-image").files;
-
-let images = [];
-
-for(let i = 0; i < files.length; i++){
-    images.push(URL.createObjectURL(files[i]));
+if(!name || !price){
+    alert("اكتب البيانات أول");
+    return;
 }
 
 const newItem = {
     name: { ar: name, en: name },
     price: price,
-    img: images[0],
-    desc: { ar: desc, en: desc }
+    img: "https://via.placeholder.com/400x200",
+    desc: { ar: "وصف", en: "desc" }
 };
 
 if(type === "villa"){
@@ -273,4 +270,4 @@ if(type === "tour"){
     openPage('tour-page');
 }
 
-     }   
+        }
