@@ -183,22 +183,31 @@ span { font-size: 15px; }
     flex-direction: column;
     gap: 10px;
         }
+/* 1. تصغير مساحة التدرج الأبيض */
 .overlay-gradient {
     width: 100%;
-    /* زيادة الارتفاع الكلي ليعطي مساحة كافية للتدرج الطويل */
-    height: 100px; 
+    height: 120px; /* تقليل الارتفاع من 300 إلى 120 ليختفي البياض بسرعة */
     background: linear-gradient(
         to bottom, 
-        rgba(255, 255, 255, 5) 0%,      /* يبدأ أبيض صافي تماماً */
-        rgba(255, 255, 255, 1) 30%,     /* يبقى صافي لمسافة بسيطة (نزول الحبه) */
-        rgba(255, 255, 255, 0.5) 70%,   /* يبدأ التدرج الواسع هنا (ليبان أكبر) */
-        transparent 100%                /* يتلاشى تدريجياً حتى النهاية */
+        rgba(255, 255, 255, 1) 0%,      
+        rgba(255, 255, 255, 0.8) 40%,    
+        transparent 100%                
     );
-    /* تقليل الرفع للأعلى لكي ينزل قليلاً عن اللوجو */
-    margin-top: -5px; 
+    margin-top: -10px; 
     position: relative;
     z-index: 1;
+    pointer-events: none;
 }
+
+/* 2. تقريب الحقول من الشعار */
+.services-container {
+    display: grid;
+    /* ... باقي الخصائص كما هي ... */
+    margin: -70px auto 0; /* غيرنا الرقم من -150 إلى -70 لتقترب الحقول من اللوجو */
+    position: relative;
+    z-index: 10;
+}
+
 
 /* تنسيق حاوية الكروت */
 .services-container {
