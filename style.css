@@ -97,7 +97,7 @@ body {
 
 /* الكروت الصغيرة (فلل وسيارات) */
 .card-villas, .card-cars {
-    height: 130px; 
+    height: 85px; 
     background-color: #ffffff;
 }
 
@@ -107,7 +107,7 @@ body {
 /* كرت الجولات (العريض - خلفية باهتة) */
 .card-tours {
     grid-area: tours;
-    height: 85px;
+    height: 60px;
     background-color: #f0fff4; /* أخضر باهت جداً */
     color: #2e7d32;
     flex-direction: row; /* الأيقونة بجانب النص */
@@ -117,7 +117,7 @@ body {
 /* كرت الخدمات (الذهبي) */
 .card-others {
     grid-area: others;
-    height: 75px;
+    height: 60px;
     background: linear-gradient(to right, #d4a017, #b8860b);
     color: #ffffff;
     border-radius: 20px; /* زوايا أقل انحناءً للزر الأخير */
