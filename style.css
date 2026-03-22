@@ -209,10 +209,3 @@ span { font-size: 15px; }
 }
 
 
-/* تنسيق حاوية الكروت */
-.services-container {
-    /* سحب الكروت ليكون خلفها التدرج الواسع */
-    margin-top: -150px; 
-    position: relative;
-    z-index: 2;
-}
