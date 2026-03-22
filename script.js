@@ -89,7 +89,21 @@ for (let i = 1; i <= 15; i++) {
         basePrice: 300
     });
 }
+let driverOption = 'no'; // القيمة الافتراضية: بدون سائق
+// عند تغيير الاختيار
+document.getElementById('driver-no').addEventListener('change', function() {
+    if(this.checked){
+        driverOption = 'no';
+        filterCarsByDriver();
+    }
+});
 
+document.getElementById('driver-yes').addEventListener('change', function() {
+    if(this.checked){
+        driverOption = 'yes';
+        filterCarsByDriver();
+    }
+});
 let selectedCar = null;
 const carIndexes = {};
 
@@ -124,7 +138,40 @@ function renderCars() {
         container.appendChild(card);
     });
 }
+function filterCarsByDriver() {
+    const container = document.getElementById('cars-list-container');
+    container.innerHTML = '';
 
+    // كل السيارات حسب اختيار السائق
+    const carsToShow = driverOption === 'yes' ? allCars.slice(0, 8) : allCars.slice(0, 7);
+
+    carsToShow.forEach(car => {
+        const card = document.createElement('div');
+        card.style.border = '1px solid #ddd';
+        card.style.borderRadius = '12px';
+        card.style.background = '#fff';
+        card.style.overflow = 'hidden';
+
+        const slider = `
+        <div style="position:relative;">
+            <img id="car-img-${car.id}" src="${car.imgs[0]}" style="width:100%; height:180px; object-fit:cover;">
+            <button onclick="nextCarImg(${car.id})" style="position:absolute; right:10px; top:50%;">›</button>
+            <button onclick="prevCarImg(${car.id})" style="position:absolute; left:10px; top:50%;">‹</button>
+        </div>`;
+
+        const specs = `<ul style="padding:10px; font-size:14px;">${car.specs.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+
+        card.innerHTML = `
+            ${slider}
+            <div style="padding:10px;">
+                <h3>${car.name}</h3>
+                ${specs}
+                <button onclick="openCarOrder(${car.id})" style="width:100%; padding:10px; background:#27ae60; color:#fff; border:none; border-radius:8px;">احجز الآن</button>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
 function nextCarImg(id){
     const car = allCars.find(c=>c.id===id);
     carIndexes[id] = (carIndexes[id]||0)+1;
