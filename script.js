@@ -1,273 +1,337 @@
-// ==========================================
-// 1. قاعدة البيانات الشاملة
-// ==========================================
-const villas = [
-    { id: 1, type: "VIP", name: { ar: "فيلا الرويال الملكية", en: "Royal VIP Villa", id: "Villa Royal VIP" }, price: 550, img: "img/v1.jpg", features: { ar: ["📍 إطلالة جبلية", "🏊 مسبح دافئ"], en: ["📍 Mountain View", "🏊 Heated Pool"] }, desc: { ar: "إطلالة جبلية خيالية وخصوصية تامة.", en: "Amazing mountain view." } },
-    { id: 2, type: "Normal", name: { ar: "فيلا الطبيعة الهادئة", en: "Quiet Nature Villa", id: "Villa Alam Tenang" }, price: 220, img: "img/v3.jpg", features: { ar: ["🌳 وسط الأشجار", "🍳 مطبخ"], en: ["🌳 Among Trees", "🍳 Kitchen"] }, desc: { ar: "فيلا اقتصادية مريحة جداً.", en: "Economy villa, very comfortable." } }
-];
+// ==================== 1️⃣ قاعدة بيانات الفلل ====================
+const allVillas = [];
+const villaPrices = [500, 1000, 1500, 2000];
 
-const cars = [
-    { id: 101, name: { ar: "تويوتا ألفارد (VIP)", en: "Toyota Alphard (VIP)", id: "Toyota Alphard (VIP)" }, price: 130, img: "img/c1.jpg", features: { ar: ["💺 6 مقاعد VIP", "👨‍✈️ سائق عربي"], en: ["💺 6 VIP Seats", "👨‍✈️ Arabic Driver"] }, desc: { ar: "فخامة مطلقة للعائلات.", en: "Ultimate luxury for families." } }
-];
+for (let i = 1; i <= 20; i++) {
+    let price = villaPrices[Math.floor(Math.random() * villaPrices.length)];
+    allVillas.push({
+        id: i,
+        name_ar: `فيلا بونشاك الملكية ${i}`,
+        name_en: `Puncak Royal Villa ${i}`,
+        price: price,
+        x: Math.floor(Math.random() * 600) + 100,
+        y: Math.floor(Math.random() * 500) + 100,
+        imgs: ["webbackground.jpg"], 
+        specs_ar: ["مسبح خاص فخم", "إطلالة مباشرة على الجبل", "خدمة تنظيف يومية"],
+        specs_en: ["Luxury Private Pool", "Direct Mountain View", "Daily Cleaning Service"]
+    });
+}
 
-const toursData = [
-    { id: 201, name: { ar: "حديقة سفاري إندونيسيا", en: "Taman Safari Indonesia", id: "Taman Safari Indonesia" }, price: 45, img: "img/t1.jpg", desc: { ar: "رؤية الحيوانات طليقة.", en: "See wild animals free." } }
-];
+// ==================== 2️⃣ إعداد الخريطة ====================
+var map = L.map('image-map', { crs: L.CRS.Simple, minZoom: -1 });
+var bounds = [[0, 0], [800, 750]]; 
+L.imageOverlay('villasbackground.png', bounds).addTo(map);
+map.fitBounds(bounds);
 
-const otherServices = [
-    { id: 301, name: { ar: "توصيل من/إلى المطار", en: "Airport Transfer" }, price: 50, img: "img/airport.jpg", desc: { ar: "استقبال خاص بسيارة حديثة", en: "Private airport pickup" } },
-    { id: 302, name: { ar: "توفير ذبائح", en: "Lamb/Sheep Provision" }, price: 200, img: "img/meat.jpg", desc: { ar: "ذبح وطبخ حسب الطلب", en: "Fresh lamb catering" } }
-];
+let villaMarkers = [];
+let activeVilla = null;
 
-// ==========================================
-// 2. كائن الترجمة لجميع عناصر الموقع
-// ==========================================
+// ==================== 3️⃣ الترجمة ====================
 const translations = {
-    ar: {
-        villaText: "فلل بونشاك",
-        carText: "تأجير سيارات",
-        tourText: "جولات سياحية",
-        otherText: "خدمات أخرى",
-        navHome: "الرئيسية",
-        navTrip: "رحلتي",
-        navProfile: "بروفايل",
-        villasTitle: "قائمة الفلل",
-        carTitle: "السيارات",
-        tourTitle: "الجولات السياحية",
-        tripTitle: "حجوزاتي",
-        bookNow: "حجز الآن",
-        total: "الإجمالي",
-        payLabel: "طريقة الدفع:",
-        days: "أيام",
-        dir: "rtl",
-        nameLabel: "الاسم الكامل:",
-        fromLabel: "من تاريخ:",
-        toLabel: "إلى تاريخ:",
-        daysLabel: "عدد الأيام:",
-        guestsLabel: "الأشخاص:",
-        notesLabel: "ملاحظات خاصة:",
-        confirmBtn: "إرسال للواتساب 🟢"
+    ar: { 
+        villas: "فلل بونشاك", cars: "تأجير سيارات", tours: "جولات سياحية", others: "خدمات أخرى", 
+        home: "الرئيسية", choose: "اختر الفيلا", back: "⬅ عودة", details: "التفاصيل والحجز", 
+        all: "الكل", ticker: "⚡ عروض Puncak Go: خصم 10% على الحجوزات الطويلة! استمتع بالطبيعة ⚡", dir: "rtl" 
     },
-    en: {
-        villaText: "Puncak Villas",
-        carText: "Car Rental",
-        tourText: "Tours",
-        otherText: "Others",
-        navHome: "Home",
-        navTrip: "My Trip",
-        navProfile: "Profile",
-        villasTitle: "Villa List",
-        carTitle: "Cars",
-        tourTitle: "Tour Packages",
-        tripTitle: "My Bookings",
-        bookNow: "Book Now",
-        total: "Total",
-        payLabel: "Payment:",
-        days: "Days",
-        dir: "ltr",
-        nameLabel: "Full Name:",
-        fromLabel: "From Date:",
-        toLabel: "To Date:",
-        daysLabel: "Days:",
-        guestsLabel: "Guests:",
-        notesLabel: "Special Notes:",
-        confirmBtn: "Send to WhatsApp 🟢"
+    en: { 
+        villas: "Puncak Villas", cars: "Car Rental", tours: "Tours", others: "Others", 
+        home: "Home", choose: "Choose Villa", back: "⬅ Back", details: "View Details", 
+        all: "All", ticker: "⚡ Puncak Go Offers: 10% Off on long stays! Enjoy the nature ⚡", dir: "ltr" 
     }
 };
 
-let currentLang = "ar";
-let currentSelectedItem = ""; 
-let pricePerNight = 0;
-
-// ==========================================
-// 3. محرك تغيير اللغة
-// ==========================================
-function changeLanguage(lang) {
-    currentLang = lang;
+function setLanguage(lang) {
+    localStorage.setItem('lang', lang);
     const t = translations[lang];
+    document.body.style.direction = t.dir;
 
-    // تحديث اتجاه الموقع
-    document.documentElement.dir = t.dir;
-    document.documentElement.lang = lang;
-
-    // تحديث نصوص القوائم والأزرار الرئيسية عبر الـ IDs
-    const idsToUpdate = [
-        "villaText", "carText", "tourText", "otherText", 
-        "navHome", "navTrip", "navProfile", 
-        "villasTitle", "carTitle", "tourTitle", "tripTitle"
-    ];
-
-    idsToUpdate.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = t[id];
+    const elements = ['txt-ticker', 'txt-villas', 'txt-cars', 'txt-tours', 'txt-others', 'btn-back', 'txt-choose-villa', 'filter-all', 'nav-home'];
+    elements.forEach(id => {
+        let el = document.getElementById(id);
+        if(el) el.innerText = t[id.replace('txt-', '').replace('btn-', '').replace('nav-', '')] || el.innerText;
     });
 
-    // تحديث نصوص مودال الحجز
-    const modalLabels = {
-        "modalTitle": t.confirmBtn,
-        "label-name": t.nameLabel,
-        "label-from": t.fromLabel,
-        "label-to": t.toLabel,
-        "label-days": t.daysLabel,
-        "label-guests": t.guestsLabel,
-        "label-notes": t.notesLabel
-    };
-
-    for (let id in modalLabels) {
-        const el = document.getElementById(id);
-        if (el) el.innerText = modalLabels[id];
+    const villasPage = document.getElementById('villas-page');
+    if (villasPage && villasPage.classList.contains('active')) {
+        renderVillas();
     }
-
-    // تحديث البيانات المعروضة حالياً لتغيير لغتها فوراً
-    updateCurrentView();
 }
 
-function updateCurrentView() {
-    if (document.getElementById("villa-page").style.display === "block") filterVillas('VIP');
-    if (document.getElementById("car-page").style.display === "block") displayItems(cars, 'car-container');
-    if (document.getElementById("tour-page").style.display === "block") displayItems(toursData, 'tour-container');
-    if (document.getElementById("other-page").style.display === "block") displayItems(otherServices, 'other-container');
+// ==================== 4️⃣ التنقل بين الصفحات ====================
+function showVillas() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('villas-page').classList.add('active');
+    setTimeout(() => { map.invalidateSize(); map.fitBounds(bounds); }, 300);
+    renderVillas('all');
 }
 
-// ==========================================
-// 4. عرض العناصر
-// ==========================================
-function displayItems(data, containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = data.map(item => `
-        <div class="item-card">
-            <img src="${item.img}" class="item-img" onerror="this.src='https://via.placeholder.com/400x200'">
-            <div style="padding:15px;">
-                <h3 style="color:var(--accent-gold);">${item.name[currentLang]}</h3>
-                <p style="font-size:12px; color:#666;">${item.desc[currentLang]}</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                    <span class="price-tag">$${item.price}</span>
-                    <button class="book-btn" onclick="booking('${item.name[currentLang]}', ${item.price})">${translations[currentLang].bookNow}</button>
-                </div>
+function showHome() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('home-page').classList.add('active');
+    const container = document.getElementById('villas-list-container');
+    if(container) container.innerHTML = '';
+}
+
+function showCars() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('cars-page').classList.add('active');
+    renderCars();
+}
+
+// ==================== 5️⃣ قاعدة بيانات السيارات ====================
+const allCars = [];
+for (let i = 1; i <= 15; i++) {
+    allCars.push({
+        id: i,
+        name: `سيارة ${i}`,
+        imgs: ["car1.jpg","car2.jpg","car3.jpg"],
+        specs: ["موديل: 2023","لون: أسود","عدد الركاب: 5","نوع الوقود: بنزين"],
+        basePrice: 300
+    });
+}
+
+let selectedCar = null;
+const carIndexes = {};
+
+// ==================== 6️⃣ عرض السيارات ====================
+function renderCars() {
+    const container = document.getElementById('cars-list-container');
+    container.innerHTML = '';
+    allCars.forEach(car => {
+        const card = document.createElement('div');
+        card.style.border = '1px solid #ddd';
+        card.style.borderRadius = '12px';
+        card.style.background = '#fff';
+        card.style.overflow = 'hidden';
+
+        const slider = `
+        <div style="position:relative;">
+            <img id="car-img-${car.id}" src="${car.imgs[0]}" style="width:100%; height:180px; object-fit:cover;">
+            <button onclick="nextCarImg(${car.id})" style="position:absolute; right:10px; top:50%;">›</button>
+            <button onclick="prevCarImg(${car.id})" style="position:absolute; left:10px; top:50%;">‹</button>
+        </div>`;
+
+        const specs = `<ul style="padding:10px; font-size:14px;">${car.specs.map(s=>`<li>${s}</li>`).join('')}</ul>`;
+
+        card.innerHTML = `
+            ${slider}
+            <div style="padding:10px;">
+                <h3>${car.name}</h3>
+                ${specs}
+                <button onclick="openCarOrder(${car.id})" style="width:100%; padding:10px; background:#27ae60; color:#fff; border:none; border-radius:8px;">احجز الآن</button>
             </div>
-        </div>
-    `).join('');
-}
-
-function openPage(pageId) {
-    document.querySelectorAll('#home-page, .full-page').forEach(p => p.style.display = 'none');
-    const target = document.getElementById(pageId);
-    if(target) target.style.display = 'block';
-    updateCurrentView();
-}
-
-// ==========================================
-// 5. نظام الحجز المطور
-// ==========================================
-function booking(name, price) {
-    currentSelectedItem = name;
-    pricePerNight = price;
-    document.getElementById("selected-item-name").innerText = name;
-    document.getElementById("booking-modal").style.display = "flex";
-}
-
-function calculateDays() {
-    const from = new Date(document.getElementById('date-from').value);
-    const to = new Date(document.getElementById('date-to').value);
-    
-    if (from && to && to > from) {
-        const diffTime = Math.abs(to - from);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-        document.getElementById('cust-days').value = diffDays;
-        
-        let total = diffDays * pricePerNight;
-        if (diffDays >= 5) total *= 0.90;
-
-        document.getElementById("selected-item-name").innerHTML = `
-            ${currentSelectedItem} <br>
-            <span style="color:#27ae60;">${translations[currentLang].total}: $${total.toFixed(0)}</span>
         `;
+        container.appendChild(card);
+    });
+}
+
+function nextCarImg(id){
+    const car = allCars.find(c=>c.id===id);
+    carIndexes[id] = (carIndexes[id]||0)+1;
+    if(carIndexes[id]>=car.imgs.length) carIndexes[id]=0;
+    document.getElementById(`car-img-${id}`).src = car.imgs[carIndexes[id]];
+}
+
+function prevCarImg(id){
+    const car = allCars.find(c=>c.id===id);
+    carIndexes[id] = (carIndexes[id]||0)-1;
+    if(carIndexes[id]<0) carIndexes[id]=car.imgs.length-1;
+    document.getElementById(`car-img-${id}`).src = car.imgs[carIndexes[id]];
+}
+
+// ==================== 7️⃣ حجز السيارات ====================
+function openCarOrder(id){
+    selectedCar = allCars.find(c=>c.id===id);
+    document.getElementById('order-car-name').innerText = selectedCar.name;
+    document.getElementById('order-form-container-cars').style.display='block';
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('order-car-from').value = today;
+    document.getElementById('order-car-to').value = today;
+    renderCarSlider();
+    updateCarTotal();
+    document.getElementById('order-form-container-cars').scrollIntoView({behavior:"smooth"});
+}
+
+function renderCarSlider(){
+    const slider = document.getElementById('car-slider');
+    slider.innerHTML = '';
+    selectedCar.imgs.forEach(img=>{
+        const imgEl = document.createElement('img');
+        imgEl.src=img;
+        imgEl.style.width='100%';
+        imgEl.style.height='150px';
+        imgEl.style.objectFit='cover';
+        imgEl.style.marginRight='5px';
+        slider.appendChild(imgEl);
+    });
+}
+
+function updateCarTotal(){
+    if(!selectedCar) return;
+    let total = selectedCar.basePrice;
+    const from = new Date(document.getElementById('order-car-from').value);
+    const to = new Date(document.getElementById('order-car-to').value);
+    let days = Math.ceil((to-from)/(1000*60*60*24));
+    if(days<1) days=1;
+    const driver = document.getElementById('driver-yes')?.checked;
+    if(driver) total+=100;
+    total*=days;
+    document.getElementById('total-car-price').innerText=total+' IDR';
+}
+
+function sendCarToWhatsApp(){
+    if(!selectedCar) return;
+    const name = document.getElementById('order-car-name-input').value;
+    const phone = document.getElementById('order-car-phone').value;
+    const from = document.getElementById('order-car-from').value;
+    const to = document.getElementById('order-car-to').value;
+    const driver = document.getElementById('driver-yes')?.checked ? 'نعم' : 'لا';
+    const total = document.getElementById('total-car-price').innerText;
+
+    if(!name || !phone){ alert("يرجى ملء الاسم والجوال"); return; }
+
+    const message = `*حجز سيارة من Puncak Go*%0A🚗 السيارة: ${selectedCar.name}%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A📅 من: ${from}%0A📅 إلى: ${to}%0A🧑‍✈️ سائق: ${driver}%0A💰 الإجمالي: ${total}`;
+    window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
+}
+
+// ==================== 8️⃣ رندر الفلل ====================
+function renderVillas(filterPrice = 'all'){
+    villaMarkers.forEach(m => map.removeLayer(m));
+    villaMarkers = [];
+    const container = document.getElementById('villas-list-container');
+    if(!container) return;
+    container.innerHTML = '';
+    const lang = localStorage.getItem('lang') || 'ar';
+    const filtered = filterPrice==='all' ? allVillas : allVillas.filter(v=>v.price==filterPrice);
+
+    filtered.forEach(v=>{
+        const icon = L.divIcon({ 
+            className:'custom-pin',
+            html:`<div style="position:relative; width:40px; height:50px; text-align:center;">
+                    <img src="logo1.png" style="width:18px; height:18px; border-radius:50%; border:1px solid white; position:absolute; top:-5px; left:11px; z-index:5;">
+                    <div style="font-size:30px; color:#d4af37;">📍</div>
+                    <div style="background:#2ecc71; color:white; border-radius:5px; padding:1px 3px; font-size:8px; position:absolute; bottom:0; left:50%; transform:translateX(-50%); white-space:nowrap;">${v.price}</div>
+                   </div>`
+        });
+        const marker = L.marker([v.x,v.y],{icon:icon}).addTo(map).on('click',()=>openVilla(v));
+        villaMarkers.push(marker);
+
+        const vName = lang==='ar'?v.name_ar:v.name_en;
+        container.innerHTML += `
+            <div class="villa-card" onclick='openVilla(${JSON.stringify(v)})'>
+                <img src="${v.imgs[0]}">
+                <div style="padding:15px; text-align:right;">
+                    <h3 style="margin:0; font-size:16px;">${vName}</h3>
+                    <p style="color:#2ecc71; font-weight:bold; margin:5px 0;">${v.price} IDR / Night</p>
+                    <button style="width:100%; background:#3498db; color:white; border:none; padding:8px; border-radius:8px; margin-top:5px;">${translations[lang].details}</button>
+                </div>
+            </div>`;
+    });
+}
+
+// ==================== 9️⃣ فتح الفيلا والحجز ====================
+function openVilla(v) {
+    activeVilla = v;
+    const lang = localStorage.getItem('lang') || 'ar';
+    
+    document.getElementById('villa-modal').style.display = 'block';
+    document.getElementById('order-form-container').style.display = 'none';
+    document.getElementById('show-booking-btn').style.display = 'block';
+
+    // اسم الفيلا والسعر
+    document.getElementById('modal-villa-name').innerText = (lang === 'en' ? v.name_en : v.name_ar);
+    document.getElementById('modal-villa-price').innerText = v.price + " IDR / Night";
+    
+    // صورة أولى
+    document.getElementById('slider-wrapper').innerHTML = `<img src="${v.imgs[0]}" style="width:100%; height:200px; object-fit:cover;">`;
+
+    // المواصفات مع أيقونات
+    const specsList = document.getElementById('modal-specs-list');
+    specsList.innerHTML = ''; // مسح السابق
+    const specs = (lang === 'en' ? v.specs_en : v.specs_ar);
+
+    const icons = ["🏊","⛰️","🧹","🚗","🔥"]; // أيقونات تجريبية لكل خاصية
+    specs.forEach((s,i) => {
+        const li = document.createElement('li');
+        li.style.marginBottom = "5px";
+        li.innerText = (icons[i] ? icons[i]+" " : "• ") + s;
+        specsList.appendChild(li);
+    });
+
+    // إجمالي الليالي والسعر
+    document.getElementById('total-price').innerText = v.price + " IDR";
+    document.getElementById('stay-days').value = 1;
+}
+function openBookingForm(){
+    document.getElementById('order-form-container').style.display = 'block';
+    document.getElementById('show-booking-btn').style.display = 'none';
+
+    // تهيئة القيم الافتراضية
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('order-from').value = today;
+    document.getElementById('order-to').value = today;
+    document.getElementById('stay-days').value = 1;
+    if(activeVilla){
+        document.getElementById('total-price').innerText = activeVilla.price + " IDR";
     }
 }
 
-function confirmBooking() {
-    const name = document.getElementById("cust-name").value;
-    const from = document.getElementById("date-from").value;
-    const to = document.getElementById("date-to").value;
-    const days = document.getElementById("cust-days").value;
-    const pay = document.getElementById("pay-method").value;
-    const notes = document.getElementById("cust-notes").value;
+function sendVillaToWhatsApp(){
+    const name = document.getElementById('villa-name-input').value;
+    const phone = document.getElementById('villa-phone').value;
+    const days = parseInt(document.getElementById('stay-days').value) || 1;
 
-    if(!name || !from || !to || days <= 0) {
-        alert(currentLang === 'ar' ? "يرجى إكمال البيانات" : "Please complete details");
-        return;
+    if(!name || !phone){ alert("يرجى ملء الاسم والجوال"); return; }
+
+    const message = `*طلب حجز من Puncak Go*%0A🏡 الفيلا: ${activeVilla.name_ar}%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A📅 الليالي: ${days}%0A💰 الإجمالي: ${days*activeVilla.price} IDR`;
+    window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
+}
+
+function closeVilla(){ document.getElementById('villa-modal').style.display='none'; }
+
+// ====================  🔟 تشغيل عند التحميل ====================
+document.addEventListener('DOMContentLoaded',()=>setLanguage(localStorage.getItem('lang')||'ar'));
+
+
+// ================== إدارة الصفحات ==================
+function showHome() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('home-page').classList.add('active');
+}
+
+function showHistory() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    // إذا لم يكن لديك صفحة history، يمكنك إضافتها لاحقًا
+    let historyPage = document.getElementById('history-page');
+    if(!historyPage){
+        historyPage = document.createElement('div');
+        historyPage.id = 'history-page';
+        historyPage.classList.add('page', 'active');
+        historyPage.innerHTML = `<h2 style="text-align:center; margin-top:50px;">📋 رحلتي</h2><p style="text-align:center;">هنا ستعرض رحلاتك السابقة.</p>`;
+        document.body.appendChild(historyPage);
+    } else {
+        historyPage.classList.add('active');
     }
-
-    const msg = `*طلب حجز جديد من بونشاك جو*%0A` +
-                `📍 الخدمة: ${currentSelectedItem}%0A` +
-                `👤 الاسم: ${name}%0A` +
-                `📅 من: ${from} إلى: ${to}%0A` +
-                `⏱️ المدة: ${days} ${translations[currentLang].days}%0A` +
-                `💳 الدفع: ${pay}%0A` +
-                `📝 ملاحظات: ${notes || '-'}`;
-
-    window.open(`https://wa.me/628123456789?text=${msg}`, '_blank');
-    closeBooking();
 }
 
-function closeBooking() { document.getElementById("booking-modal").style.display = "none"; }
-function goHome() { 
-    document.querySelectorAll('.full-page').forEach(p => p.style.display = 'none');
-    document.getElementById("home-page").style.display = "block";
-}
-
-function filterVillas(type) {
-    const btnVip = document.getElementById('btn-vip');
-    const btnNormal = document.getElementById('btn-normal');
-    if(btnVip) btnVip.classList.toggle('active', type === 'VIP');
-    if(btnNormal) btnNormal.classList.toggle('active', type === 'Normal');
-    displayItems(villas.filter(v => v.type === type), 'villa-container');
-}
-
-// ربط قائمة اختيار اللغة عند التشغيل
-window.onload = () => {
-    const langSelect = document.getElementById("language");
-    if(langSelect) {
-        langSelect.addEventListener("change", (e) => changeLanguage(e.target.value));
+function showProfile() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    
+    // إذا لم يكن لديك صفحة profile، يمكنك إضافتها لاحقًا
+    let profilePage = document.getElementById('profile-page');
+    if(!profilePage){
+        profilePage = document.createElement('div');
+        profilePage.id = 'profile-page';
+        profilePage.classList.add('page', 'active');
+        profilePage.innerHTML = `<h2 style="text-align:center; margin-top:50px;">👤 البروفايل</h2><p style="text-align:center;">هنا ستعرض معلومات حسابك.</p>`;
+        document.body.appendChild(profilePage);
+    } else {
+        profilePage.classList.add('active');
     }
-    goHome();
-};
-function saveItem(){
-alert("تم الضغط"); // 👈 هذا للتجربة
-
-const name = document.getElementById("item-name").value;
-const price = document.getElementById("item-price").value;
-const type = document.getElementById("item-type").value;
-
-if(!name || !price){
-    alert("اكتب البيانات أول");
-    return;
 }
 
-const newItem = {
-    name: { ar: name, en: name },
-    price: price,
-    img: "https://via.placeholder.com/400x200",
-    desc: { ar: "وصف", en: "desc" }
-};
-
-if(type === "villa"){
-    villas.push(newItem);
-    displayItems(villas, 'villa-container');
-    openPage('villa-page');
-}
-
-if(type === "car"){
-    cars.push(newItem);
-    displayItems(cars, 'car-container');
-    openPage('car-page');
-}
-
-if(type === "tour"){
-    toursData.push(newItem);
-    displayItems(toursData, 'tour-container');
-    openPage('tour-page');
-}
-
-        }
+// تفعيل الصفحة الافتراضية عند التحميل
+document.addEventListener('DOMContentLoaded', () => {
+    showHome(); // تظهر الصفحة الرئيسية أولًا
+});
