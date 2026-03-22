@@ -91,11 +91,13 @@ for (let i = 1; i <= 15; i++) {
 }
 let driverOption = 'no'; // القيمة الافتراضية: بدون سائق
 // عند تغيير الاختيار
-document.getElementById('driver-no').addEventListener('change', function() {
-    if(this.checked){
-        driverOption = 'no';
-        filterCarsByDriver();
-    }
+document.getElementById('driver-no').addEventListener('click', function(){
+    driverOption = 'no';
+    filterCarsByDriver();
+});
+document.getElementById('driver-yes').addEventListener('click', function(){
+    driverOption = 'yes';
+    filterCarsByDriver();
 });
 
 document.getElementById('driver-yes').addEventListener('change', function() {
