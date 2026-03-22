@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
 /* الإعدادات العامة */
@@ -55,12 +56,12 @@ body {
 /* الواجهة الرئيسية - تعديل الشعار */
 .logo-area { 
     text-align: center; 
-    padding: 15px 0 35px 0; /* زيادة المساحة العلوية والسفلية */
+    padding: 0px 0 1px 0; /* زيادة المساحة العلوية والسفلية */
 }
 
 .main-logo { 
     width: 1600px; /* تكبير الشعار من 180 إلى 280 */
-    max-width: 90%; 
+    max-width: 100%; 
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)); /* تعميق الظل ليبرز الشعار */
     transition: transform 0.3s ease;
 }
