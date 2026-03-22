@@ -228,7 +228,23 @@ function renderVillas(filterPrice = 'all'){
             </div>`;
     });
 }
+// ==================== فلترة الفلل حسب السعر ====================
+function filterVillas(price) {
+    // إزالة حالة التفعيل من كل الأزرار
+    document.querySelectorAll('.f-btn').forEach(btn => btn.classList.remove('active'));
 
+    // تفعيل الزر المختار
+    if(price === 'all') {
+        document.getElementById('filter-all').classList.add('active');
+    } else {
+        const btn = Array.from(document.querySelectorAll('.f-btn'))
+            .find(b => b.getAttribute('onclick') === `filterVillas(${price})`);
+        if(btn) btn.classList.add('active');
+    }
+
+    // عرض الفلل حسب السعر المحدد
+    renderVillas(price);
+                        }
 // ==================== 9️⃣ فتح الفيلا والحجز ====================
 function openVilla(v) {
     activeVilla = v;
