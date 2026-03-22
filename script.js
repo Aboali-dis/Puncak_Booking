@@ -189,16 +189,28 @@ function prevCarImg(id){
 }
 
 // ==================== 7️⃣ حجز السيارات ====================
-function openCarOrder(id){
-    selectedCar = allCars.find(c=>c.id===id);
+function openCarOrder(id) {
+    // اختر السيارة المحددة
+    selectedCar = allCars.find(c => c.id === id);
+    if (!selectedCar) return;
+
+    // عرض اسم السيارة في الفورم
     document.getElementById('order-car-name').innerText = selectedCar.name;
-    document.getElementById('order-form-container-cars').style.display='block';
+
+    // إعادة ضبط الفورم وإظهاره
+    const form = document.getElementById('order-form-container-cars');
+    form.style.display = 'block';
+
+    // التواريخ الافتراضية: اليوم
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('order-car-from').value = today;
     document.getElementById('order-car-to').value = today;
-    renderCarSlider();
+
+    // إعادة حساب السعر الإجمالي
     updateCarTotal();
-    document.getElementById('order-form-container-cars').scrollIntoView({behavior:"smooth"});
+
+    // تمرير الصفحة تلقائياً لأسفل حتى يظهر الفورم
+    form.scrollIntoView({ behavior: 'smooth' });
 }
 
 function renderCarSlider(){
