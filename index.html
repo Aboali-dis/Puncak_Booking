@@ -160,42 +160,70 @@
     </div>
     <div id="cars-list-container" style="padding:10px; display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px;"></div>
 
-    <div id="order-form-container-cars" style="display:none; padding:15px; border:3px solid gold; border-radius:15px; background:#fff; margin-top:20px;">
-        <h3>🚗 احجز السيارة: <span id="order-car-name"></span></h3>
-        <div id="car-slider" style="display:flex; overflow-x:auto; gap:5px; margin-bottom:15px;"></div>
-        <div style="display:flex; gap:10px; margin-bottom:15px;">
-            <label style="flex:1; border:1px solid #ccc; border-radius:8px; padding:8px; text-align:center; cursor:pointer;">
-                <input type="radio" name="driver-option" id="driver-no" value="0" checked onchange="updateCarTotal()"> بدون سائق
-            </label>
-            <label style="flex:1; border:1px solid #ccc; border-radius:8px; padding:8px; text-align:center; cursor:pointer;">
-                <input type="radio" name="driver-option" id="driver-yes" value="1" onchange="updateCarTotal()"> مع سائق
-            </label>
-        </div>
-        <div style="display:flex; gap:10px; margin-bottom:10px;">
-            <div style="flex:1;">
-                <label>من:</label>
-                <input type="date" id="order-car-from" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;" onchange="updateCarTotal()">
-            </div>
-            <div style="flex:1;">
-                <label>إلى:</label>
-                <input type="date" id="order-car-to" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;" onchange="updateCarTotal()">
-            </div>
-        </div>
-        <div style="margin-bottom:10px;">
-            <label>الاسم:</label>
-            <input type="text" id="order-car-name-input" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
-        </div>
-        <div style="margin-bottom:15px;">
-            <label>الجوال:</label>
-            <input type="tel" id="order-car-phone" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
-        </div>
-        <div style="background:#fff8dc; padding:10px; border-radius:10px; text-align:center; margin-bottom:15px; font-weight:bold;">
-            الإجمالي: <span id="total-car-price">0 IDR</span>
-        </div>
-        <button onclick="sendCarToWhatsApp()" style="width:100%; padding:15px; background:#25D366; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">
-            تأكيد الحجز عبر واتساب ✅
-        </button>
+ <div id="order-form-container-cars" style="padding:15px; border:3px solid gold; border-radius:15px; background:#fff; margin-top:20px;">
+    <h3>🚗 احجز السيارة: <span id="order-car-name"></span></h3>
+
+    <!-- تحديد الموقع -->
+    <div style="margin-bottom:10px;">
+        <label>الموقع:</label>
+        <select id="order-car-location" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
+            <option value="Puncak">بونشاك</option>
+            <option value="Bogor">بوقور</option>
+            <option value="Jakarta">جاكرتا</option>
+            <option value="Bandung">باندونغ</option>
+        </select>
     </div>
+
+    <!-- الاسم -->
+    <div style="margin-bottom:10px;">
+        <label>الاسم:</label>
+        <input type="text" id="order-car-name-input" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
+    </div>
+
+    <!-- رقم الجوال -->
+    <div style="margin-bottom:10px;">
+        <label>رقم الجوال:</label>
+        <input type="tel" id="order-car-phone" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
+    </div>
+
+    <!-- التواريخ من وإلى -->
+    <div style="display:flex; gap:10px; margin-bottom:10px;">
+        <div style="flex:1;">
+            <label>من:</label>
+            <input type="date" id="order-car-from" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+        </div>
+        <div style="flex:1;">
+            <label>إلى:</label>
+            <input type="date" id="order-car-to" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+        </div>
+    </div>
+
+    <!-- طريقة الدفع -->
+    <div style="margin-bottom:10px;">
+        <label>طريقة الدفع:</label>
+        <select id="order-car-payment" style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;">
+            <option value="cash">كاش</option>
+            <option value="bank">تحويل بنكي</option>
+            <option value="qr">QR كود</option>
+        </select>
+    </div>
+
+    <!-- حقل الملاحظات -->
+    <div style="margin-bottom:15px;">
+        <label>ملاحظات:</label>
+        <textarea id="order-car-notes" placeholder="اكتب أي ملاحظات..." style="width:100%; padding:8px; border-radius:5px; border:1px solid #ddd;"></textarea>
+    </div>
+
+    <!-- السعر -->
+    <div style="background:#fff8dc; padding:10px; border-radius:10px; text-align:center; margin-bottom:15px; font-weight:bold;">
+        الإجمالي: <span id="total-car-price">0 IDR</span>
+    </div>
+
+    <!-- زر تأكيد الحجز -->
+    <button onclick="sendCarToWhatsApp()" style="width:100%; padding:15px; background:#25D366; color:white; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">
+        تأكيد الحجز عبر واتساب ✅
+    </button>
+ </div>
 </div>
 
 <!-- شاملة ملفات JS -->
