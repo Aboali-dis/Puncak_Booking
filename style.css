@@ -1,153 +1,187 @@
-:root {
-    /* 1. الألوان الأساسية (الهوية الجديدة) */
-    --bg-color: #F5F5F5;         /* خلفية التطبيق - أبيض رمادي بارد */
-    --card-bg: rgba(255, 255, 255, 0.85); /* كروت شفافة */
-    --accent-gold: #D4AF37;      /* الذهبي الملكي */
-    --text-main: #2C3E50;        /* نص أساسي - كحلي غامق جداً */
-    --text-sub: #7F8C8D;         /* نص فرعي - رمادي */
-    --white: #ffffff;
-    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    -webkit-tap-highlight-color: transparent;
-}
-
+/* الإعدادات العامة */
 body { 
-    background-color: var(--bg-color); 
-    color: var(--text-main); 
-    line-height: 1.6;
+    margin: 0; 
+    font-family: 'Cairo', sans-serif; 
+    background-image: url('webbackground.jpg'); 
+    background-size: cover;          
+    background-position: center;     
+    background-attachment: fixed;    
+    background-repeat: no-repeat;
     overflow-x: hidden;
 }
 
-/* --- الشريط العلوي --- */
-.topbar { 
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px 15px; background: var(--white); 
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    position: sticky; top: 0; z-index: 1000;
-}
-.premium { color: var(--accent-gold); font-weight: bold; font-size: 16px; letter-spacing: 1px; }
-.lang-select { 
-    background: var(--bg-color); color: var(--text-main); 
-    border: 1px solid var(--accent-gold); border-radius: 8px; padding: 4px; font-size: 12px;
-}
-.badge { 
-    color: var(--accent-gold); border: 1px solid var(--accent-gold); 
-    padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;
+/* نظام الصفحات */
+.page { 
+    display: none !important; 
+    width: 100%; 
+    min-height: 100vh; 
 }
 
-/* --- شريط العروض (Promo) --- */
-.promo-banner {
-    background: #000; color: var(--accent-gold);
-    padding: 6px 0; font-size: 12px; font-weight: bold;
-    border-bottom: 1px solid var(--accent-gold);
+.page.active { 
+    display: block !important; 
 }
 
-/* --- الصفحة الرئيسية --- */
-.logo-space { text-align: center; padding: 10px 0; }
-.logo-img { width: 200%; max-width: 380px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); }
-
-.main-content-area { 
-    padding: 25px 20px 100px 20px; 
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('puncak.jpg');
-    background-size: cover; background-position: center; 
-    border-radius: 40px 40px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+/* شريط الأخبار المتحرك */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px 0;
+    white-space: nowrap;
+    z-index: 1001;
+    position: relative;
 }
 
-/* الكروت بنظام Glassmorphism */
-.card, .item-card, .wide-card { 
-    background: var(--card-bg) !important;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: var(--shadow);
-    border-radius: 22px;
+.ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 25s linear infinite;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.card { 
-    padding: 25px; display: flex; flex-direction: column; 
-    align-items: center; border: none; cursor: pointer;
-}
-.card .icon { font-size: 40px; margin-bottom: 10px; }
-.card .text { font-weight: bold; color: var(--text-main); font-size: 15px; }
-
-.wide-card { 
-    width: 100%; margin-top: 15px; padding: 20px; border: none;
-    display: flex; align-items: center; justify-content: center; gap: 15px;
-    font-weight: bold; font-size: 17px; color: var(--text-main); cursor: pointer;
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
 }
 
-.extra-btn { 
-    width: 100%; margin-top: 20px; padding: 15px; border-radius: 15px; border: none;
-    background: linear-gradient(45deg, #D4AF37, #B8860B); color: #fff; 
-    font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+/* الهيدر */
+.main-header { background: rgba(255, 255, 255, 0.9); padding: 12px 0; border-bottom: 1px solid #ddd; }
+.header-content { display: flex; justify-content: space-between; align-items: center; width: 92%; margin: 0 auto; }
+
+/* الواجهة الرئيسية - تعديل الشعار */
+.logo-area { 
+    text-align: center; 
+    padding: 15px 0 35px 0; /* زيادة المساحة العلوية والسفلية */
 }
 
-/* --- القوائم والعناصر --- */
-.full-page { min-height: 100vh; padding-bottom: 80px; }
-.sub-header { 
-    padding: 15px; display: flex; align-items: center; justify-content: space-between;
-    background: var(--white); border-bottom: 1px solid #eee;
-}
-.back-btn { border: none; background: #f0f0f0; font-size: 18px; padding: 5px 10px; border-radius: 10px; }
-
-.filter-btns { display: flex; gap: 10px; padding: 15px; }
-.filter-btns button { 
-    flex: 1; padding: 10px; border: 1px solid #ddd; background: var(--white); 
-    color: var(--text-sub); font-weight: bold; border-radius: 12px; font-size: 13px;
-}
-.filter-btns button.active { background: var(--accent-gold); color: white; border-color: var(--accent-gold); }
-
-.item-card { margin: 15px; overflow: hidden; position: relative; }
-.item-img { width: 100%; height: 200px; object-fit: cover; }
-.special-badge {
-    position: absolute; top: 12px; right: 12px; background: #e74c3c;
-    color: white; padding: 4px 12px; border-radius: 8px; font-size: 10px; font-weight: bold;
+.main-logo { 
+    width: 1600px; /* تكبير الشعار من 180 إلى 280 */
+    max-width: 90%; 
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4)); /* تعميق الظل ليبرز الشعار */
+    transition: transform 0.3s ease;
 }
 
-.book-btn { 
-    background: var(--accent-gold); color: white; border: none; 
-    padding: 10px 22px; border-radius: 12px; font-weight: bold; font-size: 14px;
-}
-
-/* --- النافذة المنبثقة (Booking Modal) --- */
-.order-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(5px);
-}
-.order-content {
-    background: var(--white); width: 92%; max-width: 400px;
-    border-radius: 30px; padding: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-}
-.order-input {
-    width: 100%; background: #F2F4F7; border: 1px solid #EAECEF;
-    color: var(--text-main); padding: 12px; border-radius: 12px; margin-bottom: 12px; outline: none;
-}
-.confirm-btn {
-    width: 100%; padding: 16px; background: #27ae60;
-    color: white; border: none; border-radius: 15px; font-weight: bold; font-size: 16px; margin-top: 10px;
-}
-
-/* --- التنقل السفلي --- */
-.bottom-nav { 
-    position: fixed; bottom: 0; width: 100%; background: rgba(255, 255, 255, 0.95); 
-    display: flex; justify-content: space-around; padding: 12px; 
-    border-top: 1px solid #eee; backdrop-filter: blur(10px); z-index: 1000;
-}
-.bottom-nav a { text-decoration: none; color: #95a5a6; font-size: 11px; text-align: center; transition: 0.3s; }
-.bottom-nav a i { font-size: 20px; margin-bottom: 4px; }
-.bottom-nav a.active { color: var(--accent-gold); font-weight: bold; }
-
-/* تحسينات للشاشات الصغيرة */
-@media (max-width: 360px) {
-    .card .icon { font-size: 32px; }
-    .card .text { font-size: 13px; }
-        }
+/* الحاوية الأساسية: تجبر العناصر على التوسط */
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* تقسيم الشاشة لنصفين متساويين */
+    grid-template-areas:
+        "villas cars"
+        "tours tours"
+        "others others";
+    gap: 40px;
+    padding: 30px;
     
+    /* التوسيط */
+    width: 100%;          /* استغلال مساحة الشاشة */
+    max-width: 700px;    /* منع التمدد الزائد في الشاشات الكبيرة */
+    margin: 0 auto;      /* أهم سطر لتوسيط الحاوية في نص الصفحة */
+}
+
+/* تنسيق عام لكل الكروت */
+.card-villas, .card-cars, .card-tours, .card-others {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+/* الكروت الصغيرة (تأكد أن الارتفاع متساوي) */
+.card-villas, .card-cars {
+    height: 110px; /* تقليل الارتفاع عشان ما تطلع طويلة مثل الصورة */
+}
+
+.card-villas { grid-area: villas; background-color: #fef5e6; color: #b35900; }
+.card-cars { grid-area: cars; background-color: #e6f7ff; color: #0066b3; }
+
+/* كرت الجولات (مستطيل عريض) */
+.card-tours {
+    grid-area: tours;
+    background-color: #e6ffe6;
+    color: #009900;
+    height: 70px;
+}
+
+/* كرت الخدمات (مستطيل عريض أصغر قليلاً) */
+.card-others {
+    grid-area: others;
+    background-color: #ffe6f0;
+    color: #cc0066;
+    height: 100px;
+}
+
+/* تصغير حجم الأيقونات ليتناسب مع الحجم الجديد */
+.card-icon { 
+    font-size: 26px; 
+    margin-bottom: 5px; 
+}
+
+/* حجم الخط */
+span { 
+    font-size: 14px; 
+    white-space: nowrap; /* يمنع نزول النص لسطر ثاني ويخرب الشكل */
+}
+
+/* صفحة الفلل وباقي الأنماط */
+#villas-page { background: #f4f4f4; }
+#image-map { height: 350px !important; width: 100%; border-bottom: 2px solid #ddd; z-index: 5; }
+.price-filter-bar { display: flex; gap: 10px; padding: 15px; overflow-x: auto; background: #fff; position: sticky; top: 0; z-index: 10; }
+.f-btn { flex-shrink: 0; background: #eee; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; }
+.f-btn.active { background: #2ecc71 !important; color: white !important; }
+.villas-scroll-list { padding: 15px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 120px; }
+.villa-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.villa-card img { width: 100%; height: 180px; object-fit: cover; }
+
+/* المودال */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; }
+.modal-body { background: white; width: 90%; max-width: 450px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 20px; max-height: 85vh; overflow-y: auto; }
+
+/* شريط التنقل السفلي */
+.bottom-nav { 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    background: rgba(255, 255, 255, 0.98); 
+    display: flex; 
+    justify-content: space-around; 
+    padding: 15px 0; /* زيادة المساحة في الشريط السفلي */
+    border-top: 1px solid #ddd; 
+    z-index: 1000; 
+}
+.nav-item { text-align: center; font-size: 13px; font-weight: bold; color: #444; }
+.section-title {
+    text-align: center;
+    font-size: 16px; /* حجم أنعم قليلًا */
+    color: #2c3e50;
+    margin: 5px 0 5px 0; /* تقليل المسافة العلوية والسفلية جداً */
+    font-weight: bold;
+    display: block;
+}
+
+/* الخط الصغير تحت الكلمة */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #2ecc71; /* لون أخضر */
+    margin: 3px auto;
+    border-radius: 10px;
+}
+
+/* تقليل الفراغ العلوي في قائمة الفلل نفسها */
+.villas-scroll-list {
+    padding-top: 5px !important; /* تقريب الحقول من كلمة اقتراحات */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+        }
+                     
