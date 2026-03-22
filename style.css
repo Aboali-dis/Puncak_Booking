@@ -186,7 +186,7 @@ span { font-size: 15px; }
 .overlay-gradient {
     width: 100%;
     /* زيادة الارتفاع الكلي ليعطي مساحة كافية للتدرج الطويل */
-    height: 300px; 
+    height: 100px; 
     background: linear-gradient(
         to bottom, 
         rgba(255, 255, 255, 5) 0%,      /* يبدأ أبيض صافي تماماً */
