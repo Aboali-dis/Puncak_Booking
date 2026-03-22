@@ -157,6 +157,16 @@
         <span class="title" style="font-weight: bold;">اختر السيارة</span>
         <div style="width:50px;"></div>
     </div>
+    <div id="driver-selection" style="display:flex; gap:15px; margin:10px 0; justify-content:center;">
+    <div id="driver-btn-yes" onclick="filterCarsByDriver(true)"
+         style="flex:1; padding:15px; background:gold; text-align:center; border-radius:12px; font-weight:bold; cursor:pointer;">
+        🚗 مع سائق
+    </div>
+    <div id="driver-btn-no" onclick="filterCarsByDriver(false)"
+         style="flex:1; padding:15px; background:gold; text-align:center; border-radius:12px; font-weight:bold; cursor:pointer;">
+        🚗 بدون سائق
+    </div>
+    </div>
     <div id="cars-list-container" style="padding:10px; display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px;"></div>
 
     <div id="order-form-container-cars" style="display:none; padding:15px; border:3px solid gold; border-radius:15px; background:#fff; margin-top:20px;">
