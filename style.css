@@ -66,69 +66,68 @@ body {
 }
 
 /* الحاوية الأساسية: تجبر العناصر على التوسط */
+/* الحاوية الكبرى للكروت */
 .services-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* تقسيم الشاشة لنصفين متساويين */
+    grid-template-columns: 1fr 1fr; /* تقسيم لعمودين */
     grid-template-areas:
         "villas cars"
         "tours tours"
         "others others";
-    gap: 40px;
-    padding: 30px;
-    
-    /* التوسيط */
-    width: 100%;          /* استغلال مساحة الشاشة */
-    max-width: 700px;    /* منع التمدد الزائد في الشاشات الكبيرة */
-    margin: 0 auto;      /* أهم سطر لتوسيط الحاوية في نص الصفحة */
+    gap: 15px;            /* المسافة بين الحقول */
+    padding: 10px 20px;   /* هوامش جانبية */
+    width: 100%;
+    max-width: 350px;     /* حجم مثالي لواجهة الجوال */
+    margin: 0 auto;       /* التوسيط في منتصف الواجهة */
+    position: relative;
+    z-index: 5;           /* لضمان الظهور فوق الخلفية */
 }
 
-/* تنسيق عام لكل الكروت */
+/* التنسيق المشترك لكل الكروت */
 .card-villas, .card-cars, .card-tours, .card-others {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 40px;
+    border-radius: 30px; /* الزوايا الدائرية العريضة كما في الصورة */
     font-weight: bold;
     text-align: center;
-    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ظل ناعم لإبراز الحقل */
 }
 
-/* الكروت الصغيرة (تأكد أن الارتفاع متساوي) */
+/* الكروت الصغيرة (فلل وسيارات) */
 .card-villas, .card-cars {
-    height: 110px; /* تقليل الارتفاع عشان ما تطلع طويلة مثل الصورة */
+    height: 130px; 
+    background-color: #ffffff;
 }
 
-.card-villas { grid-area: villas; background-color: #fef5e6; color: #b35900; }
-.card-cars { grid-area: cars; background-color: #e6f7ff; color: #0066b3; }
+.card-villas { grid-area: villas; color: #8b4513; }
+.card-cars { grid-area: cars; color: #0056b3; }
 
-/* كرت الجولات (مستطيل عريض) */
+/* كرت الجولات (العريض - خلفية باهتة) */
 .card-tours {
     grid-area: tours;
-    background-color: #e6ffe6;
-    color: #009900;
-    height: 70px;
+    height: 85px;
+    background-color: #f0fff4; /* أخضر باهت جداً */
+    color: #2e7d32;
+    flex-direction: row; /* الأيقونة بجانب النص */
+    gap: 10px;
 }
 
-/* كرت الخدمات (مستطيل عريض أصغر قليلاً) */
+/* كرت الخدمات (الذهبي) */
 .card-others {
     grid-area: others;
-    background-color: #ffe6f0;
-    color: #cc0066;
-    height: 100px;
+    height: 75px;
+    background: linear-gradient(to right, #d4a017, #b8860b);
+    color: #ffffff;
+    border-radius: 20px; /* زوايا أقل انحناءً للزر الأخير */
 }
 
-/* تصغير حجم الأيقونات ليتناسب مع الحجم الجديد */
-.card-icon { 
-    font-size: 26px; 
-    margin-bottom: 5px; 
-}
+/* ضبط حجم الأيقونات والنصوص */
+.card-icon { font-size: 28px; margin-bottom: 5px; }
+span { font-size: 15px; }
 
-/* حجم الخط */
-span { 
-    font-size: 14px; 
-    white-space: nowrap; /* يمنع نزول النص لسطر ثاني ويخرب الشكل */
-}
+
 
 /* صفحة الفلل وباقي الأنماط */
 #villas-page { background: #f4f4f4; }
