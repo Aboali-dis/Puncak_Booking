@@ -215,19 +215,27 @@ function renderCarSlider(){
 
 function updateCarTotal(){
     if(!selectedCar) return;
+
     let total = selectedCar.basePrice;
+
     const from = new Date(document.getElementById('order-car-from').value);
     const to = new Date(document.getElementById('order-car-to').value);
     let days = Math.ceil((to-from)/(1000*60*60*24));
-    if(days<1) days=1;
+    if(days<1) days = 1;
+
+    // تكلفة السائق
     const driver = document.getElementById('driver-yes')?.checked;
-    if(driver) total+=100;
-    total*=days;
-    document.getElementById('total-car-price').innerText=total+' IDR';
+    if(driver) total += 100;
+
+    // السعر النهائي حسب الأيام
+    total *= days;
+
+    document.getElementById('total-car-price').innerText = total + ' IDR';
 }
 
 function sendCarToWhatsApp(){
     if(!selectedCar) return;
+
     const name = document.getElementById('order-car-name-input').value;
     const phone = document.getElementById('order-car-phone').value;
     const from = document.getElementById('order-car-from').value;
@@ -235,9 +243,14 @@ function sendCarToWhatsApp(){
     const driver = document.getElementById('driver-yes')?.checked ? 'نعم' : 'لا';
     const total = document.getElementById('total-car-price').innerText;
 
+    const location = document.getElementById('order-car-location').value;
+    const payment = document.getElementById('order-car-payment').value;
+    const notes = document.getElementById('order-car-notes').value;
+
     if(!name || !phone){ alert("يرجى ملء الاسم والجوال"); return; }
 
-    const message = `*حجز سيارة من Puncak Go*%0A🚗 السيارة: ${selectedCar.name}%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A📅 من: ${from}%0A📅 إلى: ${to}%0A🧑‍✈️ سائق: ${driver}%0A💰 الإجمالي: ${total}`;
+    const message = `*حجز سيارة من Puncak Go*%0A🚗 السيارة: ${selectedCar.name}%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A📍 الموقع: ${location}%0A📅 من: ${from}%0A📅 إلى: ${to}%0A🧑‍✈️ سائق: ${driver}%0A💳 الدفع: ${payment}%0A📝 ملاحظات: ${notes}%0A💰 الإجمالي: ${total}`;
+
     window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
 }
 
