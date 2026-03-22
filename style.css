@@ -203,7 +203,7 @@ span { font-size: 15px; }
 .services-container {
     display: grid;
     /* ... باقي الخصائص كما هي ... */
-    margin: -70px auto 0; /* غيرنا الرقم من -150 إلى -70 لتقترب الحقول من اللوجو */
+    margin: -40px auto 40; /* غيرنا الرقم من -150 إلى -70 لتقترب الحقول من اللوجو */
     position: relative;
     z-index: 10;
 }
