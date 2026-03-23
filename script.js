@@ -446,3 +446,11 @@ function sendRestaurantOrder(){
 
     window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
 }
+const restaurantSelect = document.getElementById("rest-restaurant");
+const orderInput = document.getElementById("rest-order");
+
+restaurantSelect.addEventListener("change", function() {
+    if (this.value) {
+        orderInput.value = "طلب من " + this.value + ":\n";
+    }
+});
