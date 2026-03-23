@@ -428,3 +428,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('order-car-from').addEventListener('change', updateCarTotal);
     document.getElementById('order-car-to').addEventListener('change', updateCarTotal);
 });
+function showRestaurants() {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('restaurants-page').classList.add('active');
+}
+function sendRestaurantOrder(){
+    const name = document.getElementById('rest-name').value;
+    const date = document.getElementById('rest-date').value;
+    const order = document.getElementById('rest-order').value;
+
+    if(!name || !order){
+        alert("املأ البيانات");
+        return;
+    }
+
+    const message = `🍽️ طلب مطعم%0A👤 الاسم: ${name}%0A📅 التاريخ: ${date}%0A📝 الطلب: ${order}`;
+
+    window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
+}
