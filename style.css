@@ -227,4 +227,8 @@ span { font-size: 15px; }
     height: 100vh;
     overflow-y: auto;
 }
-
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
