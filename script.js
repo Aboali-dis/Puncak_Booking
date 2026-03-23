@@ -238,7 +238,7 @@ function updateCarTotal(){
     if(days<1) days = 1;
 
     // تكلفة السائق
-    const driver = document.getElementById('driver-yes')?.checked;
+    const driver = driverOption === 'yes';
     if(driver) total += 100;
 
     // السعر النهائي حسب الأيام
@@ -254,7 +254,7 @@ function sendCarToWhatsApp(){
     const phone = document.getElementById('order-car-phone').value;
     const from = document.getElementById('order-car-from').value;
     const to = document.getElementById('order-car-to').value;
-    const driver = document.getElementById('driver-yes')?.checked ? 'نعم' : 'لا';
+    const driver = driverOption === 'yes' ? 'نعم' : 'لا';
     const total = document.getElementById('total-car-price').innerText;
 
     const location = document.getElementById('order-car-location').value;
@@ -424,4 +424,11 @@ function showProfile() {
 // تفعيل الصفحة الافتراضية عند التحميل
 document.addEventListener('DOMContentLoaded', () => {
     showHome(); // تظهر الصفحة الرئيسية أولًا
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('order-car-from').addEventListener('change', updateCarTotal);
+    document.getElementById('order-car-to').addEventListener('change', updateCarTotal);
+});
+
+    
 });
