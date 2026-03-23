@@ -224,7 +224,7 @@ span { font-size: 15px; }
     transform: scale(1.05);
 }
 .page {
-    height: 100vh;
+    height: 120vh;
     overflow-y: auto;
 }
 body {
