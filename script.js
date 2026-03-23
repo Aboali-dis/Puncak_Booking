@@ -421,8 +421,10 @@ function showProfile() {
     }
 }
 
-// تفعيل الصفحة الافتراضية عند التحميل
 document.addEventListener('DOMContentLoaded', () => {
-    showHome(); // تظهر الصفحة الرئيسية أولًا
-   
+    showHome(); // الصفحة الرئيسية
+
+    // تحديث السعر عند تغيير التاريخ
+    document.getElementById('order-car-from').addEventListener('change', updateCarTotal);
+    document.getElementById('order-car-to').addEventListener('change', updateCarTotal);
 });
