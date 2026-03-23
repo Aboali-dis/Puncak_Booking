@@ -244,8 +244,20 @@
     </div>
 
 </div>
-
-
+<!-- خيارات البقالات -->
+<div id="grocery-options" style="display:flex; gap:10px; margin-bottom:10px;">
+    <div class="gold-card" onclick="selectGrocery('بقالة الشام')">بقالة الشام</div>
+    <div class="gold-card" onclick="selectGrocery('بقالة الخليج')">بقالة الخليج</div>
+    <div class="gold-card" onclick="selectGrocery('بقالة المدينة')">بقالة المدينة</div>
+    <div class="gold-card" onclick="selectGrocery('بقالة الرياض')">بقالة الرياض</div>
+</div>
+<!-- خيارات العود -->
+<div id="oud-options" style="display:flex; gap:10px; margin-bottom:10px;">
+    <div class="gold-card" onclick="selectOud('عود الشام')">عود الشام</div>
+    <div class="gold-card" onclick="selectOud('عود الخليج')">عود الخليج</div>
+    <div class="gold-card" onclick="selectOud('عود المدينة')">عود المدينة</div>
+    <div class="gold-card" onclick="selectOud('عود الرياض')">عود الرياض</div>
+</div>
     <!-- صفحة المطاعم -->
 <div id="restaurants-page" class="page">
 
@@ -286,7 +298,11 @@ style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;">
 
 <textarea id="rest-order" placeholder="📝 اكتب طلبك (مثال: كبسة + مشويات...)"
 style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;"></textarea>
+<textarea id="rest-order" placeholder="📝 اكتب طلبك (مثال: كبسة + مشويات...)"
+style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;"></textarea>
 
+<!-- حقل الطلب الموحد لكل الخدمات -->
+<textarea id="service-order" placeholder="📝 طلبك يظهر هنا" style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;"></textarea>
         <button onclick="sendRestaurantOrder()"
         style="width:100%; padding:12px; background:#25D366; color:#fff; border:none; border-radius:10px;">
             إرسال عبر واتساب
