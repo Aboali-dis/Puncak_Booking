@@ -436,21 +436,49 @@ function sendRestaurantOrder(){
     const name = document.getElementById('rest-name').value;
     const date = document.getElementById('rest-date').value;
     const order = document.getElementById('rest-order').value;
+    const restaurant = document.getElementById('rest-restaurant').value;
 
-    if(!name || !order){
-        alert("املأ البيانات");
+    if(!name || !order || !restaurant){
+        alert("املأ جميع البيانات");
         return;
     }
 
-    const message = `🍽️ طلب مطعم%0A👤 الاسم: ${name}%0A📅 التاريخ: ${date}%0A📝 الطلب: ${order}`;
+    const message = `🍽️ طلب مطعم
+👤 الاسم: ${name}
+🏪 المطعم: ${restaurant}
+📅 التاريخ: ${date}
+📝 الطلب: ${order}`;
 
-    window.open(`https://wa.me/628123456789?text=${message}`, '_blank');
+    const url = `https://wa.me/628123456789?text=` + encodeURIComponent(message);
+    window.open(url, '_blank');
 }
-const restaurantSelect = document.getElementById("rest-restaurant");
-const orderInput = document.getElementById("rest-order");
 
-restaurantSelect.addEventListener("change", function() {
-    if (this.value) {
-        orderInput.value = "طلب من " + this.value + ":\n";
+// يخلي اسم المطعم ينكتب تلقائي داخل الطلب
+document.addEventListener('DOMContentLoaded', function(){
+
+    const restaurantSelect = document.getElementById("rest-restaurant");
+    const orderInput = document.getElementById("rest-order");
+
+    if(restaurantSelect){
+        restaurantSelect.addEventListener("change", function() {
+            if (this.value) {
+                orderInput.value = "طلب من " + this.value + ":\n";
+            }
+        });
     }
+
 });
+
+// عند الضغط على كرت المطعم
+function selectRestaurant(name) {
+    const select = document.getElementById("rest-restaurant");
+    const orderInput = document.getElementById("rest-order");
+
+    if(select){
+        select.value = name;
+    }
+
+    if(orderInput){
+        orderInput.value = "طلب من " + name + ":\n";
+    }
+                                               }
