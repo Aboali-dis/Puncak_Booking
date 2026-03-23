@@ -316,6 +316,21 @@ function showProfile() {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('restaurants-page').classList.add('active');
     }
+    function sendRestaurantOrder() {
+    let name = document.getElementById("rest-name").value;
+    let date = document.getElementById("rest-date").value;
+    let order = document.getElementById("rest-order").value;
+
+    let phone = "628XXXXXXXXXX"; // 🔴 حط رقمك هنا
+
+    let message = `🍽️ طلب مطعم
+👤 الاسم: ${name}
+📅 التاريخ: ${date}
+📝 الطلب: ${order}`;
+
+    let url = `https://wa.me/${phone}?text=` + encodeURIComponent(message);
+    window.open(url, "_blank");
+    }
 </script>
 </body>
 </html>
