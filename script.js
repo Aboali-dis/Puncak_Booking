@@ -424,11 +424,5 @@ function showProfile() {
 // تفعيل الصفحة الافتراضية عند التحميل
 document.addEventListener('DOMContentLoaded', () => {
     showHome(); // تظهر الصفحة الرئيسية أولًا
-
-    document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('order-car-from').addEventListener('change', updateCarTotal);
-    document.getElementById('order-car-to').addEventListener('change', updateCarTotal);
-});
-
-    
+   
 });
