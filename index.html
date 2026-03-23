@@ -225,7 +225,27 @@
  </div>
 </div>
 
-    <div id="restaurants-page" class="page">
+    <!-- صفحة الخدمات الأخرى -->
+<div id="others-page" class="page">
+
+    <div style="display:flex; justify-content: space-between; align-items:center; padding:10px; background:#fff;">
+        <button onclick="showHome()" style="padding:8px; border:none; border-radius:8px;">⬅</button>
+        <h3>خدمات أخرى</h3>
+        <div style="width:40px;"></div>
+    </div>
+
+    <div style="padding:15px; display:grid; gap:15px;">
+        <div class="gold-card" onclick="showRestaurants()">🍽️ المطاعم العربية</div>
+        <div class="gold-card">🛒 البقالات العربية</div>
+        <div class="gold-card">🪔 متاجر العود</div>
+        <div class="gold-card">💈 حلاق خاص</div>
+        <div class="gold-card">👨‍🍳 طباخ خاص</div>
+        <div class="gold-card">🥩 مسالخ اللحوم فرش</div>
+    </div>
+
+</div>
+    <!-- صفحة المطاعم -->
+<div id="restaurants-page" class="page">
 
     <div style="display:flex; justify-content: space-between; align-items:center; padding:10px; background:#fff;">
         <button onclick="showOthers()" style="padding:8px; border:none; border-radius:8px;">⬅</button>
@@ -240,44 +260,7 @@
         <div class="gold-card">مطعم الرياض</div>
     </div>
 
-    </div>
-
-    <!-- نموذج الطلب -->
-    <div style="margin:20px; padding:15px; border:2px solid gold; border-radius:15px;">
-
-        <h3 style="text-align:center;">🍽️ طلب مطعم</h3>
-
-        <input type="text" id="rest-name" placeholder="اسمك" style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;">
-
-        <input type="date" id="rest-date" style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;">
-
-        <textarea id="rest-order" placeholder="اكتب طلبك (مثال: كبسة + مشويات...)" 
-        style="width:100%; margin-bottom:10px; padding:10px; border-radius:8px;"></textarea>
-
-        <button onclick="sendRestaurantOrder()" 
-        style="width:100%; padding:12px; background:#25D366; color:#fff; border:none; border-radius:10px;">
-            إرسال عبر واتساب
-        </button>
-
-    </div>
-
 </div>
-    <div style="display:flex; justify-content: space-between; align-items:center; padding:10px; background:#fff;">
-        <button onclick="showHome()" style="padding:8px 12px; border:none; border-radius:8px; background:#ddd;">⬅ عودة</button>
-        <h3 style="margin:0;">خدمات أخرى</h3>
-        <div style="width:50px;"></div>
-    </div>
-
-    <div style="padding:15px; display:grid; gap:15px;">
-
-        <div class="gold-card" onclick="showRestaurants()">🍽️ المطاعم العربية</div>
-        <div class="gold-card">🛒 البقالات العربية</div>
-        <div class="gold-card">🪔 متاجر العود</div>
-        <div class="gold-card">💈 حلاق خاص</div>
-        <div class="gold-card">👨‍🍳 طباخ خاص</div>
-        <div class="gold-card">🥩 مسالخ اللحوم فرش</div>
-
-    </div>
 
 </div>
 <!-- شاملة ملفات JS -->
